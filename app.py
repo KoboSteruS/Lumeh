@@ -8,6 +8,22 @@ import os
 app = Flask(__name__, template_folder='app/templates', static_folder='app/static')
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
 
+# Настройка кэширования для статических файлов
+@app.after_request
+def add_cache_headers(response):
+    """Добавляет заголовки кэширования для статических файлов"""
+    if request.endpoint == 'static' or request.path.startswith('/static/'):
+        # Кэшируем статику на 1 год
+        cache_timeout = 31536000  # 1 год в секундах
+        response.cache_control.max_age = cache_timeout
+        response.cache_control.public = True
+        response.cache_control.immutable = True
+    else:
+        # Для HTML страниц - короткое кэширование
+        response.cache_control.max_age = 300  # 5 минут
+        response.cache_control.public = True
+    return response
+
 
 @app.route('/')
 def index():

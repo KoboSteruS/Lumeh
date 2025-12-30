@@ -6,7 +6,13 @@
     <meta name="description" content="LUMMEH SPA POINT - премиальный спа-салон с тайскими и балийскими практиками в Карелии">
     <title>LUMMEH SPA POINT</title>
     
-    <!-- Шрифты подключены через @font-face в CSS -->
+    <!-- Preload критических ресурсов -->
+    <link rel="preload" href="{{ url_for('static', filename='fonts/HONORSansVFNormal.ttf') }}" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="{{ url_for('static', filename='images/heroBG.png') }}" as="image">
+    <link rel="preload" href="{{ url_for('static', filename='images/Logo_light.png') }}" as="image">
+    
+    <!-- Preconnect для внешних ресурсов (если будут) -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     
     <!-- Стили -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
