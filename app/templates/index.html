@@ -1,0 +1,333 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Навигация -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/Logo_light.png') }}" alt="LUMMEH SPA POINT" class="logo-img">
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#atmosphere">Атмосфера</a></li>
+            <li><a href="#team">Команда</a></li>
+            <li><a href="#programs">Программы и подарки</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero-блок -->
+<section class="hero" id="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-title-line">Погрузитесь</span>
+                <span class="hero-title-line">в атмосферу</span>
+                <span class="hero-title-line"><span class="hero-title-accent">восточного</span> массажа</span>
+            </h1>
+            <p class="hero-subtitle">Тайские и балийские практики в самом сердце Карелии</p>
+            <div class="hero-features">
+                <span class="hero-feature">Уникальные мастера, натуральные масла, ритуалы прикосновений</span>
+            </div>
+            <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">
+                Записаться на массаж
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- О салоне -->
+<section class="about" id="about">
+    <div class="about-container">
+        <div class="about-content">
+            <h2 class="section-title">О САЛОНЕ</h2>
+            <h3 class="about-brand">LUMMEH</h3>
+            <div class="decorative-line"></div>
+            <p class="about-tagline">это не просто спа, а место силы, уюта и перезагрузки.</p>
+            <div class="about-text">
+                <p>Мы создали пространство, где соединяются карельская природа, восточная философия и премиальные практики заботы о теле и разуме. Каждая деталь продумана до мелочей: от приглушённого света и аромата масел — до авторских массажей и фирменных чаев.</p>
+                <p>Все здесь — про глубокий комфорт, эстетическое удовольствие и бережное возвращение к себе.</p>
+            </div>
+        </div>
+        <div class="about-image">
+            <div class="about-image-circle">
+                <img src="{{ url_for('static', filename='images/AboutIMG.jpg') }}" alt="О салоне" loading="lazy" decoding="async">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Атмосфера -->
+<section class="atmosphere" id="atmosphere">
+    <div class="atmosphere-container">
+        <div class="atmosphere-grid">
+            <div class="atmosphere-item atmosphere-item-1">
+                <img src="{{ url_for('static', filename='images/Vibe1.jpg') }}" alt="Атмосфера" loading="lazy" decoding="async">
+            </div>
+            <div class="atmosphere-item atmosphere-item-2">
+                <img src="{{ url_for('static', filename='images/Vibe2.jpg') }}" alt="Атмосфера" loading="lazy" decoding="async">
+            </div>
+            <div class="atmosphere-item atmosphere-item-3">
+                <img src="{{ url_for('static', filename='images/Vibe3.jpg') }}" alt="Атмосфера" loading="lazy" decoding="async">
+            </div>
+            <div class="atmosphere-item atmosphere-item-4">
+                <img src="{{ url_for('static', filename='images/Vibe4.jpg') }}" alt="Атмосфера" loading="lazy" decoding="async">
+            </div>
+            <div class="atmosphere-item atmosphere-item-5">
+                <img src="{{ url_for('static', filename='images/Vibe5.jpg') }}" alt="Атмосфера" loading="lazy" decoding="async">
+            </div>
+            <div class="atmosphere-item atmosphere-item-6">
+                <img src="{{ url_for('static', filename='images/Vibe6.jpg') }}" alt="Атмосфера" loading="lazy" decoding="async">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Услуги -->
+<section class="services" id="services">
+    <div class="services-container">
+        <h2 class="services-title">УСЛУГИ</h2>
+        <div class="services-grid">
+            <div class="service-card service-card-1" data-service="1">
+                <div class="service-icon">
+                    <img src="{{ url_for('static', filename='images/usliga1.png') }}" alt="Авторский массаж">
+                </div>
+                <h3 class="service-name">Авторский массаж</h3>
+                <p class="service-price">5 000 Р</p>
+            </div>
+            <div class="service-card service-card-2" data-service="2">
+                <div class="service-icon">
+                    <img src="{{ url_for('static', filename='images/usluga2.png') }}" alt="Aroma Touch">
+                </div>
+                <h3 class="service-name">Aroma Touch (doTerra)</h3>
+                <p class="service-price">4 000 Р</p>
+            </div>
+            <div class="service-card service-card-3" data-service="3">
+                <div class="service-icon">
+                    <img src="{{ url_for('static', filename='images/usluga3.png') }}" alt="Стоун-терапия">
+                </div>
+                <h3 class="service-name">Стоун-терапия</h3>
+                <p class="service-desc">(жадеит, шунгит, базальт)</p>
+                <p class="service-price">2 000 Р</p>
+            </div>
+            <div class="service-card service-card-4" data-service="4">
+                <div class="service-icon">
+                    <img src="{{ url_for('static', filename='images/usluga4.png') }}" alt="Тайский массаж">
+                </div>
+                <h3 class="service-name">Тайский aroma oil массаж</h3>
+                <p class="service-price">3 500–6 500 Р</p>
+            </div>
+            <div class="service-card service-card-5" data-service="5">
+                <div class="service-icon">
+                    <img src="{{ url_for('static', filename='images/usluga5.png') }}" alt="Массаж свечой">
+                </div>
+                <h3 class="service-name">Массаж тающей свечой</h3>
+                <p class="service-price">4 500–8 500 Р</p>
+            </div>
+            <div class="service-card service-card-6" data-service="6">
+                <div class="service-icon">
+                    <img src="{{ url_for('static', filename='images/usluga6.png') }}" alt="Пенное великолепие">
+                </div>
+                <h3 class="service-name">Пенное великолепие</h3>
+                <p class="service-desc">(программа)</p>
+                <p class="service-price">25 000 Р</p>
+            </div>
+        </div>
+        
+        <!-- Модальное окно для услуг -->
+        <div class="service-modal" id="serviceModal">
+            <div class="service-modal-overlay"></div>
+            <div class="service-modal-content">
+                <button class="service-modal-close" id="serviceModalClose">×</button>
+                <div class="service-modal-icon">
+                    <img id="modalServiceIcon" src="" alt="">
+                </div>
+                <h2 class="service-modal-title" id="modalServiceName"></h2>
+                <p class="service-modal-desc" id="modalServiceDesc"></p>
+                <p class="service-modal-price" id="modalServicePrice"></p>
+                <div class="service-modal-details" id="modalServiceDetails"></div>
+                <button class="btn-primary service-modal-book" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">
+                    Записаться
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Наша команда -->
+<section class="team" id="team">
+    <div class="team-container">
+        <div class="team-header">
+            <div class="decorative-line-center"></div>
+            <div class="decorative-flower">
+                <img src="{{ url_for('static', filename='images/Line.png') }}" alt="">
+            </div>
+            <h2 class="section-title-center">Наша команда</h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="{{ url_for('static', filename='images/Rucovoditel.jpg') }}" alt="Руководитель" class="team-photo" loading="lazy" decoding="async">
+                <p class="team-name">Руководитель</p>
+            </div>
+            <div class="team-card">
+                <img src="{{ url_for('static', filename='images/Massajistki.jpg') }}" alt="Наши массажистки" class="team-photo" loading="lazy" decoding="async">
+                <p class="team-name">Наши массажистки</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Программы и подарки -->
+<section class="programs" id="programs">
+    <div class="programs-container">
+        <h2 class="programs-title">ПРОГРАММЫ И ПОДАРКИ</h2>
+        <div class="programs-tabs">
+            <button class="tab-btn active" data-tab="gifts">Подарки</button>
+            <button class="tab-btn" data-tab="spa">Spa-программы</button>
+            <button class="tab-btn" data-tab="cosmetics">Косметика</button>
+        </div>
+        <div class="programs-slider">
+            <button class="slider-arrow slider-arrow-left" id="sliderArrowLeft">←</button>
+            <div class="programs-carousel-wrapper">
+                <div class="programs-carousel" id="programsCarousel">
+                    <!-- Карточки будут добавлены через JavaScript -->
+                </div>
+            </div>
+            <button class="slider-arrow slider-arrow-right" id="sliderArrowRight">→</button>
+        </div>
+        <div class="slider-indicators" id="sliderIndicators"></div>
+    </div>
+</section>
+
+<!-- Запись -->
+<section class="booking" id="booking">
+    <div class="booking-container">
+        <h2 class="booking-title">Запись на визит</h2>
+        <div class="booking-content">
+            <form class="booking-form" id="bookingForm">
+                <div class="form-group">
+                    <label for="name">Ваше имя:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Ваш телефон:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Желаемое время:</label>
+                    <input type="text" id="time" name="time" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Комментарий (необязательно):</label>
+                    <textarea id="comment" name="comment" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Записаться</button>
+            </form>
+            <div class="booking-info">
+                <div class="info-item">
+                    <span class="info-label">Москва / ул. Омелькова, 1A</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">📞</span>
+                    <span>+7 (495) 000-00-00</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🕐</span>
+                    <span>10:00 - 23:00</span>
+                </div>
+                <div class="info-social">
+                    <a href="#" class="social-icon">✉</a>
+                    <a href="#" class="social-icon">₽</a>
+                    <a href="#" class="social-icon">📷</a>
+                </div>
+                <div class="info-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.0!2d37.0!3d55.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDAwJzAwLjAiTiAzN8KwMDAnMDAuMCJF!5e0!3m2!1sru!2sru!4v1234567890"
+                        width="100%" 
+                        height="300" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Футер -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="{{ url_for('static', filename='images/Logo_light.png') }}" alt="LUMMEH SPA POINT">
+        </div>
+        <div class="footer-content">
+            <div class="footer-column">
+                <a href="#hero">Главная</a>
+                <a href="#atmosphere">Атмосфера</a>
+                <a href="#team">Команда</a>
+            </div>
+            <div class="footer-column">
+                <a href="#services">Услуги</a>
+                <a href="#programs">Программы</a>
+                <a href="#booking">Контакты</a>
+            </div>
+            <div class="footer-column">
+                <p>Москва, ул. Омелькова, 1A</p>
+                <p>📞 +7 (495) 000-00-00</p>
+                <p>🕐 10:00 – 23:00</p>
+            </div>
+        </div>
+        <div class="footer-social">
+            <a href="#" class="social-icon">🐦</a>
+            <a href="#" class="social-icon">👁</a>
+            <a href="#" class="social-icon">📷</a>
+        </div>
+        <div class="footer-bottom">
+            <a href="#">Политика конфиденциальности</a>
+            <a href="#">Лицензии</a>
+            <p>© 2024 LUMMEH</p>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Обработка формы записи
+    document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = {
+            name: document.getElementById('name').value,
+            phone: document.getElementById('phone').value,
+            time: document.getElementById('time').value,
+            comment: document.getElementById('comment').value
+        };
+        
+        try {
+            const response = await fetch('/api/book', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                alert(data.message);
+                document.getElementById('bookingForm').reset();
+            } else {
+                alert(data.message);
+            }
+        } catch (error) {
+            alert('Произошла ошибка. Попробуйте позже.');
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LUMMEH SPA POINT - премиальный спа-салон с тайскими и балийскими практиками в Карелии">
+    <title>LUMMEH SPA POINT</title>
+    
+    <!-- Шрифты подключены через @font-face в CSS -->
+    
+    <!-- Стили -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/Logo.ico') }}">
+</head>
+<body>
+    {% block content %}{% endblock %}
+    
+    <!-- Скрипты -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
