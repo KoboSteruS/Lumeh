@@ -330,6 +330,95 @@ function closeServiceModal() {
 }
 
 /**
+ * Параллакс эффект для блока достижений
+ */
+function initAchievementsParallax() {
+    const achievementsSection = document.querySelector('.achievements-section');
+    const parallaxBg = document.querySelector('.achievements-parallax-bg');
+    const achievementItems = document.querySelectorAll('.achievement-item');
+    
+    if (!achievementsSection || !parallaxBg) return;
+    
+    let ticking = false;
+    
+    function updateParallax() {
+        const rect = achievementsSection.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const sectionTop = rect.top;
+        const sectionHeight = rect.height;
+        
+        // Параллакс для фона
+        if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
+            const progress = (windowHeight - sectionTop) / (windowHeight + sectionHeight);
+            const translateY = (progress - 0.5) * 100;
+            parallaxBg.style.transform = `translateY(${translateY}px)`;
+        }
+        
+        // Параллакс для элементов
+        achievementItems.forEach(item => {
+            const speed = parseFloat(item.getAttribute('data-parallax-speed')) || 0.3;
+            if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
+                const progress = (windowHeight - sectionTop) / (windowHeight + sectionHeight);
+                const translateY = (progress - 0.5) * 30 * speed;
+                item.style.transform = `translateY(${translateY}px)`;
+            }
+        });
+        
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick, { passive: true });
+    updateParallax();
+}
+
+/**
+ * Анимация счетчиков для достижений
+ */
+function animateCounters() {
+    const counters = document.querySelectorAll('.achievement-number');
+    
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                const counter = entry.target;
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                counter.classList.add('animated');
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current).toLocaleString('ru-RU');
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target.toLocaleString('ru-RU');
+                    }
+                };
+                
+                updateCounter();
+            }
+        });
+    }, observerOptions);
+    
+    counters.forEach(counter => observer.observe(counter));
+}
+
+/**
  * Инициализация при загрузке страницы
  */
 document.addEventListener('DOMContentLoaded', function() {
@@ -337,6 +426,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Инициализация программ
     renderProgramsCards();
+    
+    // Параллакс для достижений
+    initAchievementsParallax();
+    
+    // Анимация счетчиков
+    animateCounters();
     
     // Обработчики для табов
     document.querySelectorAll('.tab-btn').forEach(btn => {
