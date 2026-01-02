@@ -1,327 +1,768 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- Навигация -->
-<nav class="navbar">
-    <div class="nav-container">
-        <div class="logo">
-            <img src="{{ url_for('static', filename='images/Logo_light.png') }}" alt="LUMMEH SPA POINT" class="logo-img">
-        </div>
-        <ul class="nav-menu">
-            <li><a href="#services">Услуги</a></li>
-            <li><a href="#atmosphere">Атмосфера</a></li>
-            <li><a href="#team">Команда</a></li>
-            <li><a href="#programs">Программы и подарки</a></li>
-        </ul>
-    </div>
-</nav>
+<div class="min-h-screen bg-[#1a1a1a]">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo-wrapper">
+                    <div class="logo-inner">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 5L25 12L20 19L15 12L20 5Z" fill="#D4AF37"/>
+                            <path d="M20 21L25 28L20 35L15 28L20 21Z" fill="#D4AF37"/>
+                            <circle cx="20" cy="20" r="2" fill="#D4AF37"/>
+                        </svg>
+                        <span class="logo-text">LUMMEH</span>
+                    </div>
+                </div>
 
-<!-- Hero-блок -->
-<section class="hero" id="hero">
-    <div class="hero-container">
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="hero-title-line">Погрузитесь</span>
-                <span class="hero-title-line">в атмосферу</span>
-                <span class="hero-title-line"><span class="hero-title-accent">восточного</span> массажа</span>
-            </h1>
-            <p class="hero-subtitle">Тайские и балийские практики в самом сердце Карелии</p>
-            <div class="hero-features">
-                <span class="hero-feature">Уникальные мастера, натуральные масла, ритуалы прикосновений</span>
-            </div>
-            <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">
-                Записаться на массаж
-            </button>
-        </div>
-    </div>
-</section>
+                <!-- Navigation -->
+                <nav class="nav-desktop">
+                    <a href="#about" class="nav-link">О салоне</a>
+                    <a href="#services" class="nav-link">Услуги</a>
+                    <a href="#philosophy" class="nav-link">Атмосфера</a>
+                    <a href="#team" class="nav-link">Команда</a>
+                    <a href="#programs" class="nav-link">Программы и подарки</a>
+                </nav>
 
-<!-- О салоне -->
-<section class="about" id="about">
-    <div class="about-container">
-        <div class="about-content">
-            <h2 class="section-title">О САЛОНЕ</h2>
-            <h3 class="about-brand">LUMMEH</h3>
-            <div class="decorative-line"></div>
-            <p class="about-tagline">это не просто спа, а место силы, уюта и перезагрузки.</p>
-            <div class="about-text">
-                <p>Мы создали пространство, где соединяются карельская природа, восточная философия и премиальные практики заботы о теле и разуме. Каждая деталь продумана до мелочей: от приглушённого света и аромата масел — до авторских массажей и фирменных чаев.</p>
-                <p>Все здесь — про глубокий комфорт, эстетическое удовольствие и бережное возвращение к себе.</p>
-            </div>
-        </div>
-        <div class="about-image">
-            <div class="about-image-circle">
-                <img src="{{ url_for('static', filename='images/AboutIMG.jpg') }}" alt="О салоне" loading="lazy" decoding="async">
-            </div>
-        </div>
-    </div>
-</section>
+                <!-- Contact Info -->
+                <div class="header-contact">
+                    <div class="header-contact-inner">
+                        <a href="tel:+79218042424" class="header-phone">+7 (921) 804-24-24</a>
+                        <span class="header-hours">ежедневно с 9:00 до 21:00</span>
+                    </div>
+                </div>
 
-
-<!-- Атмосфера -->
-<section class="atmosphere" id="atmosphere">
-    <div class="atmosphere-container">
-        <div class="atmosphere-grid">
-            <div class="atmosphere-item atmosphere-item-1">
-                <img src="{{ url_for('static', filename='images/Vibe1.jpg') }}" alt="Атмосфера" loading="lazy" decoding="async">
-            </div>
-            <div class="atmosphere-item atmosphere-item-2">
-                <img src="{{ url_for('static', filename='images/Vibe2.jpg') }}" alt="Атмосфера" loading="lazy" decoding="async">
-            </div>
-            <div class="atmosphere-item atmosphere-item-3">
-                <img src="{{ url_for('static', filename='images/Vibe3.jpg') }}" alt="Атмосфера" loading="lazy" decoding="async">
-            </div>
-            <div class="atmosphere-item atmosphere-item-4">
-                <img src="{{ url_for('static', filename='images/Vibe4.jpg') }}" alt="Атмосфера" loading="lazy" decoding="async">
-            </div>
-            <div class="atmosphere-item atmosphere-item-5">
-                <img src="{{ url_for('static', filename='images/Vibe5.jpg') }}" alt="Атмосфера" loading="lazy" decoding="async">
-            </div>
-            <div class="atmosphere-item atmosphere-item-6">
-                <img src="{{ url_for('static', filename='images/Vibe6.jpg') }}" alt="Атмосфера" loading="lazy" decoding="async">
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Услуги -->
-<section class="services" id="services">
-    <div class="services-container">
-        <h2 class="services-title">УСЛУГИ</h2>
-        <div class="services-grid">
-            <div class="service-card service-card-1" data-service="1">
-                <div class="service-icon">
-                    <img src="{{ url_for('static', filename='images/usliga1.png') }}" alt="Авторский массаж">
-                </div>
-                <h3 class="service-name">Авторский массаж</h3>
-                <p class="service-price">5 000 Р</p>
-            </div>
-            <div class="service-card service-card-2" data-service="2">
-                <div class="service-icon">
-                    <img src="{{ url_for('static', filename='images/usluga2.png') }}" alt="Aroma Touch">
-                </div>
-                <h3 class="service-name">Aroma Touch (doTerra)</h3>
-                <p class="service-price">4 000 Р</p>
-            </div>
-            <div class="service-card service-card-3" data-service="3">
-                <div class="service-icon">
-                    <img src="{{ url_for('static', filename='images/usluga3.png') }}" alt="Стоун-терапия">
-                </div>
-                <h3 class="service-name">Стоун-терапия</h3>
-                <p class="service-desc">(жадеит, шунгит, базальт)</p>
-                <p class="service-price">2 000 Р</p>
-            </div>
-            <div class="service-card service-card-4" data-service="4">
-                <div class="service-icon">
-                    <img src="{{ url_for('static', filename='images/usluga4.png') }}" alt="Тайский массаж">
-                </div>
-                <h3 class="service-name">Тайский aroma oil массаж</h3>
-                <p class="service-price">3 500–6 500 Р</p>
-            </div>
-            <div class="service-card service-card-5" data-service="5">
-                <div class="service-icon">
-                    <img src="{{ url_for('static', filename='images/usluga5.png') }}" alt="Массаж свечой">
-                </div>
-                <h3 class="service-name">Массаж тающей свечой</h3>
-                <p class="service-price">4 500–8 500 Р</p>
-            </div>
-            <div class="service-card service-card-6" data-service="6">
-                <div class="service-icon">
-                    <img src="{{ url_for('static', filename='images/usluga6.png') }}" alt="Пенное великолепие">
-                </div>
-                <h3 class="service-name">Пенное великолепие</h3>
-                <p class="service-desc">(программа)</p>
-                <p class="service-price">25 000 Р</p>
-            </div>
-        </div>
-        
-        <!-- Модальное окно для услуг -->
-        <div class="service-modal" id="serviceModal">
-            <div class="service-modal-overlay"></div>
-            <div class="service-modal-content">
-                <button class="service-modal-close" id="serviceModalClose">×</button>
-                <div class="service-modal-icon">
-                    <img id="modalServiceIcon" src="" alt="">
-                </div>
-                <h2 class="service-modal-title" id="modalServiceName"></h2>
-                <p class="service-modal-desc" id="modalServiceDesc"></p>
-                <p class="service-modal-price" id="modalServicePrice"></p>
-                <div class="service-modal-details" id="modalServiceDetails"></div>
-                <button class="btn-primary service-modal-book" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">
-                    Записаться
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span class="mobile-menu-line"></span>
+                    <span class="mobile-menu-line"></span>
+                    <span class="mobile-menu-line"></span>
                 </button>
             </div>
-        </div>
-    </div>
-</section>
 
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <nav class="mobile-nav">
+                    <a href="#about" class="mobile-nav-link">О салоне</a>
+                    <a href="#services" class="mobile-nav-link">Услуги</a>
+                    <a href="#philosophy" class="mobile-nav-link">Атмосфера</a>
+                    <a href="#team" class="mobile-nav-link">Команда</a>
+                    <a href="#programs" class="mobile-nav-link">Программы и подарки</a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
+    <main>
+        <!-- Hero -->
+        <section id="home" class="hero-section">
+            <div class="hero-bg">
+                <img src="{{ url_for('static', filename='images/heroBG.png') }}" alt="Spa Atmosphere" class="hero-bg-img">
+                <div class="hero-gradient"></div>
+            </div>
 
-<!-- Наша команда -->
-<section class="team" id="team">
-    <div class="team-container">
-        <div class="team-header">
-            <div class="decorative-line-center"></div>
-            <div class="decorative-flower">
-                <img src="{{ url_for('static', filename='images/Line.png') }}" alt="">
-            </div>
-            <h2 class="section-title-center">Наша команда</h2>
-        </div>
-        <div class="team-grid">
-            <div class="team-card">
-                <img src="{{ url_for('static', filename='images/Rucovoditel.jpg') }}" alt="Руководитель" class="team-photo" loading="lazy" decoding="async">
-                <p class="team-name">Руководитель</p>
-            </div>
-            <div class="team-card">
-                <img src="{{ url_for('static', filename='images/Massajistki.jpg') }}" alt="Наши массажистки" class="team-photo" loading="lazy" decoding="async">
-                <p class="team-name">Наши массажистки</p>
-            </div>
-        </div>
-    </div>
-</section>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Погрузитесь
+                        <br>
+                        в атмосферу
+                        <br>
+                        <span class="hero-title-accent">восточного массажа</span>
+                    </h1>
 
-<!-- Программы и подарки -->
-<section class="programs" id="programs">
-    <div class="programs-container">
-        <h2 class="programs-title">ПРОГРАММЫ И ПОДАРКИ</h2>
-        <div class="programs-tabs">
-            <button class="tab-btn active" data-tab="gifts">Подарки</button>
-            <button class="tab-btn" data-tab="spa">Spa-программы</button>
-            <button class="tab-btn" data-tab="cosmetics">Косметика</button>
-        </div>
-        <div class="programs-slider">
-            <button class="slider-arrow slider-arrow-left" id="sliderArrowLeft">←</button>
-            <div class="programs-carousel-wrapper">
-                <div class="programs-carousel" id="programsCarousel">
-                    <!-- Карточки будут добавлены через JavaScript -->
-                </div>
-            </div>
-            <button class="slider-arrow slider-arrow-right" id="sliderArrowRight">→</button>
-        </div>
-        <div class="slider-indicators" id="sliderIndicators"></div>
-    </div>
-</section>
+                    <p class="hero-subtitle">
+                        Тайские и балийские практики в самом сердце Карелии
+                    </p>
 
-<!-- Запись -->
-<section class="booking" id="booking">
-    <div class="booking-container">
-        <h2 class="booking-title">Запись на визит</h2>
-        <div class="booking-content">
-            <form class="booking-form" id="bookingForm">
-                <div class="form-group">
-                    <label for="name">Ваше имя:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Ваш телефон:</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="time">Желаемое время:</label>
-                    <input type="text" id="time" name="time" required>
-                </div>
-                <div class="form-group">
-                    <label for="comment">Комментарий (необязательно):</label>
-                    <textarea id="comment" name="comment" rows="4"></textarea>
-                </div>
-                <button type="submit" class="btn-primary">Записаться</button>
-            </form>
-            <div class="booking-info">
-                <div class="info-item">
-                    <span class="info-label">улица Анохина, 24, Петрозаводск</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-icon">📞</span>
-                    <span>+7 (921) 804-24-24</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-icon">🕐</span>
-                    <span>Открыто. Закроется в 22:00</span>
-                </div>
-                <div class="info-social">
-                    <a href="https://t.me/lumeh_spa" target="_blank" class="social-icon" title="Telegram">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.17 1.816-.902 6.206-1.274 8.24-.152.84-.45 1.12-.74 1.147-.63.055-1.108-.415-1.718-.813-.953-.64-1.494-.992-2.42-1.59-1.07-.66-.377-1.024.234-1.617.16-.156 2.93-2.687 2.983-2.916.006-.03.012-.145-.057-.205-.068-.06-.168-.04-.24-.024-.102.02-1.72 1.095-4.856 3.216-.46.306-.877.455-1.25.448-.412-.008-1.204-.237-1.793-.433-.723-.24-1.295-.37-1.245-.782.024-.2.37-.404 1.016-.614 3.93-1.37 6.55-2.28 7.87-2.73 3.78-1.32 4.57-1.55 5.08-1.56.12 0 .39.03.563.18.138.12.177.28.195.39z"/>
-                        </svg>
-                    </a>
-                    <a href="https://vk.com/lumeh_spa" target="_blank" class="social-icon" title="ВКонтакте">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12.785 16.241s.287-.029.435-.18c.135-.137.131-.394.131-.394s-.02-2.576 1.106-2.956c1.127-.385 2.576 2.408 4.105 3.47 1.17.84 2.055.656 2.055.656l4.105-.06s2.145-.131 1.127-1.83c-.084-.14-.6-1.29-3.08-3.65-2.605-2.48-2.255-2.08.88-6.37 1.92-2.62 2.69-4.22 2.45-4.91-.23-.68-1.64-.5-1.64-.5l-4.705.03s-.35-.023-.6.105c-.15.08-.26.26-.26.26s-.47 1.25-1.09 2.32c-1.32 2.38-1.85 2.5-2.07 2.36-.51-.33-.38-1.33-.38-2.04 0-2.22.33-3.14-.65-3.38-.33-.08-.57-.13-1.41-.14-1.08-.02-1.9.01-2.39.26-.33.17-.58.55-.43.57.19.03.62.11.85.4.29.36.28 1.17.28 1.17s.17 2.48-.39 2.79c-.38.21-.9-.22-2.02-2.36-.57-1.07-1.01-2.25-1.01-2.25s-.08-.2-.23-.31c-.18-.13-.43-.17-.43-.17l-4.48.03s-.67.02-.92.33c-.22.27-.02.84-.02.84s1.75 4.11 3.73 6.18c1.82 1.92 3.9 1.79 3.9 1.79h.94s.35.02.51.16c.12.12.09.38.09.38s-.16 2.19-.37 2.48c-.36.48-1.07.45-1.07.45h-2.13s-1.58.1-3.45-1.48c-2.93-2.48-5.14-7.05-5.14-7.05s-.09-.22-.25-.34c-.19-.15-.46-.2-.46-.2l-4.27.03s-.64.03-.88.27c-.21.21-.02.65-.02.65s3.24 7.58 6.9 11.41c3.36 3.5 7.19 3.27 7.19 3.27h1.75s.53.04.73-.23c.19-.24.18-.61.18-.61s-.03-4.22.19-4.83c.38-1.16 2.67-1.01 2.67-1.01z"/>
-                        </svg>
-                    </a>
-                </div>
-                <div class="info-map">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1808.5!2d34.350248!3d61.786582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjHCsDQ3JzExLjciTiAzNMKwMjEnMDAuOSJF!5e0!3m2!1sru!2sru!4v1234567890"
-                        width="100%" 
-                        height="300" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Карта: улица Анохина, 24, Петрозаводск">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                    <div class="hero-benefits">
+                        <div class="hero-benefit">
+                            <svg class="hero-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.7071 5.29289C17.0976 5.68342 17.0976 6.31658 16.7071 6.70711L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071L3.29289 10.7071C2.90237 10.3166 2.90237 9.68342 3.29289 9.29289C3.68342 8.90237 4.31658 8.90237 4.70711 9.29289L8 12.5858L15.2929 5.29289C15.6834 4.90237 16.3166 4.90237 16.7071 5.29289Z" fill="currentColor"/>
+                            </svg>
+                            <span>Уникальные мастера</span>
+                        </div>
+                        <div class="hero-benefit">
+                            <svg class="hero-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.7071 5.29289C17.0976 5.68342 17.0976 6.31658 16.7071 6.70711L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071L3.29289 10.7071C2.90237 10.3166 2.90237 9.68342 3.29289 9.29289C3.68342 8.90237 4.31658 8.90237 4.70711 9.29289L8 12.5858L15.2929 5.29289C15.6834 4.90237 16.3166 4.90237 16.7071 5.29289Z" fill="currentColor"/>
+                            </svg>
+                            <span>Натуральные масла</span>
+                        </div>
+                        <div class="hero-benefit">
+                            <svg class="hero-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.7071 5.29289C17.0976 5.68342 17.0976 6.31658 16.7071 6.70711L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071L3.29289 10.7071C2.90237 10.3166 2.90237 9.68342 3.29289 9.29289C3.68342 8.90237 4.31658 8.90237 4.70711 9.29289L8 12.5858L15.2929 5.29289C15.6834 4.90237 16.3166 4.90237 16.7071 5.29289Z" fill="currentColor"/>
+                            </svg>
+                            <span>Ритуалы происхождений</span>
+                        </div>
+                    </div>
 
-<!-- Футер -->
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-logo">
-            <img src="{{ url_for('static', filename='images/Logo_light.png') }}" alt="LUMMEH SPA POINT">
-        </div>
-        <div class="footer-content">
-            <div class="footer-column">
-                <a href="#hero">Главная</a>
-                <a href="#atmosphere">Атмосфера</a>
-                <a href="#team">Команда</a>
+                    <button class="btn-hero" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">
+                        Записаться на массаж
+                    </button>
+                </div>
             </div>
-            <div class="footer-column">
-                <a href="#services">Услуги</a>
-                <a href="#programs">Программы</a>
-                <a href="#booking">Контакты</a>
-            </div>
-            <div class="footer-column">
-                <p>улица Анохина, 24, Петрозаводск</p>
-                <p>📞 +7 (921) 804-24-24</p>
-                <p>🕐 Открыто. Закроется в 22:00</p>
-            </div>
-        </div>
-        <div class="footer-social">
-            <a href="https://t.me/lumeh_spa" target="_blank" class="social-icon" title="Telegram">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.17 1.816-.902 6.206-1.274 8.24-.152.84-.45 1.12-.74 1.147-.63.055-1.108-.415-1.718-.813-.953-.64-1.494-.992-2.42-1.59-1.07-.66-.377-1.024.234-1.617.16-.156 2.93-2.687 2.983-2.916.006-.03.012-.145-.057-.205-.068-.06-.168-.04-.24-.024-.102.02-1.72 1.095-4.856 3.216-.46.306-.877.455-1.25.448-.412-.008-1.204-.237-1.793-.433-.723-.24-1.295-.37-1.245-.782.024-.2.37-.404 1.016-.614 3.93-1.37 6.55-2.28 7.87-2.73 3.78-1.32 4.57-1.55 5.08-1.56.12 0 .39.03.563.18.138.12.177.28.195.39z"/>
+
+            <div class="hero-decorative">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30 15C30 15 25 20 25 27.5C25 32 27.5 35 30 35C32.5 35 35 32 35 27.5C35 20 30 15 30 15Z" fill="#D4AF37"/>
+                    <path d="M20 25C20 25 18 30 20 35C22 38 25 38 27 36C29 34 29 30 27 27C25 23 20 25 20 25Z" fill="#D4AF37"/>
+                    <path d="M40 25C40 25 42 30 40 35C38 38 35 38 33 36C31 34 31 30 33 27C35 23 40 25 40 25Z" fill="#D4AF37"/>
                 </svg>
-            </a>
-            <a href="https://vk.com/lumeh_spa" target="_blank" class="social-icon" title="ВКонтакте">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12.785 16.241s.287-.029.435-.18c.135-.137.131-.394.131-.394s-.02-2.576 1.106-2.956c1.127-.385 2.576 2.408 4.105 3.47 1.17.84 2.055.656 2.055.656l4.105-.06s2.145-.131 1.127-1.83c-.084-.14-.6-1.29-3.08-3.65-2.605-2.48-2.255-2.08.88-6.37 1.92-2.62 2.69-4.22 2.45-4.91-.23-.68-1.64-.5-1.64-.5l-4.705.03s-.35-.023-.6.105c-.15.08-.26.26-.26.26s-.47 1.25-1.09 2.32c-1.32 2.38-1.85 2.5-2.07 2.36-.51-.33-.38-1.33-.38-2.04 0-2.22.33-3.14-.65-3.38-.33-.08-.57-.13-1.41-.14-1.08-.02-1.9.01-2.39.26-.33.17-.58.55-.43.57.19.03.62.11.85.4.29.36.28 1.17.28 1.17s.17 2.48-.39 2.79c-.38.21-.9-.22-2.02-2.36-.57-1.07-1.01-2.25-1.01-2.25s-.08-.2-.23-.31c-.18-.13-.43-.17-.43-.17l-4.48.03s-.67.02-.92.33c-.22.27-.02.84-.02.84s1.75 4.11 3.73 6.18c1.82 1.92 3.9 1.79 3.9 1.79h.94s.35.02.51.16c.12.12.09.38.09.38s-.16 2.19-.37 2.48c-.36.48-1.07.45-1.07.45h-2.13s-1.58.1-3.45-1.48c-2.93-2.48-5.14-7.05-5.14-7.05s-.09-.22-.25-.34c-.19-.15-.46-.2-.46-.2l-4.27.03s-.64.03-.88.27c-.21.21-.02.65-.02.65s3.24 7.58 6.9 11.41c3.36 3.5 7.19 3.27 7.19 3.27h1.75s.53.04.73-.23c.19-.24.18-.61.18-.61s-.03-4.22.19-4.83c.38-1.16 2.67-1.01 2.67-1.01z"/>
-                </svg>
-            </a>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="about-section">
+            <div class="about-decorative-1"></div>
+            <div class="about-decorative-2"></div>
+
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text-content">
+                        <div class="about-icon">
+                            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M25 10L30 20L25 30L20 20L25 10Z" fill="#D4AF37"/>
+                                <path d="M25 20L30 30L25 40L20 30L25 20Z" fill="#D4AF37"/>
+                                <circle cx="25" cy="25" r="2" fill="#D4AF37"/>
+                            </svg>
+                        </div>
+
+                        <h2 class="about-title">
+                            Погрузитесь в атмосферу
+                            <br>
+                            <span class="about-title-accent">уюта, расслабления и комфорта</span>
+                        </h2>
+
+                        <div class="about-description">
+                            <p>
+                                Создали идеальные практики и атмосферу, чтобы вы могли полностью 
+                                расслабиться и отдохнуть от суеты.
+                            </p>
+                            
+                            <div class="about-features">
+                                <div class="about-feature">
+                                    <div class="about-feature-dot"></div>
+                                    <p>Карельская природа и философия Востока</p>
+                                </div>
+                                <div class="about-feature">
+                                    <div class="about-feature-dot"></div>
+                                    <p>Премиальные процедуры и натуральные масла</p>
+                                </div>
+                                <div class="about-feature">
+                                    <div class="about-feature-dot"></div>
+                                    <p>Приглушенный свет свечей, хна для души</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-image-wrapper">
+                        <div class="about-image-circle">
+                            <div class="about-circle-border-outer"></div>
+                            <div class="about-circle-border-inner"></div>
+                            <div class="about-image-inner">
+                                <img src="{{ url_for('static', filename='images/AboutIMG.jpg') }}" alt="Tea Ceremony" loading="lazy" decoding="async">
+                            </div>
+                            <div class="about-image-decorative">
+                                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M24 8L28 16L24 24L20 16L24 8Z" fill="#D4AF37"/>
+                                    <path d="M24 24L28 32L24 40L20 32L24 24Z" fill="#D4AF37"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 10L30 20L25 30L20 20L25 10Z" fill="#D4AF37"/>
+                            <path d="M25 20L30 30L25 40L20 30L25 20Z" fill="#D4AF37"/>
+                            <circle cx="25" cy="25" r="2" fill="#D4AF37"/>
+                        </svg>
+                    </div>
+                    <h2 class="section-title">Услуги</h2>
+                    <p class="section-subtitle">Выберите идеальную процедуру для полного восстановления сил</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-corner"></div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 11l3 3L22 4"/>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                                </svg>
+                                <span class="service-duration">60-90 мин</span>
+                            </div>
+                            <h3 class="service-name">Авторский массаж</h3>
+                            <p class="service-desc">Уникальная техника, сочетающая восточные и европейские практики для глубокого расслабления</p>
+                            <div class="service-footer">
+                                <span class="service-price">от 3 500 ₽</span>
+                                <button class="service-link">Подробнее →</button>
+                            </div>
+                        </div>
+                        <div class="service-pattern"></div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-corner"></div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                </svg>
+                                <span class="service-duration">90 мин</span>
+                            </div>
+                            <h3 class="service-name">Стоун-терапия</h3>
+                            <p class="service-desc">Массаж горячими камнями для улучшения кровообращения и снятия мышечного напряжения</p>
+                            <div class="service-footer">
+                                <span class="service-price">от 4 200 ₽</span>
+                                <button class="service-link">Подробнее →</button>
+                            </div>
+                        </div>
+                        <div class="service-pattern"></div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-corner"></div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                                    <path d="M12 2.69v6.31"/>
+                                </svg>
+                                <span class="service-duration">60 мин</span>
+                            </div>
+                            <h3 class="service-name">Aroma Touch</h3>
+                            <p class="service-desc">Ароматерапевтический массаж с эфирными маслами для гармонии тела и души</p>
+                            <div class="service-footer">
+                                <span class="service-price">от 3 800 ₽</span>
+                                <button class="service-link">Подробнее →</button>
+                            </div>
+                        </div>
+                        <div class="service-pattern"></div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-corner"></div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                </svg>
+                                <span class="service-duration">90 мин</span>
+                            </div>
+                            <h3 class="service-name">Тайский aroma oil массаж</h3>
+                            <p class="service-desc">Традиционная тайская техника с использованием ароматических масел</p>
+                            <div class="service-footer">
+                                <span class="service-price">от 4 500 ₽</span>
+                                <button class="service-link">Подробнее →</button>
+                            </div>
+                        </div>
+                        <div class="service-pattern"></div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-corner"></div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3.5 2.5 4.5 4 .5 1.5 0 3.5-3 3.5-5 0-7.5-2.5-10-5.5Z"/>
+                                </svg>
+                                <span class="service-duration">75 мин</span>
+                            </div>
+                            <h3 class="service-name">Массаж тающей свечой</h3>
+                            <p class="service-desc">Роскошный массаж теплым маслом из натуральной свечи для нежности кожи</p>
+                            <div class="service-footer">
+                                <span class="service-price">от 4 000 ₽</span>
+                                <button class="service-link">Подробнее →</button>
+                            </div>
+                        </div>
+                        <div class="service-pattern"></div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-corner"></div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                                    <path d="M12 2.69v6.31"/>
+                                </svg>
+                                <span class="service-duration">90 мин</span>
+                            </div>
+                            <h3 class="service-name">Пенное великолепие</h3>
+                            <p class="service-desc">Экзотический массаж в облаке ароматной пены для полного блаженства</p>
+                            <div class="service-footer">
+                                <span class="service-price">от 5 500 ₽</span>
+                                <button class="service-link">Подробнее →</button>
+                            </div>
+                        </div>
+                        <div class="service-pattern"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy -->
+        <section id="philosophy" class="philosophy-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 10L30 20L25 30L20 20L25 10Z" fill="#D4AF37"/>
+                            <path d="M25 20L30 30L25 40L20 30L25 20Z" fill="#D4AF37"/>
+                            <circle cx="25" cy="25" r="2" fill="#D4AF37"/>
+                        </svg>
+                    </div>
+                    <h2 class="section-title">Атмосфера и философия</h2>
+                    <p class="section-subtitle">Что делает наш салон особенным</p>
+                </div>
+
+                <div class="philosophy-grid">
+                    <div class="philosophy-gallery">
+                        <div class="philosophy-gallery-col">
+                            <div class="philosophy-gallery-item philosophy-gallery-item-small">
+                                <img src="{{ url_for('static', filename='images/Vibe1.jpg') }}" alt="Spa Interior" loading="lazy" decoding="async">
+                                <div class="philosophy-gallery-overlay"></div>
+                            </div>
+                            <div class="philosophy-gallery-item philosophy-gallery-item-large">
+                                <img src="{{ url_for('static', filename='images/Vibe2.jpg') }}" alt="Massage" loading="lazy" decoding="async">
+                                <div class="philosophy-gallery-overlay"></div>
+                            </div>
+                        </div>
+                        <div class="philosophy-gallery-col philosophy-gallery-col-offset">
+                            <div class="philosophy-gallery-item philosophy-gallery-item-large">
+                                <img src="{{ url_for('static', filename='images/Vibe3.jpg') }}" alt="Candles" loading="lazy" decoding="async">
+                                <div class="philosophy-gallery-overlay"></div>
+                            </div>
+                            <div class="philosophy-gallery-item philosophy-gallery-item-small">
+                                <img src="{{ url_for('static', filename='images/Vibe4.jpg') }}" alt="Aromatherapy" loading="lazy" decoding="async">
+                                <div class="philosophy-gallery-overlay"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="philosophy-values">
+                        <div class="philosophy-value">
+                            <div class="philosophy-value-header">
+                                <div class="philosophy-value-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                    </svg>
+                                </div>
+                                <div class="philosophy-value-content">
+                                    <h3>Комфортно</h3>
+                                    <p>Мягкий интерьер, зона отдыха - все сделаем для комфорта наших посетителей, чтобы минимизировать любые ощущения дискомфорта на каждом визите</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="philosophy-value">
+                            <div class="philosophy-value-header">
+                                <div class="philosophy-value-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    </svg>
+                                </div>
+                                <div class="philosophy-value-content">
+                                    <h3>Надёжно</h3>
+                                    <p>Профессиональные процедуры доказательной медицины. Используем самые лучшие методики, большинство наших специалистов имеют большой опыт</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="philosophy-value">
+                            <div class="philosophy-value-header">
+                                <div class="philosophy-value-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                                    </svg>
+                                </div>
+                                <div class="philosophy-value-content">
+                                    <h3>Лояльны</h3>
+                                    <p>Личный визит с бесплатной подробной консультацией. Внимательное отношение к постоянным клиентам и лояльная ценовая политика для них</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="philosophy-value">
+                            <div class="philosophy-value-header">
+                                <div class="philosophy-value-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 9V5a3 3 0 0 0-6 0v4"/>
+                                        <rect x="6" y="9" width="12" height="11" rx="2" ry="2"/>
+                                        <path d="M12 14v2"/>
+                                    </svg>
+                                </div>
+                                <div class="philosophy-value-content">
+                                    <h3>Удобно</h3>
+                                    <p>У нас есть все что нужно: от прохладной минералки до чая, зона ожидания и расположение в самом центре, соседство с парком и кафе для прогулки после</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team -->
+        <section id="team" class="team-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 10L30 20L25 30L20 20L25 10Z" fill="#D4AF37"/>
+                            <path d="M25 20L30 30L25 40L20 30L25 20Z" fill="#D4AF37"/>
+                            <circle cx="25" cy="25" r="2" fill="#D4AF37"/>
+                        </svg>
+                    </div>
+                    <h2 class="section-title">Наша команда</h2>
+                    <p class="section-subtitle">У всех мастеров проходя обучение, имеется опыт и сертификация. Мы позаботились, чтобы вы доверяли нам здоровье</p>
+                </div>
+
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-decorative">
+                            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M40 10L50 30L40 50L30 30L40 10Z" fill="#D4AF37" opacity="0.2"/>
+                            </svg>
+                        </div>
+                        <div class="team-photo-wrapper">
+                            <img src="{{ url_for('static', filename='images/Rucovoditel.jpg') }}" alt="Руководитель" class="team-photo" loading="lazy" decoding="async">
+                            <div class="team-photo-overlay"></div>
+                            <div class="team-info">
+                                <h3 class="team-name">Руководитель</h3>
+                                <p class="team-role">Мастер массажа</p>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <p class="team-specialty">Специализация: тайский, классический масло-тайский массаж</p>
+                            <p class="team-description">Мастер-профи с более чем 10-летним опытом работы</p>
+                            <div class="team-divider">
+                                <button class="team-link">Узнать больше →</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-decorative">
+                            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M40 10L50 30L40 50L30 30L40 10Z" fill="#D4AF37" opacity="0.2"/>
+                            </svg>
+                        </div>
+                        <div class="team-photo-wrapper">
+                            <img src="{{ url_for('static', filename='images/Massajistki.jpg') }}" alt="Наши массажистки" class="team-photo" loading="lazy" decoding="async">
+                            <div class="team-photo-overlay"></div>
+                            <div class="team-info">
+                                <h3 class="team-name">Наши массажистки</h3>
+                                <p class="team-role">Массажные терапевты</p>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <p class="team-specialty">Специализация: стоун-терапия, балийский массаж</p>
+                            <p class="team-description">Профессионалы с глубокими знаниями восточных практик исцеления</p>
+                            <div class="team-divider">
+                                <button class="team-link">Узнать больше →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-cta">
+                    <button class="btn-secondary" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">
+                        Записаться на массаж
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs -->
+        <section id="programs" class="programs-section">
+            <div class="container">
+                <div class="section-header section-header-light">
+                    <div class="section-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 10L30 20L25 30L20 20L25 10Z" fill="#D4AF37"/>
+                            <path d="M25 20L30 30L25 40L20 30L25 20Z" fill="#D4AF37"/>
+                            <circle cx="25" cy="25" r="2" fill="#D4AF37"/>
+                        </svg>
+                    </div>
+                    <h2 class="section-title section-title-light">Программы и подарки</h2>
+                    <p class="section-subtitle section-subtitle-light">Эксклюзивные spa-программы и подарочные сертификаты</p>
+                </div>
+
+                <div class="programs-tabs">
+                    <button class="tab-btn active" data-tab="programs">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                        <span>Spa-программы</span>
+                    </button>
+                    <button class="tab-btn" data-tab="gifts">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 12 20 22 4 22 4 12"/>
+                            <rect x="2" y="7" width="20" height="5"/>
+                            <line x1="12" y1="22" x2="12" y2="7"/>
+                            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+                            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+                        </svg>
+                        <span>Подарки</span>
+                    </button>
+                    <button class="tab-btn" data-tab="cosmetics">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="M16 10a4 4 0 0 1-8 0"/>
+                        </svg>
+                        <span>Косметика</span>
+                    </button>
+                </div>
+
+                <div class="programs-content">
+                    <div class="programs-grid" id="programsGrid">
+                        <!-- Карточки будут добавлены через JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking -->
+        <section id="booking" class="booking-section">
+            <div class="booking-bg">
+                <img src="{{ url_for('static', filename='images/ContactBG.jpg') }}" alt="Spa Background" loading="lazy" decoding="async">
+            </div>
+
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 10L30 20L25 30L20 20L25 10Z" fill="#D4AF37"/>
+                            <path d="M25 20L30 30L25 40L20 30L25 20Z" fill="#D4AF37"/>
+                            <circle cx="25" cy="25" r="2" fill="#D4AF37"/>
+                        </svg>
+                    </div>
+                    <h2 class="section-title">Запись на визит</h2>
+                    <p class="section-subtitle">Оставьте заявку, и мы подберем идеальное время для вашего посещения</p>
+                </div>
+
+                <div class="booking-grid">
+                    <div class="booking-form-wrapper">
+                        <h3 class="booking-form-title">Забронировать сеанс</h3>
+                        <form class="booking-form" id="bookingForm">
+                            <div class="form-group">
+                                <label>Ваше имя</label>
+                                <input type="text" placeholder="Введите имя" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Телефон</label>
+                                <input type="tel" placeholder="+7 (___) ___-__-__" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Дата и время</label>
+                                <input type="datetime-local" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Выберите услугу</label>
+                                <select required>
+                                    <option value="">Выберите услугу</option>
+                                    <option value="1">Авторский массаж</option>
+                                    <option value="2">Стоун-терапия</option>
+                                    <option value="3">Aroma Touch</option>
+                                    <option value="4">Тайский aroma oil массаж</option>
+                                    <option value="5">Массаж тающей свечой</option>
+                                    <option value="6">Пенное великолепие</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Комментарий</label>
+                                <textarea rows="3" placeholder="Дополнительные пожелания..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-booking">Отправить заявку</button>
+                        </form>
+                    </div>
+
+                    <div class="booking-info">
+                        <div class="booking-info-card">
+                            <div class="booking-info-header">
+                                <div class="booking-info-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                </div>
+                                <div class="booking-info-content">
+                                    <h4>Адрес</h4>
+                                    <p>улица Анохина, 24, Петрозаводск</p>
+                                    <p class="info-subtitle">В самом сердце Карелии</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="booking-info-card">
+                            <div class="booking-info-header">
+                                <div class="booking-info-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                    </svg>
+                                </div>
+                                <div class="booking-info-content">
+                                    <h4>Телефон</h4>
+                                    <a href="tel:+79218042424">+7 (921) 804-24-24</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="booking-info-card">
+                            <div class="booking-info-header">
+                                <div class="booking-info-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                </div>
+                                <div class="booking-info-content">
+                                    <h4>Режим работы</h4>
+                                    <div class="booking-info-hours">
+                                        <p>Понедельник - Пятница: 9:00 - 21:00</p>
+                                        <p>Суббота - Воскресенье: 10:00 - 20:00</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="booking-map">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1808.5!2d34.350248!3d61.786582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjHCsDQ3JzExLjciTiAzNMKwMjEnMDAuOSJF!5e0!3m2!1sru!2sru!4v1234567890"
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Карта: улица Анохина, 24, Петрозаводск">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 5L25 12L20 19L15 12L20 5Z" fill="#D4AF37"/>
+                            <path d="M20 21L25 28L20 35L15 28L20 21Z" fill="#D4AF37"/>
+                            <circle cx="20" cy="20" r="2" fill="#D4AF37"/>
+                        </svg>
+                        <span class="footer-logo-text">LUMMEH</span>
+                    </div>
+                    <p class="footer-description">Ваш путь к гармонии через древние восточные практики в сердце Карелии</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Навигация</h4>
+                    <ul class="footer-nav">
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#about">О салоне</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#team">Команда</a></li>
+                        <li><a href="#programs">Программы</a></li>
+                        <li><a href="#booking">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Услуги</h4>
+                    <ul class="footer-services">
+                        <li>Авторский массаж</li>
+                        <li>Стоун-терапия</li>
+                        <li>Aroma Touch</li>
+                        <li>Тайский массаж</li>
+                        <li>Массаж свечой</li>
+                        <li>Пенное великолепие</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Контакты</h4>
+                    <ul class="footer-contacts">
+                        <li class="footer-contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span>улица Анохина, 24, Петрозаводск</span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <a href="tel:+79218042424">+7 (921) 804-24-24</a>
+                        </li>
+                    </ul>
+                    <div class="footer-social">
+                        <p class="footer-social-title">Мы в соцсетях</p>
+                        <div class="footer-social-links">
+                            <a href="https://t.me/lumeh_spa" target="_blank" class="footer-social-link" title="Telegram">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.17 1.816-.902 6.206-1.274 8.24-.152.84-.45 1.12-.74 1.147-.63.055-1.108-.415-1.718-.813-.953-.64-1.494-.992-2.42-1.59-1.07-.66-.377-1.024.234-1.617.16-.156 2.93-2.687 2.983-2.916.006-.03.012-.145-.057-.205-.068-.06-.168-.04-.24-.024-.102.02-1.72 1.095-4.856 3.216-.46.306-.877.455-1.25.448-.412-.008-1.204-.237-1.793-.433-.723-.24-1.295-.37-1.245-.782.024-.2.37-.404 1.016-.614 3.93-1.37 6.55-2.28 7.87-2.73 3.78-1.32 4.57-1.55 5.08-1.56.12 0 .39.03.563.18.138.12.177.28.195.39z"/>
+                                </svg>
+                            </a>
+                            <a href="https://vk.com/lumeh_spa" target="_blank" class="footer-social-link" title="ВКонтакте">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12.785 16.241s.287-.029.435-.18c.135-.137.131-.394.131-.394s-.02-2.576 1.106-2.956c1.127-.385 2.576 2.408 4.105 3.47 1.17.84 2.055.656 2.055.656l4.105-.06s2.145-.131 1.127-1.83c-.084-.14-.6-1.29-3.08-3.65-2.605-2.48-2.255-2.08.88-6.37 1.92-2.62 2.69-4.22 2.45-4.91-.23-.68-1.64-.5-1.64-.5l-4.705.03s-.35-.023-.6.105c-.15.08-.26.26-.26.26s-.47 1.25-1.09 2.32c-1.32 2.38-1.85 2.5-2.07 2.36-.51-.33-.38-1.33-.38-2.04 0-2.22.33-3.14-.65-3.38-.33-.08-.57-.13-1.41-.14-1.08-.02-1.9.01-2.39.26-.33.17-.58.55-.43.57.19.03.62.11.85.4.29.36.28 1.17.28 1.17s.17 2.48-.39 2.79c-.38.21-.9-.22-2.02-2.36-.57-1.07-1.01-2.25-1.01-2.25s-.08-.2-.23-.31c-.18-.13-.43-.17-.43-.17l-4.48.03s-.67.02-.92.33c-.22.27-.02.84-.02.84s1.75 4.11 3.73 6.18c1.82 1.92 3.9 1.79 3.9 1.79h.94s.35.02.51.16c.12.12.09.38.09.38s-.16 2.19-.37 2.48c-.36.48-1.07.45-1.07.45h-2.13s-1.58.1-3.45-1.48c-2.93-2.48-5.14-7.05-5.14-7.05s-.09-.22-.25-.34c-.19-.15-.46-.2-.46-.2l-4.27.03s-.64.03-.88.27c-.21.21-.02.65-.02.65s3.24 7.58 6.9 11.41c3.36 3.5 7.19 3.27 7.19 3.27h1.75s.53.04.73-.23c.19-.24.18-.61.18-.61s-.03-4.22.19-4.83c.38-1.16 2.67-1.01 2.67-1.01z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 Lummeh Spa. Все права защищены.</p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Политика конфиденциальности</a>
+                    <a href="#" class="footer-link">Лицензии</a>
+                    <a href="#" class="footer-link">Условия использования</a>
+                </div>
+            </div>
         </div>
-        <div class="footer-bottom">
-            <a href="#">Политика конфиденциальности</a>
-            <a href="#">Лицензии</a>
-            <p>© 2024 LUMMEH</p>
-        </div>
-    </div>
-</footer>
+    </footer>
+</div>
 {% endblock %}
 
 {% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 <script>
+    // Мобильное меню
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+    }
+    
     // Обработка формы записи
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         
         const formData = {
-            name: document.getElementById('name').value,
-            phone: document.getElementById('phone').value,
-            time: document.getElementById('time').value,
-            comment: document.getElementById('comment').value
+            name: this.querySelector('input[type="text"]').value,
+            phone: this.querySelector('input[type="tel"]').value,
+            datetime: this.querySelector('input[type="datetime-local"]').value,
+            service: this.querySelector('select').value,
+            comment: this.querySelector('textarea').value
         };
         
         try {
@@ -337,7 +778,7 @@
             
             if (data.success) {
                 alert(data.message);
-                document.getElementById('bookingForm').reset();
+                this.reset();
             } else {
                 alert(data.message);
             }

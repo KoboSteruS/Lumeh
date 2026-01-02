@@ -6,123 +6,145 @@
  * Данные для программ и подарков
  */
 const programsData = {
-    gifts: [
-        {
-            name: 'Подарочные сертификаты',
-            desc: 'Элитный подарок на любую сумму от 5 000 Р',
-            price: 'от 5 000 Р',
-            image: 'Gift1.jpg'
-        },
-        {
-            name: 'Подарочный набор',
-            desc: 'Комплект косметики и сертификат на услугу',
-            price: 'от 8 000 Р',
-            image: 'gift2.jpg'
-        },
-        {
-            name: 'VIP сертификат',
-            desc: 'Премиальный подарок на сумму от 15 000 Р',
-            price: 'от 15 000 Р',
-            image: 'gift3.jpg'
-        }
-    ],
-    spa: [
+    programs: [
         {
             name: 'Дыхание Карелии',
-            desc: 'Стоун-терапия с ароматическим массажем',
-            price: '12 000 Р',
+            desc: 'Авторская программа, сочетающая целебные карельские травы и восточные массажные техники',
+            duration: '120 мин',
+            price: '8 500 ₽',
+            includes: ['Массаж всего тела', 'Ароматерапия', 'Травяной чай', 'Релаксация'],
             image: 'proccess1.jpg'
         },
         {
             name: 'Великолепие роскоши',
-            desc: 'Уникальное spa-путешествие на двоих, 2.5 часа',
-            price: '25 000 Р',
+            desc: 'Премиум spa-программа с эксклюзивными процедурами для полного восстановления',
+            duration: '180 мин',
+            price: '12 000 ₽',
+            includes: ['Стоун-терапия', 'Массаж лица', 'Пилинг тела', 'Шампанское'],
             image: 'procces2.jpg'
         },
         {
             name: 'Пенное великолепие',
-            desc: 'Гармония хаммама и пенного массажа, 2 часа',
-            price: '25 000 Р',
+            desc: 'Экзотическая процедура в облаке ароматной пены для абсолютного наслаждения',
+            duration: '90 мин',
+            price: '5 500 ₽',
+            includes: ['Пенный массаж', 'Масло-массаж', 'Ароматерапия'],
             image: 'proccess3.jpg'
+        }
+    ],
+    gifts: [
+        {
+            name: 'Подарочный сертификат 5000₽',
+            desc: 'Идеальный подарок для близких на любой случай',
+            price: '5 000 ₽',
+            image: 'Gift1.jpg'
         },
         {
-            name: 'Роскошь Востока',
-            desc: 'Тайский массаж и ароматерапия, 1.5 часа',
-            price: '18 000 Р',
-            image: 'proccess.jpg'
+            name: 'Подарочный сертификат 10000₽',
+            desc: 'Полноценная spa-программа в подарок',
+            price: '10 000 ₽',
+            image: 'gift2.jpg'
+        },
+        {
+            name: 'Индивидуальный сертификат',
+            desc: 'Создайте уникальный подарок на любую сумму',
+            price: 'от 3 000 ₽',
+            image: 'gift3.jpg'
         }
     ],
     cosmetics: [
         {
-            name: 'Набор эфирных масел',
-            desc: 'Комплект масел doTerra для домашнего использования',
-            price: '5 000 Р',
+            name: 'Массажные масла',
+            desc: 'Премиальные натуральные масла для домашнего использования',
+            price: 'от 1 500 ₽',
             image: 'Kosm.jpg'
         },
         {
-            name: 'Уходовая косметика',
-            desc: 'Премиальная линия по уходу за телом',
-            price: 'от 3 500 Р',
+            name: 'Ароматические свечи',
+            desc: 'Авторские свечи с натуральными эфирными маслами',
+            price: 'от 800 ₽',
             image: 'Kosm1.jpg'
         },
         {
-            name: 'Подарочный набор косметики',
-            desc: 'Эксклюзивный набор для домашнего спа',
-            price: '7 000 Р',
+            name: 'Травяные сборы',
+            desc: 'Карельские травы для чая и ванн',
+            price: 'от 600 ₽',
             image: 'Kosm2.jpg'
         }
     ]
 };
 
 /**
- * Слайдер программ
+ * Переменные для программ
  */
-let currentSlide = 0;
-let currentCategory = 'gifts';
-
-function getSlidesPerView() {
-    const width = window.innerWidth;
-    if (width <= 768) {
-        return 1;
-    } else if (width <= 1024) {
-        return 2;
-    }
-    return 3;
-}
+let currentCategory = 'programs';
 
 /**
  * Рендеринг карточек для текущей категории
  */
 function renderProgramsCards() {
-    const carousel = document.getElementById('programsCarousel');
-    if (!carousel) return;
+    const grid = document.getElementById('programsGrid');
+    if (!grid) return;
     
     const items = programsData[currentCategory] || [];
-    carousel.innerHTML = '';
+    grid.innerHTML = '';
     
-    items.forEach((item, index) => {
+    items.forEach((item) => {
         const card = document.createElement('div');
         card.className = 'program-card';
-        card.innerHTML = `
-            <div class="program-icon">
-                <img src="/static/images/Line.png" alt="">
+        
+        // Определяем иконку в зависимости от категории
+        let iconSvg = '';
+        if (currentCategory === 'programs') {
+            iconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>';
+        } else if (currentCategory === 'gifts') {
+            iconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>';
+        } else {
+            iconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>';
+        }
+        
+        let cardContent = `
+            <div class="program-icon-wrapper">
+                ${iconSvg}
             </div>
             <h3 class="program-name">${item.name}</h3>
-            <div class="program-image">
-                <img src="/static/images/${item.image}" alt="${item.name}" loading="lazy" decoding="async">
-            </div>
-            <p class="program-desc">${item.desc}</p>
-            <p class="program-price">${item.price}</p>
-            <button class="btn-secondary">Подробнее</button>
         `;
-        carousel.appendChild(card);
+        
+        // Для программ добавляем длительность
+        if (currentCategory === 'programs' && item.duration) {
+            cardContent += `<p class="program-duration">${item.duration}</p>`;
+        }
+        
+        cardContent += `
+            <p class="program-desc">${item.desc}</p>
+        `;
+        
+        // Для программ добавляем список включенных услуг
+        if (currentCategory === 'programs' && item.includes) {
+            cardContent += `
+                <div class="program-includes">
+                    <p class="program-includes-title">Включает:</p>
+                    <ul class="program-includes-list">
+            `;
+            item.includes.forEach(include => {
+                cardContent += `<li class="program-includes-item">${include}</li>`;
+            });
+            cardContent += `
+                    </ul>
+                </div>
+            `;
+        }
+        
+        cardContent += `
+            <div class="program-footer">
+                <span class="program-price">${item.price}</span>
+                <button class="program-btn">${currentCategory === 'gifts' || currentCategory === 'cosmetics' ? 'Купить' : 'Выбрать'}</button>
+            </div>
+        `;
+        
+        card.innerHTML = cardContent;
+        grid.appendChild(card);
     });
-    
-    // Сбрасываем слайдер
-    currentSlide = 0;
-    carousel.style.transform = 'translateX(0px)';
-    updateIndicators();
-    updateArrowButtons();
 }
 
 /**
@@ -130,7 +152,6 @@ function renderProgramsCards() {
  */
 function switchCategory(category) {
     currentCategory = category;
-    currentSlide = 0;
     
     // Обновляем активную кнопку таба
     document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -141,86 +162,6 @@ function switchCategory(category) {
     });
     
     renderProgramsCards();
-}
-
-/**
- * Переключение слайдов
- */
-function slidePrograms(direction) {
-    const carousel = document.getElementById('programsCarousel');
-    if (!carousel) return;
-    
-    const cards = carousel.querySelectorAll('.program-card');
-    if (cards.length === 0) return;
-    
-    const totalSlides = cards.length;
-    const slidesPerView = getSlidesPerView();
-    const maxSlide = Math.max(0, totalSlides - slidesPerView);
-    
-    if (direction === 'left') {
-        currentSlide = Math.max(0, currentSlide - 1);
-    } else {
-        currentSlide = Math.min(maxSlide, currentSlide + 1);
-    }
-    
-    const cardWidth = cards[0].offsetWidth;
-    const gap = 40;
-    const offset = -currentSlide * (cardWidth + gap);
-    carousel.style.transform = `translateX(${offset}px)`;
-    
-    updateIndicators();
-    updateArrowButtons();
-}
-
-/**
- * Обновление индикаторов
- */
-function updateIndicators() {
-    const indicatorsContainer = document.getElementById('sliderIndicators');
-    if (!indicatorsContainer) return;
-    
-    const carousel = document.getElementById('programsCarousel');
-    const cards = carousel ? carousel.querySelectorAll('.program-card') : [];
-    const totalSlides = cards.length;
-    const slidesPerView = getSlidesPerView();
-    const totalPages = Math.ceil(totalSlides / slidesPerView);
-    
-    indicatorsContainer.innerHTML = '';
-    
-    for (let i = 0; i < totalPages; i++) {
-        const indicator = document.createElement('span');
-        indicator.className = 'indicator';
-        if (Math.floor(currentSlide / slidesPerView) === i) {
-            indicator.classList.add('active');
-        }
-        indicatorsContainer.appendChild(indicator);
-    }
-}
-
-/**
- * Обновление состояния кнопок стрелок
- */
-function updateArrowButtons() {
-    const carousel = document.getElementById('programsCarousel');
-    if (!carousel) return;
-    
-    const cards = carousel.querySelectorAll('.program-card');
-    const totalSlides = cards.length;
-    const slidesPerView = getSlidesPerView();
-    const maxSlide = Math.max(0, totalSlides - slidesPerView);
-    
-    const leftBtn = document.getElementById('sliderArrowLeft');
-    const rightBtn = document.getElementById('sliderArrowRight');
-    
-    if (leftBtn) {
-        leftBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
-        leftBtn.style.pointerEvents = currentSlide === 0 ? 'none' : 'auto';
-    }
-    
-    if (rightBtn) {
-        rightBtn.style.opacity = currentSlide >= maxSlide ? '0.5' : '1';
-        rightBtn.style.pointerEvents = currentSlide >= maxSlide ? 'none' : 'auto';
-    }
 }
 
 /**
@@ -394,7 +335,7 @@ function closeServiceModal() {
 document.addEventListener('DOMContentLoaded', function() {
     initAtmosphereHover();
     
-    // Инициализация слайдера программ
+    // Инициализация программ
     renderProgramsCards();
     
     // Обработчики для табов
@@ -405,23 +346,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 switchCategory(category);
             }
         });
-    });
-    
-    // Обработчики для стрелок слайдера
-    const leftBtn = document.getElementById('sliderArrowLeft');
-    const rightBtn = document.getElementById('sliderArrowRight');
-    
-    if (leftBtn) {
-        leftBtn.addEventListener('click', () => slidePrograms('left'));
-    }
-    
-    if (rightBtn) {
-        rightBtn.addEventListener('click', () => slidePrograms('right'));
-    }
-    
-    // Обновление при изменении размера окна
-    window.addEventListener('resize', function() {
-        renderProgramsCards();
     });
     
     // Обработчики для карточек услуг
@@ -457,13 +381,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    window.addEventListener('resize', function() {
-        currentSlide = 0;
-        const carousel = document.getElementById('programsCarousel');
-        if (carousel) {
-            carousel.style.transform = 'translateX(0px)';
-        }
-        updateIndicators();
-    });
 });
 
