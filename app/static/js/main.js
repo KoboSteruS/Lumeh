@@ -197,47 +197,84 @@ function initAtmosphereHover() {
 const servicesData = {
     1: {
         name: 'Авторский массаж',
-        price: '5 000 Р',
-        desc: 'Уникальная техника массажа',
-        details: 'Авторский массаж от наших мастеров — это синтез тайских и балийских практик, адаптированный под индивидуальные потребности. Глубокое расслабление мышц, снятие напряжения и восстановление энергетического баланса.',
-        icon: 'usliga1.png'
+        duration: '60-90 мин',
+        price: 'от 3 500 ₽',
+        desc: 'Уникальная техника, сочетающая восточные и европейские практики для глубокого расслабления. Авторский массаж от наших мастеров — это синтез тайских и балийских практик, адаптированный под индивидуальные потребности. Глубокое расслабление мышц, снятие напряжения и восстановление энергетического баланса.'
     },
     2: {
-        name: 'Aroma Touch (doTerra)',
-        price: '4 000 Р',
-        desc: 'Массаж с эфирными маслами',
-        details: 'Техника массажа с использованием сертифицированных эфирных масел doTerra. Комплексное воздействие на физическое и эмоциональное состояние через ароматерапию и тактильные практики.',
-        icon: 'usluga2.png'
+        name: 'Стоун-терапия',
+        duration: '90 мин',
+        price: 'от 4 200 ₽',
+        desc: 'Массаж горячими камнями для улучшения кровообращения и снятия мышечного напряжения. Терапия горячими и холодными камнями из натуральных минералов (жадеит, шунгит, базальт). Жадеит для омоложения, шунгит для детоксикации, базальт для глубокого прогревания. Восстанавливает энергетический баланс и снимает мышечное напряжение.'
     },
     3: {
-        name: 'Стоун-терапия',
-        price: '2 000 Р',
-        desc: '(жадеит, шунгит, базальт)',
-        details: 'Терапия горячими и холодными камнями из натуральных минералов. Жадеит для омоложения, шунгит для детоксикации, базальт для глубокого прогревания. Восстанавливает энергетический баланс и снимает мышечное напряжение.',
-        icon: 'usluga3.png'
+        name: 'Aroma Touch',
+        duration: '60 мин',
+        price: 'от 3 800 ₽',
+        desc: 'Ароматерапевтический массаж с эфирными маслами для гармонии тела и души. Техника массажа с использованием сертифицированных эфирных масел doTerra. Комплексное воздействие на физическое и эмоциональное состояние через ароматерапию и тактильные практики.'
     },
     4: {
         name: 'Тайский aroma oil массаж',
-        price: '3 500–6 500 Р',
-        desc: 'Классический тайский массаж',
-        details: 'Традиционный тайский массаж с ароматическими маслами. Сочетание растяжек, надавливаний и работы с энергетическими линиями. Длительность и интенсивность подбираются индивидуально.',
-        icon: 'usluga4.png'
+        duration: '90 мин',
+        price: 'от 4 500 ₽',
+        desc: 'Традиционная тайская техника с использованием ароматических масел. Сочетание растяжек, надавливаний и работы с энергетическими линиями. Длительность и интенсивность подбираются индивидуально для максимального эффекта расслабления и восстановления.'
     },
     5: {
         name: 'Массаж тающей свечой',
-        price: '4 500–8 500 Р',
-        desc: 'Роскошный массаж восковой свечой',
-        details: 'Эксклюзивная процедура с использованием специальных массажных свечей из натурального воска и масел. Теплый воск создает неповторимое ощущение комфорта и глубокого расслабления.',
-        icon: 'usluga5.png'
+        duration: '75 мин',
+        price: 'от 4 000 ₽',
+        desc: 'Роскошный массаж теплым маслом из натуральной свечи для нежности кожи. Эксклюзивная процедура с использованием специальных массажных свечей из натурального воска и масел. Теплый воск создает неповторимое ощущение комфорта и глубокого расслабления.'
     },
     6: {
         name: 'Пенное великолепие',
-        price: '25 000 Р',
-        desc: '(программа)',
-        details: 'Комплексная программа на 2 часа, включающая хаммам, пенный массаж, скрабирование и уходовые процедуры. Полное погружение в атмосферу роскоши и релаксации.',
-        icon: 'usluga6.png'
+        duration: '90 мин',
+        price: 'от 5 500 ₽',
+        desc: 'Экзотический массаж в облаке ароматной пены для полного блаженства. Комплексная программа, включающая пенный массаж, скрабирование и уходовые процедуры. Полное погружение в атмосферу роскоши и релаксации.'
     }
 };
+
+/**
+ * Хаотичное расположение карточек услуг
+ */
+function arrangeServiceCards(cards) {
+    const container = document.querySelector('.services-grid');
+    if (!container) return;
+    
+    const containerWidth = container.offsetWidth || 1400;
+    const containerHeight = 1000;
+    const cardWidth = 650;
+    const cardHeight = 320;
+    
+    // Позиции для хаотичного расположения (как визитки на столе)
+    const positions = [
+        { left: '5%', top: '10%', rotation: -5 },
+        { left: '25%', top: '5%', rotation: 8 },
+        { left: '50%', top: '8%', rotation: -3 },
+        { left: '70%', top: '12%', rotation: 12 },
+        { left: '15%', top: '45%', rotation: -8 },
+        { left: '60%', top: '50%', rotation: 6 }
+    ];
+    
+    cards.forEach((card, index) => {
+        if (positions[index]) {
+            const pos = positions[index];
+            card.style.left = pos.left;
+            card.style.top = pos.top;
+            card.style.transform = `rotate(${pos.rotation}deg)`;
+            card.style.zIndex = index + 1;
+        } else {
+            // Для дополнительных карточек - случайное расположение
+            const randomLeft = Math.random() * (containerWidth - cardWidth);
+            const randomTop = Math.random() * (containerHeight - cardHeight);
+            const randomRotation = (Math.random() - 0.5) * 15; // от -7.5 до 7.5 градусов
+            
+            card.style.left = randomLeft + 'px';
+            card.style.top = randomTop + 'px';
+            card.style.transform = `rotate(${randomRotation}deg)`;
+            card.style.zIndex = index + 1;
+        }
+    });
+}
 
 /**
  * Открытие модального окна услуги
@@ -250,43 +287,68 @@ function openServiceModal(serviceId) {
     
     // Заполняем данные
     document.getElementById('modalServiceName').textContent = service.name;
+    document.getElementById('modalDuration').textContent = service.duration;
     document.getElementById('modalServicePrice').textContent = service.price;
     document.getElementById('modalServiceDesc').textContent = service.desc;
-    document.getElementById('modalServiceDetails').textContent = service.details;
-    document.getElementById('modalServiceIcon').src = `/static/images/${service.icon}`;
     
-    // Находим исходную карточку для анимации
+    // Находим карточку
     const card = document.querySelector(`[data-service="${serviceId}"]`);
-    if (card) {
-        // Добавляем класс для отслеживания активной карточки
-        card.classList.add('active-card');
-        
-        const rect = card.getBoundingClientRect();
-        const modalContent = modal.querySelector('.service-modal-content');
-        
-        // Устанавливаем начальную позицию
-        modalContent.style.left = rect.left + 'px';
-        modalContent.style.top = rect.top + 'px';
-        modalContent.style.width = rect.width + 'px';
-        modalContent.style.height = rect.height + 'px';
-        modalContent.style.transform = '';
-        
-        // Показываем модальное окно
+    if (!card) {
         modal.classList.add('active');
-        
-        // Анимация расширения
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                modalContent.style.left = '50%';
-                modalContent.style.top = '50%';
-                modalContent.style.width = '50%';
-                modalContent.style.height = 'auto';
-                modalContent.style.transform = 'translate(-50%, -50%)';
-            });
-        });
-    } else {
-        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        return;
     }
+    
+    // Получаем позицию карточки
+    const cardRect = card.getBoundingClientRect();
+    const cardClone = card.cloneNode(true);
+    cardClone.style.position = 'fixed';
+    cardClone.style.top = cardRect.top + 'px';
+    cardClone.style.left = cardRect.left + 'px';
+    cardClone.style.width = cardRect.width + 'px';
+    cardClone.style.height = cardRect.height + 'px';
+    cardClone.style.zIndex = '9999';
+    cardClone.style.pointerEvents = 'none';
+    cardClone.style.margin = '0';
+    cardClone.style.opacity = '1';
+    cardClone.classList.add('service-card-flying');
+    
+    // Делаем оригинальную карточку невидимой
+    card.style.opacity = '0';
+    card.style.pointerEvents = 'none';
+    
+    // Добавляем клон в body
+    document.body.appendChild(cardClone);
+    
+    // Вычисляем центр экрана
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    const targetWidth = 600;
+    const targetHeight = 400;
+    
+    // Запускаем анимацию вылета
+    requestAnimationFrame(() => {
+        cardClone.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        cardClone.style.top = (centerY - targetHeight / 2) + 'px';
+        cardClone.style.left = (centerX - targetWidth / 2) + 'px';
+        cardClone.style.width = targetWidth + 'px';
+        cardClone.style.height = targetHeight + 'px';
+        cardClone.style.transform = 'scale(1.2)';
+        cardClone.style.opacity = '0';
+    });
+    
+    // Показываем модальное окно раньше, до завершения анимации карточки
+    setTimeout(() => {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }, 150);
+    
+    // Удаляем клон карточки после завершения анимации
+    setTimeout(() => {
+        cardClone.remove();
+        card.style.opacity = '1';
+        card.style.pointerEvents = '';
+    }, 400);
 }
 
 /**
@@ -296,63 +358,26 @@ function closeServiceModal() {
     const modal = document.getElementById('serviceModal');
     if (!modal) return;
     
-    const modalContent = modal.querySelector('.service-modal-content');
-    
-    // Анимация закрытия - возвращаем к исходной позиции карточки
-    if (modalContent) {
-        const card = document.querySelector('.service-card.active-card');
-        if (card) {
-            const rect = card.getBoundingClientRect();
-            modalContent.style.left = rect.left + 'px';
-            modalContent.style.top = rect.top + 'px';
-            modalContent.style.width = rect.width + 'px';
-            modalContent.style.height = rect.height + 'px';
-            modalContent.style.transform = '';
-        }
-    }
-    
     modal.classList.remove('active');
-    
-    setTimeout(() => {
-        if (modalContent) {
-            modalContent.style.left = '';
-            modalContent.style.top = '';
-            modalContent.style.width = '';
-            modalContent.style.height = '';
-            modalContent.style.transform = '';
-        }
-        // Убираем класс active-card с карточки
-        const activeCard = document.querySelector('.service-card.active-card');
-        if (activeCard) {
-            activeCard.classList.remove('active-card');
-        }
-    }, 500);
+    document.body.style.overflow = '';
 }
 
 /**
  * Параллакс эффект для блока достижений
  */
 function initAchievementsParallax() {
-    const achievementsSection = document.querySelector('.achievements-section');
-    const parallaxBg = document.querySelector('.achievements-parallax-bg');
+    const aboutSection = document.querySelector('.about-section');
     const achievementItems = document.querySelectorAll('.achievement-item');
     
-    if (!achievementsSection || !parallaxBg) return;
+    if (!aboutSection) return;
     
     let ticking = false;
     
     function updateParallax() {
-        const rect = achievementsSection.getBoundingClientRect();
+        const rect = aboutSection.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         const sectionTop = rect.top;
         const sectionHeight = rect.height;
-        
-        // Параллакс для фона
-        if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
-            const progress = (windowHeight - sectionTop) / (windowHeight + sectionHeight);
-            const translateY = (progress - 0.5) * 100;
-            parallaxBg.style.transform = `translateY(${translateY}px)`;
-        }
         
         // Параллакс для элементов
         achievementItems.forEach(item => {
@@ -445,6 +470,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Обработчики для карточек услуг
     const serviceCards = document.querySelectorAll('.service-card');
+    arrangeServiceCards(serviceCards);
+    
     serviceCards.forEach(card => {
         card.addEventListener('click', function() {
             const serviceId = this.getAttribute('data-service');

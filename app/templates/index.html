@@ -53,261 +53,87 @@
         <!-- Hero -->
         <section id="home" class="hero-section">
             <div class="hero-bg">
-                <img src="{{ url_for('static', filename='images/heroBG.png') }}" alt="Spa Atmosphere" class="hero-bg-img">
+                <img src="{{ url_for('static', filename='images/heroBG.png') }}" alt="Spa Atmosphere" class="hero-bg-img hero-bg-img-desktop">
+                <img src="{{ url_for('static', filename='images/heroBG_mb.png') }}" alt="Spa Atmosphere" class="hero-bg-img hero-bg-img-mobile">
                 <div class="hero-gradient"></div>
             </div>
 
             <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-title">
-                        Погрузитесь
-                        <br>
-                        в атмосферу
-                        <br>
-                        <span class="hero-title-accent">восточного массажа</span>
-                    </h1>
-
-                    <p class="hero-subtitle">
-                        Тайские и балийские практики в самом сердце Карелии
-                    </p>
-
-                    <div class="hero-benefits">
-                        <div class="hero-benefit">
-                            <span>Уникальные мастера</span>
-                        </div>
-                        <div class="hero-benefit">
-                            <span>Натуральные масла</span>
-                        </div>
-                        <div class="hero-benefit">
-                            <span>Ритуалы происхождений</span>
-                        </div>
-                    </div>
-
-                    <button class="btn-hero" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">
-                        Записаться на массаж
-                    </button>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- Achievements -->
-        <section class="achievements-section">
-            <div class="achievements-parallax-bg"></div>
-            <div class="container">
-                <div class="achievements-grid">
-                    <div class="achievement-item" data-parallax-speed="0.3">
-                        <div class="achievement-number" data-count="5000">0</div>
-                        <div class="achievement-label">Довольных клиентов</div>
-                    </div>
-                    <div class="achievement-item" data-parallax-speed="0.4">
-                        <div class="achievement-number" data-count="10">0</div>
-                        <div class="achievement-label">Лет опыта</div>
-                    </div>
-                    <div class="achievement-item" data-parallax-speed="0.3">
-                        <div class="achievement-number" data-count="15">0</div>
-                        <div class="achievement-label">Профессиональных мастеров</div>
-                    </div>
-                    <div class="achievement-item" data-parallax-speed="0.4">
-                        <div class="achievement-number" data-count="50">0</div>
-                        <div class="achievement-label">Видов процедур</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About -->
-        <section id="about" class="about-section">
-            <div class="about-decorative-1"></div>
-            <div class="about-decorative-2"></div>
-
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-text-content">
-
-                        <h2 class="about-title">
-                            Погрузитесь в атмосферу
-                            <br>
-                            <span class="about-title-accent">уюта, расслабления и комфорта</span>
+                <div class="hero-layout">
+                    <div class="hero-content">
+                        <h1 class="hero-brand">LUMMEH</h1>
+                        <h2 class="hero-title">
+                            Время позаботиться о главном!
                         </h2>
 
-                        <div class="about-description">
-                            <p>
-                                Создали идеальные практики и атмосферу, чтобы вы могли полностью 
-                                расслабиться и отдохнуть от суеты.
-                            </p>
-                            
-                            <div class="about-features">
-                                <div class="about-feature">
-                                    <div class="about-feature-dot"></div>
-                                    <p>Карельская природа и философия Востока</p>
-                                </div>
-                                <div class="about-feature">
-                                    <div class="about-feature-dot"></div>
-                                    <p>Премиальные процедуры и натуральные масла</p>
-                                </div>
-                                <div class="about-feature">
-                                    <div class="about-feature-dot"></div>
-                                    <p>Приглушенный свет свечей, хна для души</p>
-                                </div>
-                            </div>
+                        <div class="hero-subtitle">
+                            <p>Здесь вы окунетесь в атмосферу безмятежности и расслабления, где внимание сконцентрировано только на Вас.</p>
                         </div>
+
+                        <button class="btn-hero" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">
+                            Записаться на массаж
+                        </button>
                     </div>
 
-                    <div class="about-image-wrapper">
-                        <div class="about-image-circle">
-                            <div class="about-circle-border-outer"></div>
-                            <div class="about-circle-border-inner"></div>
-                            <div class="about-image-inner">
-                                <img src="{{ url_for('static', filename='images/AboutIMG.jpg') }}" alt="Tea Ceremony" loading="lazy" decoding="async">
-                            </div>
+                    <div class="hero-logo-wrapper">
+                        <div class="hero-logo-container">
+                            <img src="{{ url_for('static', filename='images/Logo_light.png') }}" alt="LUMMEH Logo" class="hero-logo hero-logo-light">
+                            <img src="{{ url_for('static', filename='images/Logo_Green.png') }}" alt="LUMMEH Logo" class="hero-logo hero-logo-green">
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Services -->
-        <section id="services" class="services-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Услуги</h2>
-                    <p class="section-subtitle">Выберите идеальную процедуру для полного восстановления сил</p>
-                </div>
-
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-corner"></div>
-                        <div class="service-content">
-                            <div class="service-header">
-                                <span class="service-duration">60-90 мин</span>
-                            </div>
-                            <h3 class="service-name">Авторский массаж</h3>
-                            <p class="service-desc">Уникальная техника, сочетающая восточные и европейские практики для глубокого расслабления</p>
-                            <div class="service-footer">
-                                <span class="service-price">от 3 500 ₽</span>
-                                <button class="service-link">Подробнее →</button>
-                            </div>
-                        </div>
-                        <div class="service-pattern"></div>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-corner"></div>
-                        <div class="service-content">
-                            <div class="service-header">
-                                <span class="service-duration">90 мин</span>
-                            </div>
-                            <h3 class="service-name">Стоун-терапия</h3>
-                            <p class="service-desc">Массаж горячими камнями для улучшения кровообращения и снятия мышечного напряжения</p>
-                            <div class="service-footer">
-                                <span class="service-price">от 4 200 ₽</span>
-                                <button class="service-link">Подробнее →</button>
-                            </div>
-                        </div>
-                        <div class="service-pattern"></div>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-corner"></div>
-                        <div class="service-content">
-                            <div class="service-header">
-                                <span class="service-duration">60 мин</span>
-                            </div>
-                            <h3 class="service-name">Aroma Touch</h3>
-                            <p class="service-desc">Ароматерапевтический массаж с эфирными маслами для гармонии тела и души</p>
-                            <div class="service-footer">
-                                <span class="service-price">от 3 800 ₽</span>
-                                <button class="service-link">Подробнее →</button>
-                            </div>
-                        </div>
-                        <div class="service-pattern"></div>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-corner"></div>
-                        <div class="service-content">
-                            <div class="service-header">
-                                <span class="service-duration">90 мин</span>
-                            </div>
-                            <h3 class="service-name">Тайский aroma oil массаж</h3>
-                            <p class="service-desc">Традиционная тайская техника с использованием ароматических масел</p>
-                            <div class="service-footer">
-                                <span class="service-price">от 4 500 ₽</span>
-                                <button class="service-link">Подробнее →</button>
-                            </div>
-                        </div>
-                        <div class="service-pattern"></div>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-corner"></div>
-                        <div class="service-content">
-                            <div class="service-header">
-                                <span class="service-duration">75 мин</span>
-                            </div>
-                            <h3 class="service-name">Массаж тающей свечой</h3>
-                            <p class="service-desc">Роскошный массаж теплым маслом из натуральной свечи для нежности кожи</p>
-                            <div class="service-footer">
-                                <span class="service-price">от 4 000 ₽</span>
-                                <button class="service-link">Подробнее →</button>
-                            </div>
-                        </div>
-                        <div class="service-pattern"></div>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-corner"></div>
-                        <div class="service-content">
-                            <div class="service-header">
-                                <span class="service-duration">90 мин</span>
-                            </div>
-                            <h3 class="service-name">Пенное великолепие</h3>
-                            <p class="service-desc">Экзотический массаж в облаке ароматной пены для полного блаженства</p>
-                            <div class="service-footer">
-                                <span class="service-price">от 5 500 ₽</span>
-                                <button class="service-link">Подробнее →</button>
-                            </div>
-                        </div>
-                        <div class="service-pattern"></div>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <!-- Philosophy -->
         <section id="philosophy" class="philosophy-section">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Атмосфера и философия</h2>
-                    <p class="section-subtitle">Что делает наш салон особенным</p>
+                    <h2 class="section-title">Наша галерея</h2>
+                    <!-- <p class="section-subtitle">Что делает наш салон особенным</p> -->
                 </div>
 
-                <div class="philosophy-grid">
-                    <div class="philosophy-gallery">
-                        <div class="philosophy-gallery-col">
-                            <div class="philosophy-gallery-item philosophy-gallery-item-small">
-                                <img src="{{ url_for('static', filename='images/Vibe1.jpg') }}" alt="Spa Interior" loading="lazy" decoding="async">
-                                <div class="philosophy-gallery-overlay"></div>
-                            </div>
-                            <div class="philosophy-gallery-item philosophy-gallery-item-large">
-                                <img src="{{ url_for('static', filename='images/Vibe2.jpg') }}" alt="Massage" loading="lazy" decoding="async">
-                                <div class="philosophy-gallery-overlay"></div>
-                            </div>
-                        </div>
-                        <div class="philosophy-gallery-col philosophy-gallery-col-offset">
-                            <div class="philosophy-gallery-item philosophy-gallery-item-large">
-                                <img src="{{ url_for('static', filename='images/Vibe3.jpg') }}" alt="Candles" loading="lazy" decoding="async">
-                                <div class="philosophy-gallery-overlay"></div>
-                            </div>
-                            <div class="philosophy-gallery-item philosophy-gallery-item-small">
-                                <img src="{{ url_for('static', filename='images/Vibe4.jpg') }}" alt="Aromatherapy" loading="lazy" decoding="async">
-                                <div class="philosophy-gallery-overlay"></div>
-                            </div>
-                        </div>
+                <div class="gallery-mosaic">
+                    <div class="gallery-item gallery-item-tall">
+                        <img src="{{ url_for('static', filename='images/Vibe1.jpg') }}" alt="Spa Interior" loading="lazy" decoding="async">
+                        <div class="gallery-overlay"></div>
                     </div>
+                    <div class="gallery-item gallery-item-short">
+                        <img src="{{ url_for('static', filename='images/Vibe2.jpg') }}" alt="Massage" loading="lazy" decoding="async">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item gallery-item-tall">
+                        <img src="{{ url_for('static', filename='images/Vibe3.jpg') }}" alt="Candles" loading="lazy" decoding="async">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item gallery-item-short">
+                        <img src="{{ url_for('static', filename='images/Vibe4.jpg') }}" alt="Aromatherapy" loading="lazy" decoding="async">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item gallery-item-short">
+                        <img src="{{ url_for('static', filename='images/Vibe12.jpg') }}" alt="Spa Interior 2" loading="lazy" decoding="async">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item gallery-item-tall">
+                        <img src="{{ url_for('static', filename='images/Vibe22.jpg') }}" alt="Massage 2" loading="lazy" decoding="async">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item gallery-item-short">
+                        <img src="{{ url_for('static', filename='images/Vibe32.jpg') }}" alt="Candles 2" loading="lazy" decoding="async">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item gallery-item-tall">
+                        <img src="{{ url_for('static', filename='images/Vibe42.jpg') }}" alt="Aromatherapy 2" loading="lazy" decoding="async">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item gallery-item-tall">
+                        <img src="{{ url_for('static', filename='images/AboutIMG.jpg') }}" alt="Spa Interior 3" loading="lazy" decoding="async">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                </div>
 
-                    <div class="philosophy-values">
+                    <!-- <div class="philosophy-values">
                         <div class="philosophy-value">
                             <div class="philosophy-value-header">
                                 <div class="philosophy-value-content">
@@ -359,6 +185,189 @@
                                 </div>
                             </div>
                         </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="about-section">
+            <div class="about-decorative-1"></div>
+            <div class="about-decorative-2"></div>
+
+            <div class="container">
+                <div class="about-text-content">
+                    <h2 class="about-title">
+                        О нас
+                    </h2>
+
+                    <div class="about-description">
+                        <p>
+                            Мы объединили восточные традиции с уникальными международными спа-технологиями, чтобы предложить вам 
+                            разнообразные программы для полного восстановления сил и гармонии.
+                        </p>
+                        <p>
+                            Наши лучшие специалисты используют только натуральную косметику высокого качества, соответствующую 
+                            стандартам GMP, для массажей и ухода за кожей лица и тела.
+                        </p>
+                    </div>
+                    
+                    <div class="about-features-grid">
+                        <div class="about-feature-item">
+                            <h3 class="about-feature-title">Наши мастера</h3>
+                            <ul class="about-feature-list">
+                                <li>Балийский и Тайский массаж мастерами с о. Бали</li>
+                                <li>Массаж Европейскими мастерами</li>
+                                <li>Профессиональная сертификация</li>
+                                <li>Многолетний опыт работы</li>
+                            </ul>
+                        </div>
+                        <div class="about-feature-item">
+                            <h3 class="about-feature-title">Спа-программы</h3>
+                            <ul class="about-feature-list">
+                                <li>Программы для одного гостя</li>
+                                <li>Парные процедуры</li>
+                                <li>Девичники и корпоративы</li>
+                                <li>Детские массажи</li>
+                                <li>Уникальные предложения для туристов</li>
+                                <li>Семейный Спа релакс</li>
+                            </ul>
+                        </div>
+                        <div class="about-feature-item">
+                            <h3 class="about-feature-title">Дополнительные услуги</h3>
+                            <ul class="about-feature-list">
+                                <li>Японская купель Фурако</li>
+                                <li>Кедровая бочка нового поколения</li>
+                                <li>Инфракрасная сауна</li>
+                                <li>Хаммам</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievements-grid">
+                    <div class="achievement-item" data-parallax-speed="0.3">
+                        <div class="achievement-number" data-count="5000">0</div>
+                        <div class="achievement-label">Довольных клиентов</div>
+                    </div>
+                    <div class="achievement-item" data-parallax-speed="0.4">
+                        <div class="achievement-number" data-count="10">0</div>
+                        <div class="achievement-label">Лет опыта</div>
+                    </div>
+                    <div class="achievement-item" data-parallax-speed="0.3">
+                        <div class="achievement-number" data-count="15">0</div>
+                        <div class="achievement-label">Профессиональных мастеров</div>
+                    </div>
+                    <div class="achievement-item" data-parallax-speed="0.4">
+                        <div class="achievement-number" data-count="50">0</div>
+                        <div class="achievement-label">Видов процедур</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Услуги</h2>
+                    <p class="section-subtitle">Выберите идеальную процедуру для полного восстановления сил</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card" data-service="1">
+                        <div class="service-image-wrapper">
+                            <img src="{{ url_for('static', filename='images/Card.png') }}" alt="Авторский массаж" class="service-card-image service-card-image-desktop">
+                            <img src="{{ url_for('static', filename='images/Card_mb.png') }}" alt="Авторский массаж" class="service-card-image service-card-image-mobile">
+                            <h3 class="service-name-overlay">Авторский массаж</h3>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-service="2">
+                        <div class="service-image-wrapper">
+                            <img src="{{ url_for('static', filename='images/Card.png') }}" alt="Стоун-терапия" class="service-card-image service-card-image-desktop">
+                            <img src="{{ url_for('static', filename='images/Card_mb.png') }}" alt="Стоун-терапия" class="service-card-image service-card-image-mobile">
+                            <h3 class="service-name-overlay">Стоун-терапия</h3>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-service="3">
+                        <div class="service-image-wrapper">
+                            <img src="{{ url_for('static', filename='images/Card.png') }}" alt="Aroma Touch" class="service-card-image service-card-image-desktop">
+                            <img src="{{ url_for('static', filename='images/Card_mb.png') }}" alt="Aroma Touch" class="service-card-image service-card-image-mobile">
+                            <h3 class="service-name-overlay">Aroma Touch</h3>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-service="4">
+                        <div class="service-image-wrapper">
+                            <img src="{{ url_for('static', filename='images/Card.png') }}" alt="Тайский aroma oil массаж" class="service-card-image service-card-image-desktop">
+                            <img src="{{ url_for('static', filename='images/Card_mb.png') }}" alt="Тайский aroma oil массаж" class="service-card-image service-card-image-mobile">
+                            <h3 class="service-name-overlay">Тайский aroma oil массаж</h3>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-service="5">
+                        <div class="service-image-wrapper">
+                            <img src="{{ url_for('static', filename='images/Card.png') }}" alt="Массаж тающей свечой" class="service-card-image service-card-image-desktop">
+                            <img src="{{ url_for('static', filename='images/Card_mb.png') }}" alt="Массаж тающей свечой" class="service-card-image service-card-image-mobile">
+                            <h3 class="service-name-overlay">Массаж тающей свечой</h3>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-service="6">
+                        <div class="service-image-wrapper">
+                            <img src="{{ url_for('static', filename='images/Card.png') }}" alt="Пенное великолепие" class="service-card-image service-card-image-desktop">
+                            <img src="{{ url_for('static', filename='images/Card_mb.png') }}" alt="Пенное великолепие" class="service-card-image service-card-image-mobile">
+                            <h3 class="service-name-overlay">Пенное великолепие</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Modal -->
+        <div class="service-modal" id="serviceModal">
+            <div class="service-modal-overlay"></div>
+            <div class="service-modal-content">
+                <button class="service-modal-close" id="serviceModalClose">&times;</button>
+                <div class="service-modal-header">
+                    <span class="service-modal-duration" id="modalDuration"></span>
+                    <h3 class="service-modal-name" id="modalServiceName"></h3>
+                </div>
+                <p class="service-modal-desc" id="modalServiceDesc"></p>
+                <div class="service-modal-footer">
+                    <span class="service-modal-price" id="modalServicePrice"></span>
+                    <button class="btn-hero" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'}); document.getElementById('serviceModal').classList.remove('active');">
+                        Записаться
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Programs -->
+        <section id="programs" class="programs-section">
+            <div class="container">
+                <div class="section-header section-header-light">
+                    <h2 class="section-title section-title-light">Программы и подарки</h2>
+                    <p class="section-subtitle section-subtitle-light">Эксклюзивные spa-программы и подарочные сертификаты</p>
+                </div>
+
+                <div class="programs-tabs">
+                    <button class="tab-btn active" data-tab="programs">
+                        <span>Spa-программы</span>
+                    </button>
+                    <button class="tab-btn" data-tab="gifts">
+                        <span>Подарки</span>
+                    </button>
+                    <button class="tab-btn" data-tab="cosmetics">
+                        <span>Косметика</span>
+                    </button>
+                </div>
+
+                <div class="programs-content">
+                    <div class="programs-grid" id="programsGrid">
+                        <!-- Карточки будут добавлены через JavaScript -->
                     </div>
                 </div>
             </div>
@@ -417,33 +426,7 @@
             </div>
         </section>
 
-        <!-- Programs -->
-        <section id="programs" class="programs-section">
-            <div class="container">
-                <div class="section-header section-header-light">
-                    <h2 class="section-title section-title-light">Программы и подарки</h2>
-                    <p class="section-subtitle section-subtitle-light">Эксклюзивные spa-программы и подарочные сертификаты</p>
-                </div>
 
-                <div class="programs-tabs">
-                    <button class="tab-btn active" data-tab="programs">
-                        <span>Spa-программы</span>
-                    </button>
-                    <button class="tab-btn" data-tab="gifts">
-                        <span>Подарки</span>
-                    </button>
-                    <button class="tab-btn" data-tab="cosmetics">
-                        <span>Косметика</span>
-                    </button>
-                </div>
-
-                <div class="programs-content">
-                    <div class="programs-grid" id="programsGrid">
-                        <!-- Карточки будут добавлены через JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Booking -->
         <section id="booking" class="booking-section">
