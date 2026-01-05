@@ -8,8 +8,20 @@
     
     <!-- Preload критических ресурсов -->
     <link rel="preload" href="{{ url_for('static', filename='fonts/HONORSansVFNormal.ttf') }}" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="{{ url_for('static', filename='images/heroBG.png') }}" as="image">
-    <link rel="preload" href="{{ url_for('static', filename='images/Logo_light.png') }}" as="image">
+    <link rel="preload" href="{{ url_for('static', filename='images/heroBG.png') }}" as="image" fetchpriority="high">
+    <link rel="preload" href="{{ url_for('static', filename='images/Logo_light.png') }}" as="image" fetchpriority="high">
+    <link rel="preload" href="{{ url_for('static', filename='images/heroBG_mb.png') }}" as="image">
+    
+    <!-- Preload изображений программ для быстрой загрузки -->
+    <link rel="preload" href="{{ url_for('static', filename='images/proccess1 1.png') }}" as="image">
+    <link rel="preload" href="{{ url_for('static', filename='images/procces2 1.png') }}" as="image">
+    <link rel="preload" href="{{ url_for('static', filename='images/proccess3 1.png') }}" as="image">
+    <link rel="preload" href="{{ url_for('static', filename='images/Gift1.png') }}" as="image">
+    <link rel="preload" href="{{ url_for('static', filename='images/gift2.png') }}" as="image">
+    <link rel="preload" href="{{ url_for('static', filename='images/gift3.png') }}" as="image">
+    <link rel="preload" href="{{ url_for('static', filename='images/Kosm.png') }}" as="image">
+    <link rel="preload" href="{{ url_for('static', filename='images/Kosm1.png') }}" as="image">
+    <link rel="preload" href="{{ url_for('static', filename='images/Kosm2.png') }}" as="image">
     
     <!-- Preconnect для внешних ресурсов (если будут) -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">

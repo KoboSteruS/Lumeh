@@ -53,8 +53,8 @@
         <!-- Hero -->
         <section id="home" class="hero-section">
             <div class="hero-bg">
-                <img src="{{ url_for('static', filename='images/heroBG.png') }}" alt="Spa Atmosphere" class="hero-bg-img hero-bg-img-desktop">
-                <img src="{{ url_for('static', filename='images/heroBG_mb.png') }}" alt="Spa Atmosphere" class="hero-bg-img hero-bg-img-mobile">
+                <img src="{{ url_for('static', filename='images/heroBG.png') }}" alt="Spa Atmosphere" class="hero-bg-img hero-bg-img-desktop" loading="eager" fetchpriority="high" decoding="sync">
+                <img src="{{ url_for('static', filename='images/heroBG_mb.png') }}" alt="Spa Atmosphere" class="hero-bg-img hero-bg-img-mobile" loading="eager" decoding="sync">
                 <div class="hero-gradient"></div>
             </div>
 
@@ -112,19 +112,19 @@
                         <div class="gallery-overlay"></div>
                     </div>
                     <div class="gallery-item gallery-item-short">
-                        <img src="{{ url_for('static', filename='images/Vibe12.jpg') }}" alt="Spa Interior 2" loading="lazy" decoding="async">
+                        <img src="{{ url_for('static', filename='images/Vibe12.png') }}" alt="Spa Interior 2" loading="lazy" decoding="async">
                         <div class="gallery-overlay"></div>
                     </div>
                     <div class="gallery-item gallery-item-tall">
-                        <img src="{{ url_for('static', filename='images/Vibe22.jpg') }}" alt="Massage 2" loading="lazy" decoding="async">
+                        <img src="{{ url_for('static', filename='images/Vibe22.png') }}" alt="Massage 2" loading="lazy" decoding="async">
                         <div class="gallery-overlay"></div>
                     </div>
                     <div class="gallery-item gallery-item-short">
-                        <img src="{{ url_for('static', filename='images/Vibe32.jpg') }}" alt="Candles 2" loading="lazy" decoding="async">
+                        <img src="{{ url_for('static', filename='images/Vibe32.png') }}" alt="Candles 2" loading="lazy" decoding="async">
                         <div class="gallery-overlay"></div>
                     </div>
                     <div class="gallery-item gallery-item-tall">
-                        <img src="{{ url_for('static', filename='images/Vibe42.jpg') }}" alt="Aromatherapy 2" loading="lazy" decoding="async">
+                        <img src="{{ url_for('static', filename='images/Vibe42.png') }}" alt="Aromatherapy 2" loading="lazy" decoding="async">
                         <div class="gallery-overlay"></div>
                     </div>
                     <div class="gallery-item gallery-item-tall">
@@ -277,8 +277,8 @@
                 <div class="services-grid">
                     <div class="service-card" data-service="1">
                         <div class="service-image-wrapper">
-                            <img src="{{ url_for('static', filename='images/Card.png') }}" alt="Авторский массаж" class="service-card-image service-card-image-desktop">
-                            <img src="{{ url_for('static', filename='images/Card_mb.png') }}" alt="Авторский массаж" class="service-card-image service-card-image-mobile">
+                            <img src="{{ url_for('static', filename='images/Card.png') }}" alt="Авторский массаж" class="service-card-image service-card-image-desktop" loading="lazy" decoding="async">
+                            <img src="{{ url_for('static', filename='images/Card_mb.png') }}" alt="Авторский массаж" class="service-card-image service-card-image-mobile" loading="lazy" decoding="async">
                             <h3 class="service-name-overlay">Авторский массаж</h3>
                         </div>
                     </div>
@@ -431,7 +431,7 @@
         <!-- Booking -->
         <section id="booking" class="booking-section">
             <div class="booking-bg">
-                <img src="{{ url_for('static', filename='images/ContactBG.jpg') }}" alt="Spa Background" loading="lazy" decoding="async">
+                <img src="{{ url_for('static', filename='images/ContactBG.png') }}" alt="Spa Background" loading="lazy" decoding="async">
             </div>
 
             <div class="container">

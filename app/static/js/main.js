@@ -13,7 +13,7 @@ const programsData = {
             duration: '120 мин',
             price: '8 500 ₽',
             includes: ['Массаж всего тела', 'Ароматерапия', 'Травяной чай', 'Релаксация'],
-            image: 'proccess1.jpg'
+            image: 'proccess1 1.png'
         },
         {
             name: 'Великолепие роскоши',
@@ -21,7 +21,7 @@ const programsData = {
             duration: '180 мин',
             price: '12 000 ₽',
             includes: ['Стоун-терапия', 'Массаж лица', 'Пилинг тела', 'Шампанское'],
-            image: 'procces2.jpg'
+            image: 'procces2 1.png'
         },
         {
             name: 'Пенное великолепие',
@@ -29,7 +29,7 @@ const programsData = {
             duration: '90 мин',
             price: '5 500 ₽',
             includes: ['Пенный массаж', 'Масло-массаж', 'Ароматерапия'],
-            image: 'proccess3.jpg'
+            image: 'proccess3 1.png'
         }
     ],
     gifts: [
@@ -37,19 +37,19 @@ const programsData = {
             name: 'Подарочный сертификат 5000₽',
             desc: 'Идеальный подарок для близких на любой случай',
             price: '5 000 ₽',
-            image: 'Gift1.jpg'
+            image: 'Gift1.png'
         },
         {
             name: 'Подарочный сертификат 10000₽',
             desc: 'Полноценная spa-программа в подарок',
             price: '10 000 ₽',
-            image: 'gift2.jpg'
+            image: 'gift2.png'
         },
         {
             name: 'Индивидуальный сертификат',
             desc: 'Создайте уникальный подарок на любую сумму',
             price: 'от 3 000 ₽',
-            image: 'gift3.jpg'
+            image: 'gift3.png'
         }
     ],
     cosmetics: [
@@ -57,19 +57,19 @@ const programsData = {
             name: 'Массажные масла',
             desc: 'Премиальные натуральные масла для домашнего использования',
             price: 'от 1 500 ₽',
-            image: 'Kosm.jpg'
+            image: 'Kosm.png'
         },
         {
             name: 'Ароматические свечи',
             desc: 'Авторские свечи с натуральными эфирными маслами',
             price: 'от 800 ₽',
-            image: 'Kosm1.jpg'
+            image: 'Kosm1.png'
         },
         {
             name: 'Травяные сборы',
             desc: 'Карельские травы для чая и ванн',
             price: 'от 600 ₽',
-            image: 'Kosm2.jpg'
+            image: 'Kosm2.png'
         }
     ]
 };
@@ -103,11 +103,20 @@ function renderProgramsCards() {
             iconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>';
         }
         
-        let cardContent = `
-            <div class="program-icon-wrapper">
-                ${iconSvg}
-            </div>
-            <h3 class="program-name">${item.name}</h3>
+        let cardContent = '';
+        
+        // Добавляем изображение если есть
+        if (item.image) {
+            cardContent += `
+                <div class="program-card-image-wrapper">
+                    <img src="/static/images/${item.image}" alt="${item.name}" class="program-card-image" loading="eager" decoding="async" fetchpriority="high">
+                </div>
+            `;
+        }
+        
+        cardContent += `
+            <div class="program-card-content">
+                <h3 class="program-name">${item.name}</h3>
         `;
         
         // Для программ добавляем длительность
@@ -138,7 +147,8 @@ function renderProgramsCards() {
         cardContent += `
             <div class="program-footer">
                 <span class="program-price">${item.price}</span>
-                <button class="program-btn">${currentCategory === 'gifts' || currentCategory === 'cosmetics' ? 'Купить' : 'Выбрать'}</button>
+                <button class="program-btn">${currentCategory === 'gifts' || currentCategory === 'cosmetics' ? 'Купить' : 'Подробнее'}</button>
+            </div>
             </div>
         `;
         
@@ -444,9 +454,41 @@ function animateCounters() {
 }
 
 /**
+ * Предзагрузка всех изображений программ
+ */
+function preloadProgramImages() {
+    const allImages = [];
+    
+    // Собираем все изображения из всех категорий
+    Object.values(programsData).forEach(category => {
+        category.forEach(item => {
+            if (item.image) {
+                allImages.push(`/static/images/${item.image}`);
+            }
+        });
+    });
+    
+    // Предзагружаем все изображения
+    allImages.forEach(imageSrc => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = imageSrc;
+        document.head.appendChild(link);
+        
+        // Также создаем Image объект для предзагрузки
+        const img = new Image();
+        img.src = imageSrc;
+    });
+}
+
+/**
  * Инициализация при загрузке страницы
  */
 document.addEventListener('DOMContentLoaded', function() {
+    // Предзагружаем изображения программ сразу
+    preloadProgramImages();
+    
     initAtmosphereHover();
     
     // Инициализация программ
