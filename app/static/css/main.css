@@ -2150,7 +2150,7 @@ img {
     }
 }
 
-@media (min-width: 1281px) and (max-width: 1500px) {
+@media (min-width: 1281px) and (max-width: 1600px) {
     .hero-section .container {
         margin-left: 150px;
         max-width: 500px;
@@ -2193,7 +2193,7 @@ img {
     }
 }
 
-@media (min-width: 1501px) {
+@media (min-width: 1601px) {
     .hero-section .container {
         margin-left: 150px;
         max-width: 500px;
