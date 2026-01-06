@@ -3,9 +3,9 @@
  */
 
 /**
- * Данные для программ и подарков
+ * Данные для программ и подарков (загружаются динамически)
  */
-const programsData = {
+let programsData = {
     programs: [
         {
             name: 'Дыхание Карелии',
@@ -78,6 +78,24 @@ const programsData = {
  * Переменные для программ
  */
 let currentCategory = 'programs';
+
+/**
+ * Загрузка программ с сервера
+ */
+async function loadProgramsFromAPI() {
+    try {
+        const response = await fetch('/api/programs');
+        if (response.ok) {
+            const data = await response.json();
+            programsData = data;
+            renderProgramsCards();
+        } else {
+            console.error('Ошибка загрузки программ:', response.status);
+        }
+    } catch (error) {
+        console.error('Ошибка загрузки программ:', error);
+    }
+}
 
 /**
  * Рендеринг карточек для текущей категории
@@ -202,175 +220,76 @@ function initAtmosphereHover() {
 }
 
 /**
- * Данные об услугах для модального окна
+ * Данные об услугах (загружаются динамически)
  */
-const servicesData = {
-    1: {
-        name: 'Авторский массаж',
-        duration: '60-90 мин',
-        price: 'от 3 500 ₽',
-        desc: 'Уникальная техника, сочетающая восточные и европейские практики для глубокого расслабления. Авторский массаж от наших мастеров — это синтез тайских и балийских практик, адаптированный под индивидуальные потребности. Глубокое расслабление мышц, снятие напряжения и восстановление энергетического баланса.'
-    },
-    2: {
-        name: 'Стоун-терапия',
-        duration: '90 мин',
-        price: 'от 4 200 ₽',
-        desc: 'Массаж горячими камнями для улучшения кровообращения и снятия мышечного напряжения. Терапия горячими и холодными камнями из натуральных минералов (жадеит, шунгит, базальт). Жадеит для омоложения, шунгит для детоксикации, базальт для глубокого прогревания. Восстанавливает энергетический баланс и снимает мышечное напряжение.'
-    },
-    3: {
-        name: 'Aroma Touch',
-        duration: '60 мин',
-        price: 'от 3 800 ₽',
-        desc: 'Ароматерапевтический массаж с эфирными маслами для гармонии тела и души. Техника массажа с использованием сертифицированных эфирных масел doTerra. Комплексное воздействие на физическое и эмоциональное состояние через ароматерапию и тактильные практики.'
-    },
-    4: {
-        name: 'Тайский aroma oil массаж',
-        duration: '90 мин',
-        price: 'от 4 500 ₽',
-        desc: 'Традиционная тайская техника с использованием ароматических масел. Сочетание растяжек, надавливаний и работы с энергетическими линиями. Длительность и интенсивность подбираются индивидуально для максимального эффекта расслабления и восстановления.'
-    },
-    5: {
-        name: 'Массаж тающей свечой',
-        duration: '75 мин',
-        price: 'от 4 000 ₽',
-        desc: 'Роскошный массаж теплым маслом из натуральной свечи для нежности кожи. Эксклюзивная процедура с использованием специальных массажных свечей из натурального воска и масел. Теплый воск создает неповторимое ощущение комфорта и глубокого расслабления.'
-    },
-    6: {
-        name: 'Пенное великолепие',
-        duration: '90 мин',
-        price: 'от 5 500 ₽',
-        desc: 'Экзотический массаж в облаке ароматной пены для полного блаженства. Комплексная программа, включающая пенный массаж, скрабирование и уходовые процедуры. Полное погружение в атмосферу роскоши и релаксации.'
-    }
-};
+let servicesData = {};
 
 /**
- * Хаотичное расположение карточек услуг
+ * Загрузка услуг с сервера
  */
-function arrangeServiceCards(cards) {
-    const container = document.querySelector('.services-grid');
-    if (!container) return;
-    
-    const containerWidth = container.offsetWidth || 1400;
-    const containerHeight = 1000;
-    const cardWidth = 650;
-    const cardHeight = 320;
-    
-    // Позиции для хаотичного расположения (как визитки на столе)
-    const positions = [
-        { left: '5%', top: '10%', rotation: -5 },
-        { left: '25%', top: '5%', rotation: 8 },
-        { left: '50%', top: '8%', rotation: -3 },
-        { left: '70%', top: '12%', rotation: 12 },
-        { left: '15%', top: '45%', rotation: -8 },
-        { left: '60%', top: '50%', rotation: 6 }
-    ];
-    
-    cards.forEach((card, index) => {
-        if (positions[index]) {
-            const pos = positions[index];
-            card.style.left = pos.left;
-            card.style.top = pos.top;
-            card.style.transform = `rotate(${pos.rotation}deg)`;
-            card.style.zIndex = index + 1;
+async function loadServicesFromAPI() {
+    try {
+        const response = await fetch('/api/services');
+        if (response.ok) {
+            servicesData = await response.json();
+            renderServices();
         } else {
-            // Для дополнительных карточек - случайное расположение
-            const randomLeft = Math.random() * (containerWidth - cardWidth);
-            const randomTop = Math.random() * (containerHeight - cardHeight);
-            const randomRotation = (Math.random() - 0.5) * 15; // от -7.5 до 7.5 градусов
-            
-            card.style.left = randomLeft + 'px';
-            card.style.top = randomTop + 'px';
-            card.style.transform = `rotate(${randomRotation}deg)`;
-            card.style.zIndex = index + 1;
+            console.error('Ошибка загрузки услуг:', response.status);
+            // Используем пустые данные, если не удалось загрузить
+            servicesData = {};
         }
-    });
+    } catch (error) {
+        console.error('Ошибка загрузки услуг:', error);
+        servicesData = {};
+    }
 }
 
 /**
- * Открытие модального окна услуги
+ * Рендеринг карточек услуг
  */
-function openServiceModal(serviceId) {
-    const modal = document.getElementById('serviceModal');
-    const service = servicesData[serviceId];
+function renderServices() {
+    const grid = document.getElementById('servicesGrid');
+    if (!grid) return;
     
-    if (!modal || !service) return;
+    grid.innerHTML = '';
     
-    // Заполняем данные
-    document.getElementById('modalServiceName').textContent = service.name;
-    document.getElementById('modalDuration').textContent = service.duration;
-    document.getElementById('modalServicePrice').textContent = service.price;
-    document.getElementById('modalServiceDesc').textContent = service.desc;
-    
-    // Находим карточку
-    const card = document.querySelector(`[data-service="${serviceId}"]`);
-    if (!card) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+    if (!servicesData || Object.keys(servicesData).length === 0) {
+        grid.innerHTML = '<p style="color: rgba(255,255,255,0.5); text-align: center; grid-column: 1/-1;">Услуги временно недоступны</p>';
         return;
     }
     
-    // Получаем позицию карточки
-    const cardRect = card.getBoundingClientRect();
-    const cardClone = card.cloneNode(true);
-    cardClone.style.position = 'fixed';
-    cardClone.style.top = cardRect.top + 'px';
-    cardClone.style.left = cardRect.left + 'px';
-    cardClone.style.width = cardRect.width + 'px';
-    cardClone.style.height = cardRect.height + 'px';
-    cardClone.style.zIndex = '9999';
-    cardClone.style.pointerEvents = 'none';
-    cardClone.style.margin = '0';
-    cardClone.style.opacity = '1';
-    cardClone.classList.add('service-card-flying');
-    
-    // Делаем оригинальную карточку невидимой
-    card.style.opacity = '0';
-    card.style.pointerEvents = 'none';
-    
-    // Добавляем клон в body
-    document.body.appendChild(cardClone);
-    
-    // Вычисляем центр экрана
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
-    const targetWidth = 600;
-    const targetHeight = 400;
-    
-    // Запускаем анимацию вылета
-    requestAnimationFrame(() => {
-        cardClone.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-        cardClone.style.top = (centerY - targetHeight / 2) + 'px';
-        cardClone.style.left = (centerX - targetWidth / 2) + 'px';
-        cardClone.style.width = targetWidth + 'px';
-        cardClone.style.height = targetHeight + 'px';
-        cardClone.style.transform = 'scale(1.2)';
-        cardClone.style.opacity = '0';
+    Object.keys(servicesData).sort((a, b) => Number(a) - Number(b)).forEach(id => {
+        const service = servicesData[id];
+        if (!service) return;
+        
+        const card = document.createElement('div');
+        card.className = 'service-card';
+        
+        const imageSrc = service.image 
+            ? `/static/images/${service.image}` 
+            : `/static/images/usliga${id}.png`;
+        
+        card.innerHTML = `
+            <div class="service-image-wrapper">
+                <img src="${imageSrc}" alt="${service.name || 'Услуга'}" class="service-image" loading="lazy" decoding="async" onerror="this.src='/static/images/usliga${id}.png'">
+            </div>
+            <div class="service-content">
+                <div class="service-header">
+                    <span class="service-duration">${service.duration || ''}</span>
+                </div>
+                <h3 class="service-name">${service.name || 'Услуга'}</h3>
+                <p class="service-desc">${service.desc || ''}</p>
+                <div class="service-footer">
+                    <span class="service-price">${service.price || ''}</span>
+                    <a href="#booking" class="service-link">Подробнее →</a>
+                </div>
+            </div>
+        `;
+        
+        grid.appendChild(card);
     });
-    
-    // Показываем модальное окно раньше, до завершения анимации карточки
-    setTimeout(() => {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }, 150);
-    
-    // Удаляем клон карточки после завершения анимации
-    setTimeout(() => {
-        cardClone.remove();
-        card.style.opacity = '1';
-        card.style.pointerEvents = '';
-    }, 400);
 }
 
-/**
- * Закрытие модального окна
- */
-function closeServiceModal() {
-    const modal = document.getElementById('serviceModal');
-    if (!modal) return;
-    
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-}
 
 /**
  * Параллакс эффект для блока достижений
@@ -435,13 +354,15 @@ function animateCounters() {
                 
                 counter.classList.add('animated');
                 
+                const suffix = counter.getAttribute('data-suffix') || '';
+                
                 const updateCounter = () => {
                     current += increment;
                     if (current < target) {
-                        counter.textContent = Math.floor(current).toLocaleString('ru-RU');
+                        counter.textContent = Math.floor(current).toLocaleString('ru-RU') + suffix;
                         requestAnimationFrame(updateCounter);
                     } else {
-                        counter.textContent = target.toLocaleString('ru-RU');
+                        counter.textContent = target.toLocaleString('ru-RU') + suffix;
                     }
                 };
                 
@@ -485,7 +406,13 @@ function preloadProgramImages() {
 /**
  * Инициализация при загрузке страницы
  */
+// Загружаем данные при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
+    // Загружаем услуги с сервера
+    loadServicesFromAPI();
+    
+    // Загружаем программы с сервера
+    loadProgramsFromAPI();
     // Предзагружаем изображения программ сразу
     preloadProgramImages();
     
@@ -510,40 +437,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Обработчики для карточек услуг
-    const serviceCards = document.querySelectorAll('.service-card');
-    arrangeServiceCards(serviceCards);
-    
-    serviceCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const serviceId = this.getAttribute('data-service');
-            if (serviceId) {
-                openServiceModal(parseInt(serviceId));
-            }
-        });
-    });
-    
-    // Закрытие модального окна
-    const modalClose = document.getElementById('serviceModalClose');
-    const modal = document.getElementById('serviceModal');
-    
-    if (modalClose) {
-        modalClose.addEventListener('click', closeServiceModal);
-    }
-    
-    if (modal) {
-        const overlay = modal.querySelector('.service-modal-overlay');
-        if (overlay) {
-            overlay.addEventListener('click', closeServiceModal);
-        }
-        
-        // Закрытие по Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                closeServiceModal();
-            }
-        });
-    }
     
 });
 
