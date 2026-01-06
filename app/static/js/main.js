@@ -269,10 +269,14 @@ function renderServices() {
             ? `/static/images/${service.image}` 
             : `/static/images/usliga${id}.png`;
         
+        // Устанавливаем фон карточки
+        card.style.backgroundImage = `url('${imageSrc}')`;
+        card.style.backgroundSize = 'cover';
+        card.style.backgroundPosition = 'center';
+        card.style.backgroundRepeat = 'no-repeat';
+        
         card.innerHTML = `
-            <div class="service-image-wrapper">
-                <img src="${imageSrc}" alt="${service.name || 'Услуга'}" class="service-image" loading="lazy" decoding="async" onerror="this.src='/static/images/usliga${id}.png'">
-            </div>
+            <div class="service-overlay"></div>
             <div class="service-content">
                 <div class="service-header">
                     <span class="service-duration">${service.duration || ''}</span>
