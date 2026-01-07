@@ -130,7 +130,8 @@ def book_appointment():
         
         name = data.get('name', '').strip()
         phone = data.get('phone', '').strip()
-        time = data.get('time', '').strip()
+        datetime = data.get('datetime', '').strip()
+        service = data.get('service', '').strip()
         comment = data.get('comment', '').strip()
         
         # Валидация
@@ -138,10 +139,10 @@ def book_appointment():
             return jsonify({'success': False, 'message': 'Имя и телефон обязательны'}), 400
         
         # Логирование заявки
-        logger.info(f"Новая заявка: {name}, {phone}, {time}, {comment}")
+        logger.info(f"Новая заявка на запись: {name}, {phone}, {datetime}, {service}, {comment}")
         
         # TODO: Здесь должна быть отправка email/сохранение в БД
-        # Например: send_email_to_admin(name, phone, time, comment)
+        # Например: send_email_to_admin(name, phone, datetime, service, comment)
         
         return jsonify({
             'success': True,
@@ -150,6 +151,43 @@ def book_appointment():
     
     except Exception as e:
         logger.error(f"Ошибка при обработке заявки: {e}")
+        return jsonify({'success': False, 'message': 'Произошла ошибка. Попробуйте позже.'}), 500
+
+
+@app.route('/api/book-certificate', methods=['POST'])
+def book_certificate():
+    """API endpoint для покупки сертификата"""
+    try:
+        data = request.get_json()
+        
+        name = data.get('name', '').strip()
+        phone = data.get('phone', '').strip()
+        email = data.get('email', '').strip()
+        certificate_type = data.get('certificate_type', '').strip()
+        recipient = data.get('recipient', '').strip()
+        recipient_name = data.get('recipient_name', '').strip()
+        comment = data.get('comment', '').strip()
+        
+        # Валидация
+        if not name or not phone or not email or not certificate_type:
+            return jsonify({'success': False, 'message': 'Заполните все обязательные поля'}), 400
+        
+        # Маппинг типов сертификатов
+        certificate_name = 'Общий' if certificate_type == 'general' else 'Здравсоюз'
+        
+        # Логирование заявки
+        logger.info(f"Новая заявка на сертификат: {certificate_name}, {name}, {phone}, {email}, {recipient}, {recipient_name}, {comment}")
+        
+        # TODO: Здесь должна быть отправка email/сохранение в БД
+        # Например: send_email_to_admin(name, phone, email, amount, recipient, recipient_name, comment)
+        
+        return jsonify({
+            'success': True,
+            'message': 'Спасибо! Мы свяжемся с вами в ближайшее время для подтверждения покупки сертификата.'
+        })
+    
+    except Exception as e:
+        logger.error(f"Ошибка при обработке заявки на сертификат: {e}")
         return jsonify({'success': False, 'message': 'Произошла ошибка. Попробуйте позже.'}), 500
 
 

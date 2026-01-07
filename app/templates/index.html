@@ -68,9 +68,14 @@
                             <p>Здесь вы окунетесь в атмосферу безмятежности и расслабления, где внимание сконцентрировано только на Вас.</p>
                         </div>
 
-                        <button class="btn-hero" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">
-                            Записаться на массаж
-                        </button>
+                        <div class="hero-buttons">
+                            <button class="btn-hero" onclick="switchToForm('appointment')">
+                                Записаться на массаж
+                            </button>
+                            <button class="btn-hero btn-hero-secondary" onclick="switchToForm('certificate')">
+                                Купить сертификат
+                            </button>
+                        </div>
                     </div>
 
                     <div class="hero-logo-wrapper">
@@ -78,6 +83,10 @@
                             <img src="{{ url_for('static', filename='images/Logo_light.png') }}" alt="LUMMEH Logo" class="hero-logo hero-logo-light">
                             <img src="{{ url_for('static', filename='images/Logo_Green.png') }}" alt="LUMMEH Logo" class="hero-logo hero-logo-green">
                         </div>
+                    </div>
+
+                    <div class="hero-additional-wrapper">
+                        <img src="{{ url_for('static', filename='images/Hero_addit.png') }}" alt="Hero Additional" class="hero-additional-img">
                     </div>
                 </div>
             </div>
@@ -373,40 +382,114 @@
                     <p class="section-subtitle">Оставьте заявку, и мы подберем идеальное время для вашего посещения</p>
                 </div>
 
+                <!-- Табы для переключения форм -->
+                <div class="booking-tabs">
+                    <button class="booking-tab-btn active" data-form="appointment" onclick="switchForm('appointment')">
+                        Записаться на массаж
+                    </button>
+                    <button class="booking-tab-btn" data-form="certificate" onclick="switchForm('certificate')">
+                        Купить сертификат
+                    </button>
+                </div>
+
                 <div class="booking-grid">
-                    <div class="booking-form-wrapper">
-                        <h3 class="booking-form-title">Забронировать сеанс</h3>
-                        <form class="booking-form" id="bookingForm">
-                            <div class="form-group">
-                                <label>Ваше имя</label>
-                                <input type="text" placeholder="Введите имя" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Телефон</label>
-                                <input type="tel" placeholder="+7 (___) ___-__-__" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Дата и время</label>
-                                <input type="datetime-local" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Выберите услугу</label>
-                                <select required>
-                                    <option value="">Выберите услугу</option>
-                                    <option value="1">Авторский массаж</option>
-                                    <option value="2">Стоун-терапия</option>
-                                    <option value="3">Aroma Touch</option>
-                                    <option value="4">Тайский aroma oil массаж</option>
-                                    <option value="5">Массаж тающей свечой</option>
-                                    <option value="6">Пенное великолепие</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Комментарий</label>
-                                <textarea rows="3" placeholder="Дополнительные пожелания..."></textarea>
-                            </div>
-                            <button type="submit" class="btn-booking">Отправить заявку</button>
-                        </form>
+                    <div class="booking-forms-container">
+                        <!-- Форма записи на массаж -->
+                        <div class="booking-form-wrapper active" id="appointmentForm">
+                            <h3 class="booking-form-title">Забронировать сеанс</h3>
+                            <form class="booking-form" id="bookingForm">
+                                <div class="form-group">
+                                    <label>Ваше имя</label>
+                                    <input type="text" name="name" placeholder="Введите имя" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Телефон</label>
+                                    <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Дата и время</label>
+                                    <input type="datetime-local" name="datetime" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Выберите услугу</label>
+                                    <select name="service" required>
+                                        <option value="">Выберите услугу</option>
+                                        <option value="1">Авторский массаж</option>
+                                        <option value="2">Стоун-терапия</option>
+                                        <option value="3">Aroma Touch</option>
+                                        <option value="4">Тайский aroma oil массаж</option>
+                                        <option value="5">Массаж тающей свечой</option>
+                                        <option value="6">Пенное великолепие</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Комментарий</label>
+                                    <textarea name="comment" rows="3" placeholder="Дополнительные пожелания..."></textarea>
+                                </div>
+                                <button type="submit" class="btn-booking">Отправить заявку</button>
+                            </form>
+                        </div>
+
+                        <!-- Форма покупки сертификата -->
+                        <div class="booking-form-wrapper" id="certificateForm">
+                            <h3 class="booking-form-title">Купить сертификат</h3>
+                            <form class="booking-form" id="certificateFormElement">
+                                <div class="form-group">
+                                    <label>Выберите тип сертификата</label>
+                                    <div class="certificate-types">
+                                        <label class="certificate-type-card">
+                                            <input type="radio" name="certificate_type" value="general" required>
+                                            <div class="certificate-type-content">
+                                                <div class="certificate-type-image">
+                                                    <img src="{{ url_for('static', filename='images/Sert2.png') }}" alt="Общий сертификат">
+                                                </div>
+                                                <div class="certificate-type-name">Общий</div>
+                                                <div class="certificate-type-desc">Универсальный сертификат на любые услуги</div>
+                                            </div>
+                                        </label>
+                                        <label class="certificate-type-card">
+                                            <input type="radio" name="certificate_type" value="health" required>
+                                            <div class="certificate-type-content">
+                                                <div class="certificate-type-image">
+                                                    <img src="{{ url_for('static', filename='images/Sert1.png') }}" alt="Сертификат Здравсоюз">
+                                                </div>
+                                                <div class="certificate-type-name">Здравсоюз</div>
+                                                <div class="certificate-type-desc">Сертификат программы Здравсоюз</div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ваше имя</label>
+                                    <input type="text" name="name" placeholder="Введите имя" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Телефон</label>
+                                    <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" name="email" placeholder="email@example.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Получатель сертификата</label>
+                                    <select name="recipient" required>
+                                        <option value="">Выберите</option>
+                                        <option value="self">Для себя</option>
+                                        <option value="gift">В подарок</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" id="recipientNameGroup" style="display: none;">
+                                    <label>Имя получателя</label>
+                                    <input type="text" name="recipient_name" placeholder="Введите имя получателя">
+                                </div>
+                                <div class="form-group">
+                                    <label>Комментарий</label>
+                                    <textarea name="comment" rows="3" placeholder="Дополнительные пожелания..."></textarea>
+                                </div>
+                                <button type="submit" class="btn-booking">Купить сертификат</button>
+                            </form>
+                        </div>
                     </div>
 
                     <div class="booking-info">
@@ -547,38 +630,134 @@
         });
     }
     
-    // Обработка формы записи
-    document.getElementById('bookingForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
+    // Функция переключения форм
+    function switchForm(formType) {
+        const appointmentForm = document.getElementById('appointmentForm');
+        const certificateForm = document.getElementById('certificateForm');
+        const tabs = document.querySelectorAll('.booking-tab-btn');
         
-        const formData = {
-            name: this.querySelector('input[type="text"]').value,
-            phone: this.querySelector('input[type="tel"]').value,
-            datetime: this.querySelector('input[type="datetime-local"]').value,
-            service: this.querySelector('select').value,
-            comment: this.querySelector('textarea').value
-        };
+        tabs.forEach(tab => tab.classList.remove('active'));
         
-        try {
-            const response = await fetch('/api/book', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
+        if (formType === 'appointment') {
+            appointmentForm.classList.add('active');
+            certificateForm.classList.remove('active');
+            document.querySelector('[data-form="appointment"]').classList.add('active');
+        } else {
+            appointmentForm.classList.remove('active');
+            certificateForm.classList.add('active');
+            document.querySelector('[data-form="certificate"]').classList.add('active');
+        }
+    }
+
+    // Обработка переключения имени получателя
+    document.addEventListener('DOMContentLoaded', function() {
+        const recipientSelect = document.querySelector('select[name="recipient"]');
+        const recipientNameGroup = document.getElementById('recipientNameGroup');
+        
+        if (recipientSelect && recipientNameGroup) {
+            recipientSelect.addEventListener('change', function() {
+                if (this.value === 'gift') {
+                    recipientNameGroup.style.display = 'block';
+                    const input = recipientNameGroup.querySelector('input');
+                    if (input) input.required = true;
+                } else {
+                    recipientNameGroup.style.display = 'none';
+                    const input = recipientNameGroup.querySelector('input');
+                    if (input) input.required = false;
+                }
             });
-            
-            const data = await response.json();
-            
-            if (data.success) {
-                alert(data.message);
-                this.reset();
-            } else {
-                alert(data.message);
-            }
-        } catch (error) {
-            alert('Произошла ошибка. Попробуйте позже.');
         }
     });
+
+    // Функция переключения из Hero
+    function switchToForm(formType) {
+        document.getElementById('booking').scrollIntoView({behavior: 'smooth'});
+        setTimeout(() => {
+            switchForm(formType);
+        }, 500);
+    }
+
+    // Обработка формы записи
+    const bookingForm = document.getElementById('bookingForm');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: this.querySelector('input[name="name"]').value,
+                phone: this.querySelector('input[name="phone"]').value,
+                datetime: this.querySelector('input[name="datetime"]').value,
+                service: this.querySelector('select[name="service"]').value,
+                comment: this.querySelector('textarea[name="comment"]').value
+            };
+            
+            try {
+                const response = await fetch('/api/book', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert(data.message);
+                    this.reset();
+                } else {
+                    alert(data.message);
+                }
+            } catch (error) {
+                alert('Произошла ошибка. Попробуйте позже.');
+            }
+        });
+    }
+
+    // Обработка формы сертификата
+    const certificateFormElement = document.getElementById('certificateFormElement');
+    if (certificateFormElement) {
+        certificateFormElement.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const certificateType = this.querySelector('input[name="certificate_type"]:checked');
+            if (!certificateType) {
+                alert('Пожалуйста, выберите тип сертификата');
+                return;
+            }
+            
+            const formData = {
+                name: this.querySelector('input[name="name"]').value,
+                phone: this.querySelector('input[name="phone"]').value,
+                email: this.querySelector('input[name="email"]').value,
+                certificate_type: certificateType.value,
+                recipient: this.querySelector('select[name="recipient"]').value,
+                recipient_name: this.querySelector('input[name="recipient_name"]').value || '',
+                comment: this.querySelector('textarea[name="comment"]').value
+            };
+            
+            try {
+                const response = await fetch('/api/book-certificate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert(data.message);
+                    this.reset();
+                    document.getElementById('recipientNameGroup').style.display = 'none';
+                } else {
+                    alert(data.message);
+                }
+            } catch (error) {
+                alert('Произошла ошибка. Попробуйте позже.');
+            }
+        });
+    }
 </script>
 {% endblock %}
