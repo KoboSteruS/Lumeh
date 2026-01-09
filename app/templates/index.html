@@ -113,58 +113,75 @@
                 </div>
 
                 <div class="reasons-list">
-                    <!-- Reason 1 -->
-                    <div class="reason-item">
+                    <!-- Reason 1: Высокий уровень сервиса и профессионализм мастеров -->
+                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe1.jpg') }}">
+                        <div class="reason-overlay"></div>
                         <div class="reason-content">
-                            <h3 class="reason-title">Профессионализм</h3>
-                            <p class="reason-text">Наши специалисты имеют многолетний опыт и регулярно повышают квалификацию. Мы используем только проверенные методики и современное оборудование.</p>
-                        </div>
-                        <div class="reason-image">
-                            <img src="{{ url_for('static', filename='images/Vibe1.jpg') }}" alt="Профессионализм" loading="lazy" decoding="async">
+                            <h3 class="reason-title">Высокий уровень сервиса и профессионализм мастеров</h3>
+                            <p class="reason-text">Наши мастера родом с острова Бали, это специалисты международного уровня, владеющие различными техниками массажа, тонко чувствуют тело гостя.</p>
                         </div>
                     </div>
 
-                    <!-- Reason 2 -->
-                    <div class="reason-item reason-item-reverse">
+                    <!-- Reason 2: Изысканный интерьер и Атмосфера -->
+                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe2.jpg') }}">
+                        <div class="reason-overlay"></div>
                         <div class="reason-content">
-                            <h3 class="reason-title">Индивидуальный подход</h3>
-                            <p class="reason-text">Каждый клиент уникален. Мы разрабатываем персональные программы процедур с учетом ваших потребностей и пожеланий.</p>
-                        </div>
-                        <div class="reason-image">
-                            <img src="{{ url_for('static', filename='images/Vibe2.jpg') }}" alt="Индивидуальный подход" loading="lazy" decoding="async">
+                            <h3 class="reason-title">Изысканный интерьер и Атмосфера полного расслабления</h3>
+                            <p class="reason-text">Уютное пространство в экологическом дизайне по всей площади салона натуральный каменный шпон, карельский гранит, мрамор, элементы карельской березы, приглушённый свет, ароматы и музыкальная система салона, помогают отключиться от внешнего мира с первых минут.</p>
                         </div>
                     </div>
 
-                    <!-- Reason 3 -->
-                    <div class="reason-item">
+                    <!-- Reason 3: Разнообразное Спа меню и индивидуальный подход -->
+                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe3.jpg') }}">
+                        <div class="reason-overlay"></div>
                         <div class="reason-content">
-                            <h3 class="reason-title">Атмосфера уюта</h3>
-                            <p class="reason-text">Мы создали особое пространство, где Карелия встречается с Востоком. Каждая деталь интерьера продумана для вашего максимального комфорта и расслабления.</p>
-                        </div>
-                        <div class="reason-image">
-                            <img src="{{ url_for('static', filename='images/Vibe3.jpg') }}" alt="Атмосфера уюта" loading="lazy" decoding="async">
+                            <h3 class="reason-title">Разнообразное Спа меню и индивидуальный подход</h3>
+                            <p class="reason-text">Более 70 видов услуг и Спа-ритуалы, продуманные до мелочей. Каждая программа — это гармоничное сочетание процедур, создающее ощущение глубокого восстановления и отдыха. Мы учитываем ваши пожелания, состояние и настроение, подбирая формат и интенсивность процедур именно для вас.</p>
                         </div>
                     </div>
 
-                    <!-- Reason 4 -->
-                    <div class="reason-item reason-item-reverse">
+                    <!-- Reason 4: Профессиональная и гипоаллергенная косметика -->
+                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe4.jpg') }}">
+                        <div class="reason-overlay"></div>
                         <div class="reason-content">
-                            <h3 class="reason-title">Качественная косметика</h3>
-                            <p class="reason-text">Используем только премиальную косметику от проверенных производителей. Все средства сертифицированы и безопасны для вашего здоровья.</p>
-                        </div>
-                        <div class="reason-image">
-                            <img src="{{ url_for('static', filename='images/Vibe4.jpg') }}" alt="Качественная косметика" loading="lazy" decoding="async">
+                            <h3 class="reason-title">Профессиональная и гипоаллергенная косметика</h3>
+                            <p class="reason-text">Более 30 ароматов массажных масел мы предлагаем на выбор нашим гостям. В работе мы используем высококачественную спа-косметику от проверенных брендов с натуральными составами, которая эффективно ухаживает за кожей и усиливает результат каждой процедуры. Bodhi, THALASSO BRETAGNE, Golden Cozmetik.</p>
                         </div>
                     </div>
 
-                    <!-- Reason 5 -->
-                    <div class="reason-item">
+                    <!-- Reason 5: Хаммам и бассейн -->
+                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe12.png') }}">
+                        <div class="reason-overlay"></div>
                         <div class="reason-content">
-                            <h3 class="reason-title">Удобное расположение</h3>
-                            <p class="reason-text">Мы находимся в самом сердце Петрозаводска, в удобном месте с легкой парковкой. Добраться до нас легко из любой точки города.</p>
+                            <h3 class="reason-title">Хаммам и бассейн с гидромассажными эффектами</h3>
+                            <p class="reason-text">Мягкое тепло хаммама и расслабляющее воздействие гидромассажного бассейна помогают снять напряжение, улучшить самочувствие и усилить эффект спа-процедур.</p>
                         </div>
-                        <div class="reason-image">
-                            <img src="{{ url_for('static', filename='images/AboutIMG.jpg') }}" alt="Удобное расположение" loading="lazy" decoding="async">
+                    </div>
+
+                    <!-- Reason 6: Удобное расположение -->
+                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe22.png') }}">
+                        <div class="reason-overlay"></div>
+                        <div class="reason-content">
+                            <h3 class="reason-title">Удобное расположение в центре Петрозаводска</h3>
+                            <p class="reason-text">До нас легко добраться, а визит в Lummeh Spa Point удобно вписать даже в насыщенный рабочий день.</p>
+                        </div>
+                    </div>
+
+                    <!-- Reason 7: Инновационный check-up -->
+                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe32.png') }}">
+                        <div class="reason-overlay"></div>
+                        <div class="reason-content">
+                            <h3 class="reason-title">Инновационный check-up организма</h3>
+                            <p class="reason-text">Мы предлагаем быструю диагностику состояния организма на аппарате MS Fit — чтобы подбирать спа-программы и процедуры с учётом индивидуальных показателей, самочувствия и целей гостя для более персонального подхода.</p>
+                        </div>
+                    </div>
+
+                    <!-- Reason 8: Чайные церемонии -->
+                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe42.png') }}">
+                        <div class="reason-overlay"></div>
+                        <div class="reason-content">
+                            <h3 class="reason-title">Неповторимые чайные церемонии</h3>
+                            <p class="reason-text">Большая чайная карта (более 7 видов чаёв), подобрана под разное время проведения спа ритуалов. Чай подаётся с мёдом и угощениями из сухофруктов и орехов.</p>
                         </div>
                     </div>
                 </div>
@@ -719,6 +736,12 @@
 {% block scripts %}
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 <script>
+    // Установка фонов для reason-item
+    document.querySelectorAll('.reason-item[data-bg-image]').forEach(function(item) {
+        const bgImage = item.getAttribute('data-bg-image');
+        item.style.backgroundImage = 'url(' + bgImage + ')';
+    });
+    
     // Мобильное меню
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
