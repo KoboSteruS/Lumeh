@@ -22,8 +22,17 @@
                 <!-- Contact Info -->
                 <div class="header-contact">
                     <div class="header-contact-inner">
+                        <p class="header-address">улица Анохина, 24, Петрозаводск</p>
                         <a href="tel:+79218042424" class="header-phone">+7 (921) 804-24-24</a>
-                        <span class="header-hours">ежедневно с 9:00 до 21:00</span>
+                        <span class="header-hours">ежедневно с 10:00 до 22:00</span>
+                    </div>
+                    <div class="header-buttons">
+                        <button class="btn-header" onclick="switchToForm('appointment')">
+                            Записаться
+                        </button>
+                        <button class="btn-header btn-header-secondary" onclick="switchToForm('certificate')">
+                            Сертификат
+                        </button>
                     </div>
                 </div>
 
@@ -59,7 +68,10 @@
             <div class="container">
                 <div class="hero-layout">
                     <div class="hero-content">
-                        <h1 class="hero-brand">LUMMEH SPA POINT</h1>
+                        <div class="hero-brand-container">
+                            <img src="{{ url_for('static', filename='images/Herotextwh.png') }}" alt="LUMMEH SPA POINT" class="hero-brand hero-brand-wh">
+                            <img src="{{ url_for('static', filename='images/Herotextgr.png') }}" alt="LUMMEH SPA POINT" class="hero-brand hero-brand-gr">
+                        </div>
                         <h2 class="hero-title">
                             Время позаботиться о главном!
                         </h2>
@@ -93,50 +105,67 @@
 
         </section>
 
-        <!-- Philosophy -->
-        <section id="philosophy" class="philosophy-section">
+        <!-- Why Choose Us -->
+        <section id="philosophy" class="why-choose-section">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Наша галерея</h2>
-                    <!-- <p class="section-subtitle">Что делает наш салон особенным</p> -->
+                    <h2 class="section-title">Почему выбирают нас</h2>
                 </div>
 
-                <div class="gallery-mosaic">
-                    <div class="gallery-item gallery-item-tall">
-                        <img src="{{ url_for('static', filename='images/Vibe1.jpg') }}" alt="Spa Interior" loading="lazy" decoding="async">
-                        <div class="gallery-overlay"></div>
+                <div class="reasons-list">
+                    <!-- Reason 1 -->
+                    <div class="reason-item">
+                        <div class="reason-content">
+                            <h3 class="reason-title">Профессионализм</h3>
+                            <p class="reason-text">Наши специалисты имеют многолетний опыт и регулярно повышают квалификацию. Мы используем только проверенные методики и современное оборудование.</p>
+                        </div>
+                        <div class="reason-image">
+                            <img src="{{ url_for('static', filename='images/Vibe1.jpg') }}" alt="Профессионализм" loading="lazy" decoding="async">
+                        </div>
                     </div>
-                    <div class="gallery-item gallery-item-short">
-                        <img src="{{ url_for('static', filename='images/Vibe2.jpg') }}" alt="Massage" loading="lazy" decoding="async">
-                        <div class="gallery-overlay"></div>
+
+                    <!-- Reason 2 -->
+                    <div class="reason-item reason-item-reverse">
+                        <div class="reason-content">
+                            <h3 class="reason-title">Индивидуальный подход</h3>
+                            <p class="reason-text">Каждый клиент уникален. Мы разрабатываем персональные программы процедур с учетом ваших потребностей и пожеланий.</p>
+                        </div>
+                        <div class="reason-image">
+                            <img src="{{ url_for('static', filename='images/Vibe2.jpg') }}" alt="Индивидуальный подход" loading="lazy" decoding="async">
+                        </div>
                     </div>
-                    <div class="gallery-item gallery-item-tall">
-                        <img src="{{ url_for('static', filename='images/Vibe3.jpg') }}" alt="Candles" loading="lazy" decoding="async">
-                        <div class="gallery-overlay"></div>
+
+                    <!-- Reason 3 -->
+                    <div class="reason-item">
+                        <div class="reason-content">
+                            <h3 class="reason-title">Атмосфера уюта</h3>
+                            <p class="reason-text">Мы создали особое пространство, где Карелия встречается с Востоком. Каждая деталь интерьера продумана для вашего максимального комфорта и расслабления.</p>
+                        </div>
+                        <div class="reason-image">
+                            <img src="{{ url_for('static', filename='images/Vibe3.jpg') }}" alt="Атмосфера уюта" loading="lazy" decoding="async">
+                        </div>
                     </div>
-                    <div class="gallery-item gallery-item-short">
-                        <img src="{{ url_for('static', filename='images/Vibe4.jpg') }}" alt="Aromatherapy" loading="lazy" decoding="async">
-                        <div class="gallery-overlay"></div>
+
+                    <!-- Reason 4 -->
+                    <div class="reason-item reason-item-reverse">
+                        <div class="reason-content">
+                            <h3 class="reason-title">Качественная косметика</h3>
+                            <p class="reason-text">Используем только премиальную косметику от проверенных производителей. Все средства сертифицированы и безопасны для вашего здоровья.</p>
+                        </div>
+                        <div class="reason-image">
+                            <img src="{{ url_for('static', filename='images/Vibe4.jpg') }}" alt="Качественная косметика" loading="lazy" decoding="async">
+                        </div>
                     </div>
-                    <div class="gallery-item gallery-item-short">
-                        <img src="{{ url_for('static', filename='images/Vibe12.png') }}" alt="Spa Interior 2" loading="lazy" decoding="async">
-                        <div class="gallery-overlay"></div>
-                    </div>
-                    <div class="gallery-item gallery-item-tall">
-                        <img src="{{ url_for('static', filename='images/Vibe22.png') }}" alt="Massage 2" loading="lazy" decoding="async">
-                        <div class="gallery-overlay"></div>
-                    </div>
-                    <div class="gallery-item gallery-item-short">
-                        <img src="{{ url_for('static', filename='images/Vibe32.png') }}" alt="Candles 2" loading="lazy" decoding="async">
-                        <div class="gallery-overlay"></div>
-                    </div>
-                    <div class="gallery-item gallery-item-tall">
-                        <img src="{{ url_for('static', filename='images/Vibe42.png') }}" alt="Aromatherapy 2" loading="lazy" decoding="async">
-                        <div class="gallery-overlay"></div>
-                    </div>
-                    <div class="gallery-item gallery-item-tall">
-                        <img src="{{ url_for('static', filename='images/AboutIMG.jpg') }}" alt="Spa Interior 3" loading="lazy" decoding="async">
-                        <div class="gallery-overlay"></div>
+
+                    <!-- Reason 5 -->
+                    <div class="reason-item">
+                        <div class="reason-content">
+                            <h3 class="reason-title">Удобное расположение</h3>
+                            <p class="reason-text">Мы находимся в самом сердце Петрозаводска, в удобном месте с легкой парковкой. Добраться до нас легко из любой точки города.</p>
+                        </div>
+                        <div class="reason-image">
+                            <img src="{{ url_for('static', filename='images/AboutIMG.jpg') }}" alt="Удобное расположение" loading="lazy" decoding="async">
+                        </div>
                     </div>
                 </div>
 
@@ -284,6 +313,12 @@
                 <div class="services-grid" id="servicesGrid">
                     <!-- Услуги будут загружены динамически через JavaScript -->
                 </div>
+                
+                <div class="services-footer">
+                    <button class="btn-services-modal" onclick="openServicesModal()">
+                        Посмотреть все услуги
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -412,15 +447,16 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Выберите услугу</label>
-                                    <select name="service" required>
-                                        <option value="">Выберите услугу</option>
-                                        <option value="1">Авторский массаж</option>
-                                        <option value="2">Стоун-терапия</option>
-                                        <option value="3">Aroma Touch</option>
-                                        <option value="4">Тайский aroma oil массаж</option>
-                                        <option value="5">Массаж тающей свечой</option>
-                                        <option value="6">Пенное великолепие</option>
-                                    </select>
+                                    <button type="button" class="service-select-btn" id="serviceSelectBtn" onclick="openServicesModal()">
+                                        <span id="selectedServiceText">Выберите услугу</span>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M19 9l-7 7-7-7"/>
+                                        </svg>
+                                    </button>
+                                    <input type="hidden" name="service" id="selectedServiceInput" required>
+                                    <input type="hidden" name="service_name" id="selectedServiceNameInput">
+                                    <input type="hidden" name="service_duration" id="selectedServiceDurationInput">
+                                    <input type="hidden" name="service_price" id="selectedServicePriceInput">
                                 </div>
                                 <div class="form-group">
                                     <label>Комментарий</label>
@@ -526,8 +562,8 @@
                                 <div class="booking-info-content">
                                     <h4>Режим работы</h4>
                                     <div class="booking-info-hours">
-                                        <p>Понедельник - Пятница: 9:00 - 21:00</p>
-                                        <p>Суббота - Воскресенье: 10:00 - 20:00</p>
+                                        <p>Понедельник - Пятница: 10:00 - 22:00</p>
+                                        <p>Суббота - Воскресенье: 10:00 - 22:00</p>
                                     </div>
                                 </div>
                             </div>
@@ -549,6 +585,70 @@
             </div>
         </section>
     </main>
+
+    <!-- Services Modal -->
+    <div class="services-modal" id="servicesModal">
+        <div class="services-modal-overlay" onclick="closeServicesModal()"></div>
+        <div class="services-modal-content">
+            <div class="services-modal-header">
+                <h2 class="services-modal-title">Все услуги</h2>
+                <button class="services-modal-close" onclick="closeServicesModal()" aria-label="Закрыть">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="services-modal-filters">
+                <button class="filter-btn active" data-category="all" onclick="filterServices('all')">Все</button>
+                <button class="filter-btn" data-category="balinese" onclick="filterServices('balinese')">Балийские массажи</button>
+                <button class="filter-btn" data-category="thai" onclick="filterServices('thai')">Тайские массажи</button>
+                <button class="filter-btn" data-category="european" onclick="filterServices('european')">Европейские массажи</button>
+                <button class="filter-btn" data-category="care" onclick="filterServices('care')">Уходовые комплексы</button>
+                <button class="filter-btn" data-category="figure" onclick="filterServices('figure')">Коррекция фигуры</button>
+                <button class="filter-btn" data-category="children" onclick="filterServices('children')">Детские массажи</button>
+                <button class="filter-btn" data-category="other" onclick="filterServices('other')">Другие виды</button>
+                <button class="filter-btn" data-category="spa-single" onclick="filterServices('spa-single')">СПА программы (1 гость)</button>
+                <button class="filter-btn" data-category="spa-couple" onclick="filterServices('spa-couple')">СПА программы (для двоих)</button>
+                <button class="filter-btn" data-category="spa-special" onclick="filterServices('spa-special')">Особые программы</button>
+                <button class="filter-btn" data-category="additions" onclick="filterServices('additions')">Дополнения</button>
+            </div>
+            
+            <div class="services-modal-body" id="servicesModalBody">
+                <!-- Услуги будут загружены через JavaScript -->
+            </div>
+            
+            <!-- Детальное окно услуги -->
+            <div class="service-detail-view" id="serviceDetailView" style="display: none;">
+                <div class="service-detail-header">
+                    <button class="service-detail-back" onclick="backToServicesList()" aria-label="Назад">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        <span>Назад</span>
+                    </button>
+                    <h3 class="service-detail-title" id="serviceDetailTitle"></h3>
+                </div>
+                <div class="service-detail-body">
+                    <div class="service-detail-info">
+                        <div class="service-detail-item">
+                            <span class="service-detail-label">Продолжительность:</span>
+                            <span class="service-detail-value" id="serviceDetailDuration"></span>
+                        </div>
+                        <div class="service-detail-item">
+                            <span class="service-detail-label">Стоимость:</span>
+                            <span class="service-detail-price" id="serviceDetailPrice"></span>
+                        </div>
+                        <div class="service-detail-description" id="serviceDetailDescription"></div>
+                        <div class="service-detail-note" id="serviceDetailNote" style="display: none;"></div>
+                    </div>
+                    <button class="btn-select-service" onclick="selectServiceForBooking()">
+                        Выбрать эту услугу
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
