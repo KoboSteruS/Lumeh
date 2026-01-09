@@ -193,6 +193,67 @@ function switchCategory(category) {
 }
 
 /**
+ * Переключение категории продукции
+ */
+function switchProductsCategory(category) {
+    currentCategory = category;
+    
+    // Обновляем активную кнопку таба в блоке продукции
+    const productsSection = document.querySelector('.products-section');
+    if (productsSection) {
+        productsSection.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-tab') === category) {
+                btn.classList.add('active');
+            }
+        });
+    }
+    
+    renderProductsCards();
+}
+
+/**
+ * Рендеринг карточек продукции
+ */
+function renderProductsCards() {
+    const grid = document.getElementById('productsGrid');
+    if (!grid) return;
+    
+    const items = programsData[currentCategory] || [];
+    grid.innerHTML = '';
+    
+    items.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'program-card';
+        
+        let cardContent = '';
+        
+        // Добавляем изображение если есть
+        if (item.image) {
+            cardContent += `
+                <div class="program-card-image-wrapper">
+                    <img src="/static/images/${item.image}" alt="${item.name}" class="program-card-image" loading="lazy">
+                </div>
+            `;
+        }
+        
+        cardContent += `
+            <div class="program-card-content">
+                <h3 class="program-name">${item.name}</h3>
+                <p class="program-desc">${item.desc || ''}</p>
+                <div class="program-footer">
+                    <span class="program-price">${item.price || ''}</span>
+                    <button class="program-btn">Купить</button>
+                </div>
+            </div>
+        `;
+        
+        card.innerHTML = cardContent;
+        grid.appendChild(card);
+    });
+}
+
+/**
  * Плавная прокрутка для навигации
  */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -817,6 +878,9 @@ function selectServiceForBooking() {
         selectedServicePriceInput.value = selectedServiceData.price || '';
     }
     
+    // Показываем блоки доп услуг и продукции
+    showAdditionalItems();
+    
     // Закрываем модальное окно
     closeServicesModal();
     
@@ -825,6 +889,324 @@ function selectServiceForBooking() {
     if (bookingSection) {
         bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+}
+
+/**
+ * Обновление стилей карточки при выборе
+ */
+function updateCardStyles(card, checked) {
+    if (checked) {
+        card.classList.add('checked');
+    } else {
+        card.classList.remove('checked');
+    }
+}
+
+// Выбранные дополнительные услуги и продукция
+let selectedAdditionalServices = [];
+let selectedAdditionalProducts = [];
+
+/**
+ * Показать блоки дополнительных услуг и продукции
+ */
+function showAdditionalItems() {
+    const additionalItemsGroup = document.getElementById('additionalItemsGroup');
+    if (additionalItemsGroup) {
+        additionalItemsGroup.style.display = 'block';
+        updateSelectedCounts();
+        renderSelectedItems();
+    }
+}
+
+/**
+ * Открытие модального окна для дополнительных услуг
+ */
+function openAdditionalServicesModal() {
+    const modal = document.getElementById('additionalServicesModal');
+    const modalBody = document.getElementById('additionalServicesModalBody');
+    
+    if (modal && modalBody) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        renderAdditionalServicesModal();
+    }
+}
+
+/**
+ * Закрытие модального окна для дополнительных услуг
+ */
+function closeAdditionalServicesModal() {
+    const modal = document.getElementById('additionalServicesModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+/**
+ * Рендеринг дополнительных услуг в модальном окне
+ */
+function renderAdditionalServicesModal() {
+    const modalBody = document.getElementById('additionalServicesModalBody');
+    if (!modalBody) return;
+    
+    modalBody.innerHTML = '';
+    
+    const additions = allServicesData.additions || [];
+    
+    if (additions.length === 0) {
+        modalBody.innerHTML = '<p style="color: rgba(255,255,255,0.6); padding: 16px; text-align: center;">Дополнительные услуги будут добавлены в ближайшее время</p>';
+        return;
+    }
+    
+    additions.forEach((service, index) => {
+        const isSelected = selectedAdditionalServices.some(s => s.name === service.name);
+        const item = document.createElement('label');
+        item.className = `additional-modal-item ${isSelected ? 'selected' : ''}`;
+        
+        item.innerHTML = `
+            <input type="checkbox" 
+                   class="additional-modal-checkbox"
+                   data-index="${index}"
+                   ${isSelected ? 'checked' : ''}>
+            <div class="additional-modal-item-content">
+                <div class="additional-modal-item-header">
+                    <h4 class="additional-modal-item-name">${service.name}</h4>
+                    <span class="additional-modal-item-price">${service.price || ''}</span>
+                </div>
+                ${service.duration ? `<span class="additional-modal-item-duration">${service.duration}</span>` : ''}
+            </div>
+        `;
+        
+        item.addEventListener('click', function(e) {
+            if (e.target.tagName !== 'INPUT') {
+                const checkbox = this.querySelector('input[type="checkbox"]');
+                if (checkbox) {
+                    checkbox.checked = !checkbox.checked;
+                    this.classList.toggle('selected', checkbox.checked);
+                }
+            } else {
+                this.classList.toggle('selected', e.target.checked);
+            }
+        });
+        
+        modalBody.appendChild(item);
+    });
+}
+
+/**
+ * Подтверждение выбора дополнительных услуг
+ */
+function confirmAdditionalServices() {
+    const modalBody = document.getElementById('additionalServicesModalBody');
+    if (!modalBody) return;
+    
+    const additions = allServicesData.additions || [];
+    selectedAdditionalServices = [];
+    
+    modalBody.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+        const index = parseInt(checkbox.getAttribute('data-index'));
+        const service = additions[index];
+        if (service) {
+            selectedAdditionalServices.push({
+                name: service.name,
+                duration: service.duration || '',
+                price: service.price || ''
+            });
+        }
+    });
+    
+    updateSelectedCounts();
+    renderSelectedItems();
+    closeAdditionalServicesModal();
+}
+
+/**
+ * Открытие модального окна для продукции
+ */
+function openAdditionalProductsModal() {
+    const modal = document.getElementById('additionalProductsModal');
+    const modalBody = document.getElementById('additionalProductsModalBody');
+    
+    if (modal && modalBody) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        renderAdditionalProductsModal();
+    }
+}
+
+/**
+ * Закрытие модального окна для продукции
+ */
+function closeAdditionalProductsModal() {
+    const modal = document.getElementById('additionalProductsModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+/**
+ * Рендеринг продукции в модальном окне
+ */
+function renderAdditionalProductsModal() {
+    const modalBody = document.getElementById('additionalProductsModalBody');
+    if (!modalBody) return;
+    
+    modalBody.innerHTML = '';
+    
+    // Объединяем все категории продукции
+    const allProducts = [];
+    if (programsData.cosmetics) {
+        allProducts.push(...programsData.cosmetics.map(item => ({...item, category: 'Косметика'})));
+    }
+    if (programsData.accessories) {
+        allProducts.push(...programsData.accessories.map(item => ({...item, category: 'Аксессуары'})));
+    }
+    if (programsData.wellness) {
+        allProducts.push(...programsData.wellness.map(item => ({...item, category: 'Для здоровья'})));
+    }
+    
+    if (allProducts.length === 0) {
+        modalBody.innerHTML = '<p style="color: rgba(255,255,255,0.6); padding: 16px; text-align: center;">Продукция будет добавлена в ближайшее время</p>';
+        return;
+    }
+    
+    allProducts.forEach((product, index) => {
+        const isSelected = selectedAdditionalProducts.some(p => p.name === product.name);
+        const item = document.createElement('label');
+        item.className = `additional-modal-item ${isSelected ? 'selected' : ''}`;
+        
+        item.innerHTML = `
+            <input type="checkbox" 
+                   class="additional-modal-checkbox"
+                   data-index="${index}"
+                   ${isSelected ? 'checked' : ''}>
+            <div class="additional-modal-item-content">
+                <div class="additional-modal-item-header">
+                    <h4 class="additional-modal-item-name">${product.name}</h4>
+                    <span class="additional-modal-item-price">${product.price || ''}</span>
+                </div>
+                ${product.category ? `<span class="additional-modal-item-category">${product.category}</span>` : ''}
+            </div>
+        `;
+        
+        item.addEventListener('click', function(e) {
+            if (e.target.tagName !== 'INPUT') {
+                const checkbox = this.querySelector('input[type="checkbox"]');
+                if (checkbox) {
+                    checkbox.checked = !checkbox.checked;
+                    this.classList.toggle('selected', checkbox.checked);
+                }
+            } else {
+                this.classList.toggle('selected', e.target.checked);
+            }
+        });
+        
+        modalBody.appendChild(item);
+    });
+}
+
+/**
+ * Подтверждение выбора продукции
+ */
+function confirmAdditionalProducts() {
+    const modalBody = document.getElementById('additionalProductsModalBody');
+    if (!modalBody) return;
+    
+    // Объединяем все категории продукции
+    const allProducts = [];
+    if (programsData.cosmetics) {
+        allProducts.push(...programsData.cosmetics.map(item => ({...item, category: 'Косметика'})));
+    }
+    if (programsData.accessories) {
+        allProducts.push(...programsData.accessories.map(item => ({...item, category: 'Аксессуары'})));
+    }
+    if (programsData.wellness) {
+        allProducts.push(...programsData.wellness.map(item => ({...item, category: 'Для здоровья'})));
+    }
+    
+    selectedAdditionalProducts = [];
+    
+    modalBody.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+        const index = parseInt(checkbox.getAttribute('data-index'));
+        const product = allProducts[index];
+        if (product) {
+            selectedAdditionalProducts.push({
+                name: product.name,
+                price: product.price || ''
+            });
+        }
+    });
+    
+    updateSelectedCounts();
+    renderSelectedItems();
+    closeAdditionalProductsModal();
+}
+
+/**
+ * Обновление счетчиков выбранных элементов
+ */
+function updateSelectedCounts() {
+    const servicesCount = document.getElementById('additionalServicesCount');
+    const productsCount = document.getElementById('additionalProductsCount');
+    
+    if (servicesCount) {
+        servicesCount.textContent = selectedAdditionalServices.length;
+        servicesCount.style.display = selectedAdditionalServices.length > 0 ? 'inline-block' : 'none';
+    }
+    
+    if (productsCount) {
+        productsCount.textContent = selectedAdditionalProducts.length;
+        productsCount.style.display = selectedAdditionalProducts.length > 0 ? 'inline-block' : 'none';
+    }
+}
+
+/**
+ * Рендеринг выбранных элементов в виде тегов
+ */
+function renderSelectedItems() {
+    const container = document.getElementById('selectedAdditionalItems');
+    if (!container) return;
+    
+    const allSelected = [...selectedAdditionalServices, ...selectedAdditionalProducts];
+    
+    if (allSelected.length === 0) {
+        container.style.display = 'none';
+        return;
+    }
+    
+    container.style.display = 'block';
+    container.innerHTML = '';
+    
+    allSelected.forEach((item, index) => {
+        const tag = document.createElement('div');
+        tag.className = 'selected-item-tag';
+        tag.innerHTML = `
+            <span class="selected-item-name">${item.name}</span>
+            <button type="button" class="selected-item-remove" onclick="removeSelectedItem(${index}, ${item.duration ? 'true' : 'false'})" aria-label="Удалить">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        `;
+        container.appendChild(tag);
+    });
+}
+
+/**
+ * Удаление выбранного элемента
+ */
+function removeSelectedItem(index, isService) {
+    if (isService) {
+        selectedAdditionalServices.splice(index, 1);
+    } else {
+        const productIndex = index - selectedAdditionalServices.length;
+        selectedAdditionalProducts.splice(productIndex, 1);
+    }
+    updateSelectedCounts();
+    renderSelectedItems();
 }
 
 /**
@@ -859,10 +1241,25 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', function() {
             const category = this.getAttribute('data-tab');
             if (category) {
-                switchCategory(category);
+                // Проверяем, в каком блоке мы находимся
+                const productsSection = this.closest('.products-section');
+                if (productsSection) {
+                    // Это блок продукции
+                    switchProductsCategory(category);
+                } else {
+                    // Это старый блок программ (если остался)
+                    switchCategory(category);
+                }
             }
         });
     });
+    
+    // Инициализация продукции
+    const productsGrid = document.getElementById('productsGrid');
+    if (productsGrid && programsData.cosmetics) {
+        currentCategory = 'cosmetics';
+        renderProductsCards();
+    }
     
     
 });

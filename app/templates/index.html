@@ -16,7 +16,8 @@
                     <a href="#about" class="nav-link">О салоне</a>
                     <a href="#services" class="nav-link">Услуги</a>
                     <a href="#philosophy" class="nav-link">Атмосфера</a>
-                    <a href="#programs" class="nav-link">Программы и подарки</a>
+                    <a href="#promotions" class="nav-link">Акции</a>
+                    <a href="#products" class="nav-link">Продукция</a>
                 </nav>
 
                 <!-- Contact Info -->
@@ -30,9 +31,9 @@
                         <button class="btn-header" onclick="switchToForm('appointment')">
                             Записаться
                         </button>
-                        <button class="btn-header btn-header-secondary" onclick="switchToForm('certificate')">
+                        <a href="https://o7916.yclients.com/" target="_blank" class="btn-header btn-header-secondary">
                             Сертификат
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -50,7 +51,8 @@
                     <a href="#about" class="mobile-nav-link">О салоне</a>
                     <a href="#services" class="mobile-nav-link">Услуги</a>
                     <a href="#philosophy" class="mobile-nav-link">Атмосфера</a>
-                    <a href="#programs" class="mobile-nav-link">Программы и подарки</a>
+                    <a href="#promotions" class="mobile-nav-link">Акции</a>
+                    <a href="#products" class="mobile-nav-link">Продукция</a>
                 </nav>
             </div>
         </div>
@@ -82,11 +84,11 @@
 
                         <div class="hero-buttons">
                             <button class="btn-hero" onclick="switchToForm('appointment')">
-                                Записаться на массаж
+                                Записаться
                             </button>
-                            <button class="btn-hero btn-hero-secondary" onclick="switchToForm('certificate')">
+                            <a href="https://o7916.yclients.com/" target="_blank" class="btn-hero btn-hero-secondary">
                                 Купить сертификат
-                            </button>
+                            </a>
                         </div>
                     </div>
 
@@ -112,76 +114,81 @@
                     <h2 class="section-title">Почему выбирают нас</h2>
                 </div>
 
-                <div class="reasons-list">
-                    <!-- Reason 1: Высокий уровень сервиса и профессионализм мастеров -->
-                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe1.jpg') }}">
-                        <div class="reason-overlay"></div>
-                        <div class="reason-content">
-                            <h3 class="reason-title">Высокий уровень сервиса и профессионализм мастеров</h3>
-                            <p class="reason-text">Наши мастера родом с острова Бали, это специалисты международного уровня, владеющие различными техниками массажа, тонко чувствуют тело гостя.</p>
+                <div class="reasons-grid">
+                    <!-- Левая колонка: 3 блока -->
+                    <div class="reasons-column">
+                        <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe1.jpg') }}">
+                            <div class="reason-overlay"></div>
+                            <div class="reason-content">
+                                <h3 class="reason-title">Высокий уровень сервиса и профессионализм мастеров</h3>
+                                <p class="reason-text">Наши мастера родом с острова Бали, это специалисты международного уровня, владеющие различными техниками массажа, тонко чувствуют тело гостя.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe3.jpg') }}">
+                            <div class="reason-overlay"></div>
+                            <div class="reason-content">
+                                <h3 class="reason-title">Разнообразное Спа меню и индивидуальный подход</h3>
+                                <p class="reason-text">Более 70 видов услуг и Спа-ритуалы, продуманные до мелочей. Каждая программа — это гармоничное сочетание процедур, создающее ощущение глубокого восстановления и отдыха. Мы учитываем ваши пожелания, состояние и настроение, подбирая формат и интенсивность процедур именно для вас.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe12.png') }}">
+                            <div class="reason-overlay"></div>
+                            <div class="reason-content">
+                                <h3 class="reason-title">Хаммам и бассейн с гидромассажными эффектами</h3>
+                                <p class="reason-text">Мягкое тепло хаммама и расслабляющее воздействие гидромассажного бассейна помогают снять напряжение, улучшить самочувствие и усилить эффект спа-процедур.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Reason 2: Изысканный интерьер и Атмосфера -->
-                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe2.jpg') }}">
-                        <div class="reason-overlay"></div>
-                        <div class="reason-content">
-                            <h3 class="reason-title">Изысканный интерьер и Атмосфера полного расслабления</h3>
-                            <p class="reason-text">Уютное пространство в экологическом дизайне по всей площади салона натуральный каменный шпон, карельский гранит, мрамор, элементы карельской березы, приглушённый свет, ароматы и музыкальная система салона, помогают отключиться от внешнего мира с первых минут.</p>
+                    <!-- Средняя колонка: лого сверху + 2 блока -->
+                    <div class="reasons-column reasons-column-center">
+                        <div class="logo-container">
+                            <img src="{{ url_for('static', filename='images/Logo_light.png') }}" alt="LUMMEH" class="why-choose-logo">
+                        </div>
+                        
+                        <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe2.jpg') }}">
+                            <div class="reason-overlay"></div>
+                            <div class="reason-content">
+                                <h3 class="reason-title">Изысканный интерьер и Атмосфера полного расслабления</h3>
+                                <p class="reason-text">Уютное пространство в экологическом дизайне по всей площади салона натуральный каменный шпон, карельский гранит, мрамор, элементы карельской березы, приглушённый свет, ароматы и музыкальная система салона, помогают отключиться от внешнего мира с первых минут.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe4.jpg') }}">
+                            <div class="reason-overlay"></div>
+                            <div class="reason-content">
+                                <h3 class="reason-title">Профессиональная и гипоаллергенная косметика</h3>
+                                <p class="reason-text">Более 30 ароматов массажных масел мы предлагаем на выбор нашим гостям. В работе мы используем высококачественную спа-косметику от проверенных брендов с натуральными составами, которая эффективно ухаживает за кожей и усиливает результат каждой процедуры. Bodhi, THALASSO BRETAGNE, Golden Cozmetik.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Reason 3: Разнообразное Спа меню и индивидуальный подход -->
-                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe3.jpg') }}">
-                        <div class="reason-overlay"></div>
-                        <div class="reason-content">
-                            <h3 class="reason-title">Разнообразное Спа меню и индивидуальный подход</h3>
-                            <p class="reason-text">Более 70 видов услуг и Спа-ритуалы, продуманные до мелочей. Каждая программа — это гармоничное сочетание процедур, создающее ощущение глубокого восстановления и отдыха. Мы учитываем ваши пожелания, состояние и настроение, подбирая формат и интенсивность процедур именно для вас.</p>
+                    <!-- Правая колонка: 3 блока -->
+                    <div class="reasons-column">
+                        <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe22.png') }}">
+                            <div class="reason-overlay"></div>
+                            <div class="reason-content">
+                                <h3 class="reason-title">Удобное расположение в центре Петрозаводска</h3>
+                                <p class="reason-text">До нас легко добраться, а визит в Lummeh Spa Point удобно вписать даже в насыщенный рабочий день.</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Reason 4: Профессиональная и гипоаллергенная косметика -->
-                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe4.jpg') }}">
-                        <div class="reason-overlay"></div>
-                        <div class="reason-content">
-                            <h3 class="reason-title">Профессиональная и гипоаллергенная косметика</h3>
-                            <p class="reason-text">Более 30 ароматов массажных масел мы предлагаем на выбор нашим гостям. В работе мы используем высококачественную спа-косметику от проверенных брендов с натуральными составами, которая эффективно ухаживает за кожей и усиливает результат каждой процедуры. Bodhi, THALASSO BRETAGNE, Golden Cozmetik.</p>
+                        
+                        <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe32.png') }}">
+                            <div class="reason-overlay"></div>
+                            <div class="reason-content">
+                                <h3 class="reason-title">Инновационный check-up организма</h3>
+                                <p class="reason-text">Мы предлагаем быструю диагностику состояния организма на аппарате MS Fit — чтобы подбирать спа-программы и процедуры с учётом индивидуальных показателей, самочувствия и целей гостя для более персонального подхода.</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Reason 5: Хаммам и бассейн -->
-                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe12.png') }}">
-                        <div class="reason-overlay"></div>
-                        <div class="reason-content">
-                            <h3 class="reason-title">Хаммам и бассейн с гидромассажными эффектами</h3>
-                            <p class="reason-text">Мягкое тепло хаммама и расслабляющее воздействие гидромассажного бассейна помогают снять напряжение, улучшить самочувствие и усилить эффект спа-процедур.</p>
-                        </div>
-                    </div>
-
-                    <!-- Reason 6: Удобное расположение -->
-                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe22.png') }}">
-                        <div class="reason-overlay"></div>
-                        <div class="reason-content">
-                            <h3 class="reason-title">Удобное расположение в центре Петрозаводска</h3>
-                            <p class="reason-text">До нас легко добраться, а визит в Lummeh Spa Point удобно вписать даже в насыщенный рабочий день.</p>
-                        </div>
-                    </div>
-
-                    <!-- Reason 7: Инновационный check-up -->
-                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe32.png') }}">
-                        <div class="reason-overlay"></div>
-                        <div class="reason-content">
-                            <h3 class="reason-title">Инновационный check-up организма</h3>
-                            <p class="reason-text">Мы предлагаем быструю диагностику состояния организма на аппарате MS Fit — чтобы подбирать спа-программы и процедуры с учётом индивидуальных показателей, самочувствия и целей гостя для более персонального подхода.</p>
-                        </div>
-                    </div>
-
-                    <!-- Reason 8: Чайные церемонии -->
-                    <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe42.png') }}">
-                        <div class="reason-overlay"></div>
-                        <div class="reason-content">
-                            <h3 class="reason-title">Неповторимые чайные церемонии</h3>
-                            <p class="reason-text">Большая чайная карта (более 7 видов чаёв), подобрана под разное время проведения спа ритуалов. Чай подаётся с мёдом и угощениями из сухофруктов и орехов.</p>
+                        
+                        <div class="reason-item" data-bg-image="{{ url_for('static', filename='images/Vibe42.png') }}">
+                            <div class="reason-overlay"></div>
+                            <div class="reason-content">
+                                <h3 class="reason-title">Неповторимые чайные церемонии</h3>
+                                <p class="reason-text">Большая чайная карта (более 7 видов чаёв), подобрана под разное время проведения спа ритуалов. Чай подаётся с мёдом и угощениями из сухофруктов и орехов.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -339,29 +346,135 @@
             </div>
         </section>
 
-        <!-- Programs -->
-        <section id="programs" class="programs-section">
+        <!-- Promotions and Loyalty -->
+        <section id="promotions" class="promotions-section">
             <div class="container">
                 <div class="section-header section-header-light">
-                    <h2 class="section-title section-title-light">Программы и подарки</h2>
-                    <p class="section-subtitle section-subtitle-light">Эксклюзивные spa-программы и подарочные сертификаты</p>
+                    <h2 class="section-title section-title-light">Акции и система лояльности</h2>
+                    <p class="section-subtitle section-subtitle-light">Специальные предложения и бонусы для наших гостей</p>
                 </div>
 
-                <div class="programs-tabs">
-                    <button class="tab-btn active" data-tab="programs">
-                        <span>Spa-программы</span>
-                    </button>
-                    <button class="tab-btn" data-tab="gifts">
-                        <span>Подарки</span>
-                    </button>
-                    <button class="tab-btn" data-tab="cosmetics">
+                <div class="promotions-grid">
+                    <!-- Левая часть: Акции -->
+                    <div class="promotions-left">
+                        <h3 class="promotions-subtitle">Текущие акции</h3>
+                        <div class="promotions-list" id="promotionsList">
+                            <!-- Акции будут загружены через JavaScript -->
+                            <div class="promotion-card">
+                                <div class="promotion-image" style="background-image: url('{{ url_for('static', filename='images/AboutIMG.jpg') }}');"></div>
+                                <div class="promotion-overlay"></div>
+                                <div class="promotion-content">
+                                    <h4 class="promotion-title">Розыгрыш</h4>
+                                    <p class="promotion-desc">Для того, чтобы участвовать в розыгрыше необходимо сделать репост со страницы</p>
+                                    <div class="promotion-date">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                                        </svg>
+                                        <span>29 Декабрь 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="promotion-card">
+                                <div class="promotion-image" style="background-image: url('{{ url_for('static', filename='images/Vibe1.jpg') }}');"></div>
+                                <div class="promotion-overlay"></div>
+                                <div class="promotion-content">
+                                    <h4 class="promotion-title">Открытие сезона</h4>
+                                    <p class="promotion-desc">Сегодня успешная сделка! Открыли дачный сезон! Спасибо большое нашим постоянным клиентам!</p>
+                                    <div class="promotion-date">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                                        </svg>
+                                        <span>29 Декабрь 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Правая часть: Система лояльности -->
+                    <div class="loyalty-right">
+                        <h3 class="loyalty-title">Система лояльности</h3>
+                        <div class="loyalty-content">
+                            <p class="loyalty-desc">Становитесь постоянным гостем и получайте эксклюзивные привилегии и бонусы!</p>
+                            
+                            <div class="loyalty-benefits">
+                                <div class="loyalty-benefit-item">
+                                    <div class="loyalty-benefit-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="loyalty-benefit-text">
+                                        <h4>Накопительные бонусы</h4>
+                                        <p>Получайте бонусы за каждое посещение, которые можно использовать для оплаты услуг</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="loyalty-benefit-item">
+                                    <div class="loyalty-benefit-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="loyalty-benefit-text">
+                                        <h4>Приоритетная запись</h4>
+                                        <p>Бронируйте удобное время первыми и получайте доступ к эксклюзивным предложениям</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="loyalty-benefit-item">
+                                    <div class="loyalty-benefit-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M20 7h-4V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a1 1 0 0 0-1-1z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="loyalty-benefit-text">
+                                        <h4>Специальные предложения</h4>
+                                        <p>Доступ к закрытым акциям и персональным программам только для постоянных клиентов</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="loyalty-cta">
+                                <p class="loyalty-cta-text">Узнайте больше о программе лояльности у наших администраторов</p>
+                                <a href="#booking" class="btn-loyalty">Узнать подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products -->
+        <section id="products" class="products-section">
+            <div class="container">
+                <div class="section-header section-header-light">
+                    <h2 class="section-title section-title-light">Наша продукция</h2>
+                    <p class="section-subtitle section-subtitle-light">Качественная косметика и аксессуары для домашнего ухода</p>
+                </div>
+
+                <div class="products-tabs">
+                    <button class="tab-btn active" data-tab="cosmetics">
                         <span>Косметика</span>
                     </button>
+                    <button class="tab-btn" data-tab="accessories">
+                        <span>Аксессуары</span>
+                    </button>
+                    <button class="tab-btn" data-tab="wellness">
+                        <span>Для здоровья</span>
+                    </button>
                 </div>
 
-                <div class="programs-content">
-                    <div class="programs-grid" id="programsGrid">
-                        <!-- Карточки будут добавлены через JavaScript -->
+                <div class="products-content">
+                    <div class="programs-grid" id="productsGrid">
+                        <!-- Продукция будет загружена через JavaScript -->
                     </div>
                 </div>
             </div>
@@ -434,20 +547,10 @@
                     <p class="section-subtitle">Оставьте заявку, и мы подберем идеальное время для вашего посещения</p>
                 </div>
 
-                <!-- Табы для переключения форм -->
-                <div class="booking-tabs">
-                    <button class="booking-tab-btn active" data-form="appointment" onclick="switchForm('appointment')">
-                        Записаться на массаж
-                    </button>
-                    <button class="booking-tab-btn" data-form="certificate" onclick="switchForm('certificate')">
-                        Купить сертификат
-                    </button>
-                </div>
-
                 <div class="booking-grid">
                     <div class="booking-forms-container">
                         <!-- Форма записи на массаж -->
-                        <div class="booking-form-wrapper active" id="appointmentForm">
+                        <div class="booking-form-wrapper" id="appointmentForm">
                             <h3 class="booking-form-title">Забронировать сеанс</h3>
                             <form class="booking-form" id="bookingForm">
                                 <div class="form-group">
@@ -475,72 +578,46 @@
                                     <input type="hidden" name="service_duration" id="selectedServiceDurationInput">
                                     <input type="hidden" name="service_price" id="selectedServicePriceInput">
                                 </div>
+
+                                <!-- Дополнительные услуги и продукция (появляется после выбора основной услуги) -->
+                                <div class="form-group additional-items-group" id="additionalItemsGroup" style="display: none;">
+                                    <label>Дополнительно <span class="optional-label">(необязательно)</span></label>
+                                    <div class="additional-buttons">
+                                        <button type="button" class="btn-additional" id="openAdditionalServicesBtn" onclick="openAdditionalServicesModal()">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                                <polyline points="14 2 14 8 20 8"></polyline>
+                                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                                <polyline points="10 9 9 9 8 9"></polyline>
+                                            </svg>
+                                            <span>Дополнительные услуги</span>
+                                            <span class="selected-count" id="additionalServicesCount">0</span>
+                                        </button>
+                                        <button type="button" class="btn-additional" id="openAdditionalProductsBtn" onclick="openAdditionalProductsModal()">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                            </svg>
+                                            <span>Продукция</span>
+                                            <span class="selected-count" id="additionalProductsCount">0</span>
+                                        </button>
+                                    </div>
+                                    <!-- Список выбранных элементов -->
+                                    <div class="selected-items-list" id="selectedAdditionalItems" style="display: none;">
+                                        <!-- Выбранные элементы будут добавлены через JavaScript -->
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label>Комментарий</label>
                                     <textarea name="comment" rows="3" placeholder="Дополнительные пожелания..."></textarea>
                                 </div>
                                 <button type="submit" class="btn-booking">Отправить заявку</button>
-                            </form>
-                        </div>
-
-                        <!-- Форма покупки сертификата -->
-                        <div class="booking-form-wrapper" id="certificateForm">
-                            <h3 class="booking-form-title">Купить сертификат</h3>
-                            <form class="booking-form" id="certificateFormElement">
-                                <div class="form-group">
-                                    <label>Выберите тип сертификата</label>
-                                    <div class="certificate-types">
-                                        <label class="certificate-type-card">
-                                            <input type="radio" name="certificate_type" value="general" required>
-                                            <div class="certificate-type-content">
-                                                <div class="certificate-type-image">
-                                                    <img src="{{ url_for('static', filename='images/Sert2.png') }}" alt="Общий сертификат">
-                                                </div>
-                                                <div class="certificate-type-name">Общий</div>
-                                                <div class="certificate-type-desc">Универсальный сертификат на любые услуги</div>
-                                            </div>
-                                        </label>
-                                        <label class="certificate-type-card">
-                                            <input type="radio" name="certificate_type" value="health" required>
-                                            <div class="certificate-type-content">
-                                                <div class="certificate-type-image">
-                                                    <img src="{{ url_for('static', filename='images/Sert1.png') }}" alt="Сертификат Здравсоюз">
-                                                </div>
-                                                <div class="certificate-type-name">Здравсоюз</div>
-                                                <div class="certificate-type-desc">Сертификат программы Здравсоюз</div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Ваше имя</label>
-                                    <input type="text" name="name" placeholder="Введите имя" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Телефон</label>
-                                    <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" name="email" placeholder="email@example.com" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Получатель сертификата</label>
-                                    <select name="recipient" required>
-                                        <option value="">Выберите</option>
-                                        <option value="self">Для себя</option>
-                                        <option value="gift">В подарок</option>
-                                    </select>
-                                </div>
-                                <div class="form-group" id="recipientNameGroup" style="display: none;">
-                                    <label>Имя получателя</label>
-                                    <input type="text" name="recipient_name" placeholder="Введите имя получателя">
-                                </div>
-                                <div class="form-group">
-                                    <label>Комментарий</label>
-                                    <textarea name="comment" rows="3" placeholder="Дополнительные пожелания..."></textarea>
-                                </div>
-                                <button type="submit" class="btn-booking">Купить сертификат</button>
+                                <a href="https://o7916.yclients.com/" target="_blank" class="btn-booking btn-booking-secondary">
+                                    Купить сертификат
+                                </a>
                             </form>
                         </div>
                     </div>
@@ -667,6 +744,52 @@
         </div>
     </div>
 
+    <!-- Модальное окно для дополнительных услуг -->
+    <div class="additional-modal" id="additionalServicesModal">
+        <div class="additional-modal-overlay" onclick="closeAdditionalServicesModal()"></div>
+        <div class="additional-modal-content">
+            <div class="additional-modal-header">
+                <h3>Выберите дополнительные услуги</h3>
+                <button class="additional-modal-close" onclick="closeAdditionalServicesModal()" aria-label="Закрыть">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="additional-modal-body" id="additionalServicesModalBody">
+                <!-- Доп услуги будут добавлены через JavaScript -->
+            </div>
+            <div class="additional-modal-footer">
+                <button type="button" class="btn-modal-cancel" onclick="closeAdditionalServicesModal()">Отмена</button>
+                <button type="button" class="btn-modal-confirm" onclick="confirmAdditionalServices()">Применить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для продукции -->
+    <div class="additional-modal" id="additionalProductsModal">
+        <div class="additional-modal-overlay" onclick="closeAdditionalProductsModal()"></div>
+        <div class="additional-modal-content">
+            <div class="additional-modal-header">
+                <h3>Выберите продукцию</h3>
+                <button class="additional-modal-close" onclick="closeAdditionalProductsModal()" aria-label="Закрыть">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="additional-modal-body" id="additionalProductsModalBody">
+                <!-- Продукция будет добавлена через JavaScript -->
+            </div>
+            <div class="additional-modal-footer">
+                <button type="button" class="btn-modal-cancel" onclick="closeAdditionalProductsModal()">Отмена</button>
+                <button type="button" class="btn-modal-confirm" onclick="confirmAdditionalProducts()">Применить</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -753,51 +876,12 @@
         });
     }
     
-    // Функция переключения форм
-    function switchForm(formType) {
-        const appointmentForm = document.getElementById('appointmentForm');
-        const certificateForm = document.getElementById('certificateForm');
-        const tabs = document.querySelectorAll('.booking-tab-btn');
-        
-        tabs.forEach(tab => tab.classList.remove('active'));
-        
-        if (formType === 'appointment') {
-            appointmentForm.classList.add('active');
-            certificateForm.classList.remove('active');
-            document.querySelector('[data-form="appointment"]').classList.add('active');
-        } else {
-            appointmentForm.classList.remove('active');
-            certificateForm.classList.add('active');
-            document.querySelector('[data-form="certificate"]').classList.add('active');
-        }
-    }
-
-    // Обработка переключения имени получателя
-    document.addEventListener('DOMContentLoaded', function() {
-        const recipientSelect = document.querySelector('select[name="recipient"]');
-        const recipientNameGroup = document.getElementById('recipientNameGroup');
-        
-        if (recipientSelect && recipientNameGroup) {
-            recipientSelect.addEventListener('change', function() {
-                if (this.value === 'gift') {
-                    recipientNameGroup.style.display = 'block';
-                    const input = recipientNameGroup.querySelector('input');
-                    if (input) input.required = true;
-                } else {
-                    recipientNameGroup.style.display = 'none';
-                    const input = recipientNameGroup.querySelector('input');
-                    if (input) input.required = false;
-                }
-            });
-        }
-    });
-
     // Функция переключения из Hero
     function switchToForm(formType) {
-        document.getElementById('booking').scrollIntoView({behavior: 'smooth'});
-        setTimeout(() => {
-            switchForm(formType);
-        }, 500);
+        if (formType === 'appointment') {
+            document.getElementById('booking').scrollIntoView({behavior: 'smooth'});
+        }
+        // Для сертификата переход уже обрабатывается через ссылку
     }
 
     // Обработка формы записи
@@ -806,11 +890,20 @@
         bookingForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
+            // Используем данные из глобальных переменных (определены в main.js)
+            const additionalServices = (typeof selectedAdditionalServices !== 'undefined' ? selectedAdditionalServices : []);
+            const additionalProducts = (typeof selectedAdditionalProducts !== 'undefined' ? selectedAdditionalProducts : []);
+
             const formData = {
                 name: this.querySelector('input[name="name"]').value,
                 phone: this.querySelector('input[name="phone"]').value,
                 datetime: this.querySelector('input[name="datetime"]').value,
-                service: this.querySelector('select[name="service"]').value,
+                service: this.querySelector('input[name="service"]').value || this.querySelector('input[name="service_name"]').value,
+                service_name: this.querySelector('input[name="service_name"]').value,
+                service_duration: this.querySelector('input[name="service_duration"]').value,
+                service_price: this.querySelector('input[name="service_price"]').value,
+                additional_services: additionalServices,
+                additional_products: additionalProducts,
                 comment: this.querySelector('textarea[name="comment"]').value
             };
             
@@ -828,6 +921,16 @@
                 if (data.success) {
                     alert(data.message);
                     this.reset();
+                    // Скрываем блоки доп услуг и продукции
+                    const additionalServicesGroup = document.getElementById('additionalServicesGroup');
+                    const additionalProductsGroup = document.getElementById('additionalProductsGroup');
+                    if (additionalServicesGroup) additionalServicesGroup.style.display = 'none';
+                    if (additionalProductsGroup) additionalProductsGroup.style.display = 'none';
+                    // Сбрасываем кнопку выбора услуги
+                    const serviceSelectBtn = document.getElementById('serviceSelectBtn');
+                    const selectedServiceText = document.getElementById('selectedServiceText');
+                    if (serviceSelectBtn) serviceSelectBtn.classList.remove('selected');
+                    if (selectedServiceText) selectedServiceText.textContent = 'Выберите услугу';
                 } else {
                     alert(data.message);
                 }
@@ -837,50 +940,5 @@
         });
     }
 
-    // Обработка формы сертификата
-    const certificateFormElement = document.getElementById('certificateFormElement');
-    if (certificateFormElement) {
-        certificateFormElement.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const certificateType = this.querySelector('input[name="certificate_type"]:checked');
-            if (!certificateType) {
-                alert('Пожалуйста, выберите тип сертификата');
-                return;
-            }
-            
-            const formData = {
-                name: this.querySelector('input[name="name"]').value,
-                phone: this.querySelector('input[name="phone"]').value,
-                email: this.querySelector('input[name="email"]').value,
-                certificate_type: certificateType.value,
-                recipient: this.querySelector('select[name="recipient"]').value,
-                recipient_name: this.querySelector('input[name="recipient_name"]').value || '',
-                comment: this.querySelector('textarea[name="comment"]').value
-            };
-            
-            try {
-                const response = await fetch('/api/book-certificate', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
-                
-                const data = await response.json();
-                
-                if (data.success) {
-                    alert(data.message);
-                    this.reset();
-                    document.getElementById('recipientNameGroup').style.display = 'none';
-                } else {
-                    alert(data.message);
-                }
-            } catch (error) {
-                alert('Произошла ошибка. Попробуйте позже.');
-            }
-        });
-    }
 </script>
 {% endblock %}
