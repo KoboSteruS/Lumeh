@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="LUMMEH SPA POINT - премиальный спа-салон с тайскими и балийскими практиками в Карелии">
-    <title>LUMMEH SPA POINT</title>
+    <title>{% block title %}LUMMEH SPA POINT{% endblock %}</title>
     
     <!-- Preload критических ресурсов -->
     <link rel="preload" href="{{ url_for('static', filename='fonts/HONORSansVFNormal.ttf') }}" as="font" type="font/ttf" crossorigin>
@@ -34,8 +34,28 @@
 </head>
 <body>
     {% block content %}{% endblock %}
+
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-labelledby="cookieBannerTitle" aria-describedby="cookieBannerDesc" hidden>
+        <div class="cookie-banner__inner">
+            <p class="cookie-banner__title" id="cookieBannerTitle">Мы используем cookies</p>
+            <p class="cookie-banner__text" id="cookieBannerDesc">
+                Сайт использует файлы cookie для корректной работы и улучшения сервиса.
+                Подробнее — в <a href="{{ url_for('cookies_policy') }}">политике cookies</a>
+                и <a href="{{ url_for('privacy_policy') }}">политике конфиденциальности</a>.
+            </p>
+            <div class="cookie-banner__actions">
+                <button type="button" class="cookie-banner__btn cookie-banner__btn--primary" id="cookieAcceptAll">
+                    Принять все
+                </button>
+                <button type="button" class="cookie-banner__btn cookie-banner__btn--secondary" id="cookieAcceptNecessary">
+                    Только необходимые
+                </button>
+            </div>
+        </div>
+    </div>
     
     <!-- Скрипты -->
+    <script src="{{ url_for('static', filename='js/cookies.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block scripts %}{% endblock %}
 </body>

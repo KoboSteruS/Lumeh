@@ -47,6 +47,18 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/privacy')
+def privacy_policy():
+    """Политика конфиденциальности"""
+    return render_template('privacy.html')
+
+
+@app.route('/cookies')
+def cookies_policy():
+    """Политика использования cookies"""
+    return render_template('cookies.html')
+
+
 @app.route('/api/services', methods=['GET'])
 def get_services():
     """Публичный API для получения услуг"""

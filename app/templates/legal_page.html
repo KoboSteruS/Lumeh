@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }} — LUMMEH SPA POINT{% endblock %}
+
+{% block content %}
+<main class="policy-page">
+    <div class="container policy-page__container">
+        <a href="{{ url_for('index') }}#legal" class="policy-page__back">← На главную</a>
+        <h1 class="policy-page__title">{{ page_title }}</h1>
+        <p class="policy-page__updated">Дата публикации: {{ updated_at }}</p>
+        <div class="policy-page__content">
+            {% block policy_body %}{% endblock %}
+        </div>
+    </div>
+</main>
+{% endblock %}
