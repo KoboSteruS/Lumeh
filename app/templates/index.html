@@ -69,10 +69,22 @@
 
             <div class="container">
                 <div class="hero-layout">
+                    <div class="hero-visual">
+                        <div class="hero-additional-wrapper">
+                            <img src="{{ url_for('static', filename='images/Hero_addit.png') }}" alt="" class="hero-additional-img" aria-hidden="true">
+                        </div>
+                        <div class="hero-logo-wrapper">
+                            <div class="hero-logo-container">
+                                <img src="{{ url_for('static', filename='images/Logo_light.png') }}" alt="" class="hero-logo hero-logo-light" aria-hidden="true">
+                                <img src="{{ url_for('static', filename='images/Logo_Green.png') }}" alt="" class="hero-logo hero-logo-green" aria-hidden="true">
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="hero-content">
                         <div class="hero-brand-container">
                             <img src="{{ url_for('static', filename='images/Herotextwh.png') }}" alt="LUMMEH SPA POINT" class="hero-brand hero-brand-wh">
-                            <img src="{{ url_for('static', filename='images/Herotextgr.png') }}" alt="LUMMEH SPA POINT" class="hero-brand hero-brand-gr">
+                            <img src="{{ url_for('static', filename='images/Herotextgr.png') }}" alt="" class="hero-brand hero-brand-gr" aria-hidden="true">
                         </div>
                         <h2 class="hero-title">
                             Время позаботиться о главном!
@@ -90,17 +102,6 @@
                                 Купить сертификат
                             </a>
                         </div>
-                    </div>
-
-                    <div class="hero-logo-wrapper">
-                        <div class="hero-logo-container">
-                            <img src="{{ url_for('static', filename='images/Logo_light.png') }}" alt="LUMMEH Logo" class="hero-logo hero-logo-light">
-                            <img src="{{ url_for('static', filename='images/Logo_Green.png') }}" alt="LUMMEH Logo" class="hero-logo hero-logo-green">
-                        </div>
-                    </div>
-
-                    <div class="hero-additional-wrapper">
-                        <img src="{{ url_for('static', filename='images/Hero_addit.png') }}" alt="Hero Additional" class="hero-additional-img">
                     </div>
                 </div>
             </div>

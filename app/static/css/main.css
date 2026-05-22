@@ -270,11 +270,16 @@ img {
 }
 
 .hero-layout {
-    display: grid;
-    grid-template-columns: max-content auto;
-    gap: 30px;
-    align-items: center;
+    position: relative;
     padding-top: 48px;
+}
+
+.hero-visual {
+    position: static;
+    width: 0;
+    height: 0;
+    overflow: visible;
+    pointer-events: none;
 }
 
 .hero-content {
@@ -3458,7 +3463,10 @@ img {
 
 @media (max-width: 768px) {
     .hero-section {
-        padding: 48px 0 !important;
+        min-height: auto;
+        align-items: flex-start;
+        padding: 88px 0 40px !important;
+        overflow: hidden;
     }
     
     .hero-section .container {
@@ -3469,71 +3477,96 @@ img {
     }
     
     .hero-layout {
-        grid-template-columns: 1fr !important;
-        gap: 24px;
-        padding-top: 24px;
         display: flex !important;
         flex-direction: column;
-    }
-    
-    .hero-logo-wrapper {
-        position: absolute !important;
-        right: 50%;
-        top: 0;
-        transform: translateX(50%);
-        order: -1;
-        justify-content: center;
         align-items: center;
-        margin-bottom: 0;
-        opacity: 1;
-        pointer-events: auto;
-        z-index: 5;
+        gap: 12px;
+        padding-top: 0;
+        width: 100%;
     }
-    
-    .hero-logo-container {
-        width: 250px;
-        height: 250px;
+
+    .hero-visual {
+        position: relative;
+        width: min(400px, 98vw);
+        height: min(440px, 62vh);
+        min-height: 340px;
+        margin: 72px auto 0;
+        flex-shrink: 0;
+        pointer-events: none;
+        overflow: visible;
     }
     
     .hero-additional-wrapper {
         position: absolute !important;
-        right: 50%;
-        top: 0;
-        transform: translateX(50%);
-        order: -1;
-        justify-content: center;
-        align-items: center;
-        width: 250px;
-        height: 250px;
-        z-index: 4;
+        left: 50%;
+        right: auto !important;
+        bottom: 0;
+        top: auto !important;
+        transform: translateX(-50%) !important;
+        width: 112%;
+        height: 112%;
+        margin: 0;
+        z-index: 1;
+    }
+
+    .hero-brand-gr {
+        left: 10.7%;
+        top: 0%;
     }
     
     .hero-additional-img {
         width: 100%;
         height: 100%;
         object-fit: contain;
+        object-position: center bottom;
+    }
+    
+    .hero-logo-wrapper {
+        position: absolute !important;
+        left: 50%;
+        top: 100%;
+        right: auto !important;
+        transform: translate(-50%, -50%) !important;
+        width: 187%;
+        height: 200%;
+        margin: 0;
+        z-index: 0;
+        opacity: 0.2;
+    }
+    
+    .hero-logo-container {
+        width: 100%;
+        height: 100%;
     }
     
     .hero-content {
         max-width: 100% !important;
         width: 100% !important;
         padding: 0;
-        order: 1;
         position: relative;
-        z-index: 2;
+        z-index: 3;
+        text-align: center;
     }
     
     .hero-brand-container {
-        max-width: 100%;
-        margin-bottom: 12px;
+        max-width: min(100%, 340px);
+        margin: 0 auto 12px;
         text-align: center;
+    }
+
+    .hero-brand {
+        max-height: 85px;
+        width: auto;
+        max-width: 100%;
+        margin: 0 auto;
     }
     
     .hero-title {
-        font-size: 28px;
-        line-height: 1.2;
+        font-size: clamp(22px, 6.5vw, 28px);
+        line-height: 1.25;
         margin-bottom: 16px;
         text-align: center;
+        hyphens: none;
     }
     
     .hero-subtitle {
@@ -3550,6 +3583,9 @@ img {
     .hero-buttons {
         flex-direction: column;
         gap: 12px;
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
     }
     
     .btn-hero {
@@ -4091,6 +4127,16 @@ img {
     }
 }
 
+@media (min-width: 769px) {
+    .hero-visual {
+        position: static;
+        width: 0;
+        height: 0;
+        overflow: visible;
+        pointer-events: none;
+    }
+}
+
 @media (min-width: 769px) and (max-width: 1024px) {
     .container {
         margin: 10px;
@@ -4112,10 +4158,6 @@ img {
     .hero-additional-wrapper {
         width: 400px;
         height: 400px;
-    }
-    
-    .hero-layout {
-        gap: 25px;
     }
     
     .hero-brand-container {
