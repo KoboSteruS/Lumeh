@@ -1614,10 +1614,10 @@ img {
 
 .legal-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 32px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
     margin-top: 48px;
-    max-width: 1000px;
+    max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1673,9 +1673,19 @@ img {
     flex: 1;
 }
 
+.legal-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+    max-width: 280px;
+}
+
 .legal-link {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     padding: 12px 24px;
     background: #C39875;
@@ -1684,7 +1694,6 @@ img {
     border-radius: 8px;
     font-weight: 500;
     transition: all 0.3s ease;
-    margin-bottom: 12px;
 }
 
 .legal-link:hover {
@@ -1692,16 +1701,21 @@ img {
     transform: translateY(-2px);
 }
 
+.legal-link--secondary {
+    background: transparent;
+    color: #C39875;
+    border: 1px solid rgba(195, 152, 117, 0.5);
+}
+
+.legal-link--secondary:hover {
+    background: rgba(195, 152, 117, 0.12);
+    color: #E8E6E1;
+}
+
 .legal-link svg {
     width: 18px;
     height: 18px;
-}
-
-.legal-note {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
-    font-style: italic;
-    margin-top: 8px;
+    flex-shrink: 0;
 }
 
 .team-section {
