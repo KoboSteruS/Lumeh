@@ -486,10 +486,54 @@
             <div class="container">
                 <div class="section-header section-header-light">
                     <h2 class="section-title section-title-light">Юридическая информация</h2>
-                    <p class="section-subtitle section-subtitle-light">Документы и правила посещения</p>
+                    <p class="section-subtitle section-subtitle-light">Политики сайта — на отдельных страницах, остальные документы — для скачивания</p>
                 </div>
 
                 <div class="legal-grid">
+                    <article class="legal-card legal-card--page" id="legal-privacy">
+                        <div class="legal-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="legal-title">Политика конфиденциальности</h3>
+                        <p class="legal-desc">Обработка персональных данных при использовании сайта и отправке заявок</p>
+                        <div class="legal-actions">
+                            <a href="{{ url_for('privacy_policy') }}" class="legal-link">
+                                <span>Открыть на сайте</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="legal-card legal-card--page" id="legal-cookies">
+                        <div class="legal-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <circle cx="8" cy="9" r="1" fill="currentColor"></circle>
+                                <circle cx="15" cy="10" r="1" fill="currentColor"></circle>
+                                <circle cx="10" cy="15" r="1" fill="currentColor"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="legal-title">Политика cookies</h3>
+                        <p class="legal-desc">Какие файлы cookie используются на сайте и как ими управлять</p>
+                        <div class="legal-actions">
+                            <a href="{{ url_for('cookies_policy') }}" class="legal-link">
+                                <span>Открыть на сайте</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
                     <article class="legal-card">
                         <div class="legal-icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -627,50 +671,6 @@
                             </a>
                         </div>
                     </article>
-
-                    <article class="legal-card" id="legal-privacy">
-                        <div class="legal-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
-                        </div>
-                        <h3 class="legal-title">Политика конфиденциальности</h3>
-                        <p class="legal-desc">Обработка персональных данных при использовании сайта и отправке заявок</p>
-                        <div class="legal-actions">
-                            <a href="{{ url_for('privacy_policy') }}" class="legal-link">
-                                <span>Читать политику</span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="legal-card" id="legal-cookies">
-                        <div class="legal-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <circle cx="8" cy="9" r="1" fill="currentColor"></circle>
-                                <circle cx="15" cy="10" r="1" fill="currentColor"></circle>
-                                <circle cx="10" cy="15" r="1" fill="currentColor"></circle>
-                            </svg>
-                        </div>
-                        <h3 class="legal-title">Политика cookies</h3>
-                        <p class="legal-desc">Какие файлы cookie используются на сайте и как ими управлять</p>
-                        <div class="legal-actions">
-                            <a href="{{ url_for('cookies_policy') }}" class="legal-link">
-                                <span>Читать политику</span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
                 </div>
             </div>
         </section>
@@ -756,8 +756,8 @@
                                 </div>
                                 <p class="form-consent">
                                     Отправляя заявку, вы соглашаетесь с
-                                    <a href="{{ url_for('privacy_policy') }}" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a>
-                                    и <a href="{{ url_for('cookies_policy') }}" target="_blank" rel="noopener noreferrer">политикой cookies</a>.
+                                    <a href="{{ url_for('privacy_policy') }}">политикой конфиденциальности</a>
+                                    и <a href="{{ url_for('cookies_policy') }}">политикой cookies</a>.
                                 </p>
                                 <button type="submit" class="btn-booking">Отправить заявку</button>
                                 <a href="https://o7916.yclients.com/" target="_blank" class="btn-booking btn-booking-secondary">
